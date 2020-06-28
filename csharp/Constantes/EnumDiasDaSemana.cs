@@ -18,19 +18,26 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Objeto com dados de uma empresa.
+///     Dias da semana.
 ///     Criação : Vovolinux
 ///     Data    : 29/06/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Pessoas;
-using System.Collections.Generic;
-
-namespace Empresas
+namespace Constantes
 {
-    public class Empresa : PessoaFisica
+    public class EnumDiasDaSemana
     {
-        public List<Setor> Setores { get; set; }
+        public enum DiaDaSemana
+        {
+            Todos,
+            Domingo,
+            Segunda,
+            Terça,
+            Quarta,
+            Quinta,
+            Sexta,
+            Sábado
+        }
     }
 }

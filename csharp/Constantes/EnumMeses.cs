@@ -18,19 +18,32 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Objeto com dados de uma empresa.
+///     Meses do ano.
 ///     Criação : Vovolinux
 ///     Data    : 29/06/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Pessoas;
-using System.Collections.Generic;
 
-namespace Empresas
+namespace Constantes
 {
-    public class Empresa : PessoaFisica
+    public class EnumMeses
     {
-        public List<Setor> Setores { get; set; }
+        public enum Mes
+        {
+            Todos,
+            Janeiro,
+            Fevereiro,
+            Março,
+            Abril,
+            Maio,
+            Junho,
+            Julho,
+            Agosto,
+            Setembro,
+            Outubro,
+            Novembro,
+            Dezembro
+        }
     }
 }

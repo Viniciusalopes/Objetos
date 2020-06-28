@@ -46,9 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnumDiasDaSemana.cs" />
     <Compile Include="EnumEscolaridade.cs" />
     <Compile Include="EnumEstadoCivil.cs" />
     <Compile Include="EnumForcasArmadas.cs" />
+    <Compile Include="EnumMeses.cs" />
     <Compile Include="EnumRegiao.cs" />
     <Compile Include="EnumSituacao.cs" />
     <Compile Include="EnumTipoEnderecoTelefone.cs" />

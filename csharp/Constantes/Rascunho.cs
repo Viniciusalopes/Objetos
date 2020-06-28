@@ -18,7 +18,7 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-/// 
+///     
 ///     Criação : Vovolinux
 ///     Data    : 29/06/2020
 ///     Projeto : Objetos genéricos para C#.
