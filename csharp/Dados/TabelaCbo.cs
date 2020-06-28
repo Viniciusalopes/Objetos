@@ -20,6 +20,7 @@
 /// </licenca>
 /// <summary>
 ///     Tabela de Classificação Brasileira de Ocupações - CBO.
+///     Fonte   : http://www.mtecbo.gov.br/cbosite/pages/downloads.jsf
 ///     Criação : Vovolinux
 ///     Data    : 29/06/2020
 ///     Projeto : Objetos genéricos para C#.
