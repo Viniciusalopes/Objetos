@@ -38,7 +38,7 @@ namespace Documentos
         #endregion ATRIBUTOS
 
         #region CONSTRUTORES
-        
+
         public Cpf()
         {
 
@@ -52,7 +52,7 @@ namespace Documentos
         #endregion CONSTRUTORES
 
         #region GET
-        
+
         public string getNumeroCpf()
         {
             return numeroCpf;
@@ -69,7 +69,7 @@ namespace Documentos
         #endregion SET
 
         #region VALIDAÇÃO
-        #endregion VALIDAÇÃO
+        
         /// <summary>
         ///     Valida um número de CPF.
         /// </summary>
@@ -129,5 +129,7 @@ namespace Documentos
                     throw new Exception("cpf#002");
             }
         }
+        
+        #endregion VALIDAÇÃO
     }
 }
