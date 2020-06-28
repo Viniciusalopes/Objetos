@@ -18,19 +18,17 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Objeto para pessoa Jurídica com documentos.
+///     Objeto com dados de uma empresa.
 ///     Criação : Vovolinux
-///     Data    : 28/06/2020
+///     Data    : 29/06/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Documentos;
+using Pessoas;
 
-namespace Pessoas
+namespace Empresas
 {
-    public class PessoaJuridica
+    public class Empresa : PessoaFisica
     {
-        public long idPessoa { get; set; }
-        public DocumentosPessoaJuridica Documentos { get; set; }
     }
 }

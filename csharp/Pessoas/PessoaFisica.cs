@@ -30,7 +30,7 @@ using Constantes;
 
 namespace Pessoas
 {
-    class PessoaFisica
+    public class PessoaFisica
     {
         public long idPessoa { get; set; }
         public string NomePessoa { get; set; }
