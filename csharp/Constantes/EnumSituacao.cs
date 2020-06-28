@@ -34,7 +34,12 @@ namespace Constantes
             Ativo,
             Ativa,
             Inativo,
-            Inativa
+            Inativa,
+            Vigente,
+            Cancelado,
+            Encerrado,
+            Suspenso,
+            Prorrogado
         }
     }
 }

@@ -54,6 +54,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Folha\Folha.csproj">
+      <Project>{c8ee0ee6-9cfd-48ac-88bd-80b907f19cb8}</Project>
+      <Name>Folha</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pessoas\Pessoas.csproj">
       <Project>{42c871e2-b87a-42cc-8a7e-e1d1f5e0559e}</Project>
       <Name>Pessoas</Name>

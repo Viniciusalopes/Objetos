@@ -1,6 +1,4 @@
-﻿using Pessoas;
-using System.Collections;
-/// <licenca>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -27,6 +25,7 @@ using System.Collections;
 /// </summary>
 
 using System.Collections.Generic;
+using Folha;
 
 namespace Empresas
 {
@@ -34,7 +33,7 @@ namespace Empresas
     {
         public int IdSetor { get; set; }
         public string NomeSetor { get; set; }
-        public PessoaFisica ResponsavelSetor { get; set; }
-        public List<PessoaFisica> Colaboradores { get; set; }
+        public Colaborador ResponsavelSetor { get; set; }
+        public List<Colaborador> Colaboradores { get; set; }
     }
 }

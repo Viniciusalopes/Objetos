@@ -29,7 +29,7 @@ using System.Collections.Generic;
 
 namespace Empresas
 {
-    public class Empresa : PessoaFisica
+    public class Empresa : PessoaJuridica
     {
         public List<Setor> Setores { get; set; }
     }

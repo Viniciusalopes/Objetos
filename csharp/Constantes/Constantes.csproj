@@ -51,6 +51,7 @@
     <Compile Include="EnumEstadoCivil.cs" />
     <Compile Include="EnumForcasArmadas.cs" />
     <Compile Include="EnumMeses.cs" />
+    <Compile Include="EnumMovimento.cs" />
     <Compile Include="EnumRegiao.cs" />
     <Compile Include="EnumSituacao.cs" />
     <Compile Include="EnumTipoEnderecoTelefone.cs" />

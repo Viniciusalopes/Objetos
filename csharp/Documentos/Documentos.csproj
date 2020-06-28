@@ -50,6 +50,7 @@
     <Compile Include="Cnae.cs" />
     <Compile Include="Cnh.cs" />
     <Compile Include="Cnpj.cs" />
+    <Compile Include="Contrato.cs" />
     <Compile Include="Cpf.cs" />
     <Compile Include="Ctps.cs" />
     <Compile Include="DocumentosPessoaFisica.cs" />

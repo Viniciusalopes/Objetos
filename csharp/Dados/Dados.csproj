@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TabelaCbo.cs" />
     <Compile Include="TabelaMensagem.cs" />
     <Compile Include="TabelaUF.cs" />
     <Compile Include="Tupla.cs" />
@@ -62,6 +63,10 @@
     <ProjectReference Include="..\Enderecos\Enderecos.csproj">
       <Project>{86614355-3598-43a8-876e-cbbfad647db6}</Project>
       <Name>Enderecos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Folha\Folha.csproj">
+      <Project>{c8ee0ee6-9cfd-48ac-88bd-80b907f19cb8}</Project>
+      <Name>Folha</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
