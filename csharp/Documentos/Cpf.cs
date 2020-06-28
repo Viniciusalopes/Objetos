@@ -31,19 +31,45 @@ namespace Documentos
 {
     public class Cpf
     {
+        #region ATRIBUTOS
+
         private string numeroCpf = "";
+
+        #endregion ATRIBUTOS
+
+        #region CONSTRUTORES
+        
+        public Cpf()
+        {
+
+        }
 
         public Cpf(string numeroCpf)
         {
-            validarNumero(numeroCpf);
-            this.numeroCpf = numeroCpf;
+            setNumeroCpf(numeroCpf);
         }
 
+        #endregion CONSTRUTORES
+
+        #region GET
+        
         public string getNumeroCpf()
         {
             return numeroCpf;
         }
 
+        #endregion GET
+
+        #region SET
+        public void setNumeroCpf(string numeroCpf)
+        {
+            validarNumero(numeroCpf);
+            this.numeroCpf = numeroCpf;
+        }
+        #endregion SET
+
+        #region VALIDAÇÃO
+        #endregion VALIDAÇÃO
         /// <summary>
         ///     Valida um número de CPF.
         /// </summary>
