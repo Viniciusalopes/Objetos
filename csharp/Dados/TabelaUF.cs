@@ -1,5 +1,5 @@
 ﻿/// <summary>
-///     Tabelas de Unidades da Federação.
+///     Tabela de Unidades da Federação.
 /// </summary>
 /// <remarks>
 ///     Licença MIT

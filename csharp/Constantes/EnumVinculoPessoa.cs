@@ -34,7 +34,7 @@ namespace Constantes
             Todos,
             Cliente,
             Fornecedor,
-            Colaborador,
+            Colaborador
         }
     }
 }
