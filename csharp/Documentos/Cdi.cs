@@ -1,4 +1,4 @@
-﻿/// <licença>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -16,31 +16,25 @@
 ///     E NÃO INFRAÇÃO. EM NENHUM CASO OS AUTORES OU TITULARES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR 
 ///     QUALQUER REIVINDICAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO, TORT OU OUTRA 
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
-/// </licença>
+/// </licenca>
 /// <summary>
-///     Objeto para pessoa física com documentos e outras informações pessoais.
+///     Certificado de Dispensa de Incorporação - CDI (Reservista).
 ///     Criação : Vovolinux
 ///     Data    : 28/06/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using System;
-using Documentos;
 using Constantes;
+using System;
 
-namespace Pessoas
+namespace Documentos
 {
-    class PessoaFisica
+    public class Cdi
     {
-        public long idPessoa { get; set; }
-        public string NomePessoa { get; set; }
-        public DateTime DataNascimento { get; set; }
-        public EnumSexo.Sexo Sexo { get; set; }
-        public PessoaFisica Pai { get; set; }
-        public PessoaFisica Mãe { get; set; }
-        public EnumEstadoCivil.EstadoCivil EstadoCivil { get; set; }
-        public PessoaFisica Conjuge { get; set; }
-        public DocumentosPessoaFisica Documentos { get; set; }
-        public EnumEscolaridade.Escolaridade Escolaridade { get; set; }
+        public string numeroCdi { get; set; }
+        public int viaCdi { get; set; }
+        public DateTime DataDispensa { get; set; }
+        public string MotivoDispensa { get; set; }
+        public EnumForcasArmadas.ForcaArmada ForçaArmada { get; set; }
     }
 }

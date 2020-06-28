@@ -1,7 +1,4 @@
-﻿/// <summary>
-///     Documentos comuns a uma Pessoa Física.
-/// </summary>
-/// <remarks>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -19,11 +16,15 @@
 ///     E NÃO INFRAÇÃO. EM NENHUM CASO OS AUTORES OU TITULARES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR 
 ///     QUALQUER REIVINDICAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO, TORT OU OUTRA 
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
-///     -----------------------------------------------------------------------------------------------------
+/// </licenca>
+/// <summary>
+///     Documentos comuns a uma Pessoa Física.
 ///     Criação : Vovolinux
 ///     Data    : 28/06/2020
 ///     Projeto : Objetos genéricos para C#.
-/// </remarks>
+/// </summary>
+
+using Constantes;
 
 namespace Documentos
 {
@@ -32,5 +33,9 @@ namespace Documentos
         public Cpf oCpf { get; set; }
         public string Rg { get; set; }
         public Cnh oCnh { get; set; }
+        public Ctps oCtps { get; set; }
+        public TituloEleitoral oTituloEleitoral { get; set; }
+        public string PisNit { get; set; }
+        public Cdi oCdi { get; set; }
     }
 }

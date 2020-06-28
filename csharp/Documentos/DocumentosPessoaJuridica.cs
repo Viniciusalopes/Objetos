@@ -1,7 +1,4 @@
-﻿/// <summary>
-///     Documentos comuns a uma Pessoa Jurídica.
-/// </summary>
-/// <remarks>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -19,17 +16,19 @@
 ///     E NÃO INFRAÇÃO. EM NENHUM CASO OS AUTORES OU TITULARES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR 
 ///     QUALQUER REIVINDICAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO, TORT OU OUTRA 
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
-///     -----------------------------------------------------------------------------------------------------
+/// </licenca>
+/// <summary>
+///     Documentos comuns a uma Pessoa Jurídica.
 ///     Criação : Vovolinux
 ///     Data    : 28/06/2020
 ///     Projeto : Objetos genéricos para C#.
-/// </remarks>
+/// </summary>
 
 namespace Documentos
 {
     public class DocumentosPessoaJuridica
     {
-        public Cnpj Cnpj { get; set; }
+        public Cnpj oCnpj { get; set; }
         public string InscricaoEstadual { get; set; }
         public string InscricaoMunicipal { get; set; }
     }

@@ -1,7 +1,4 @@
-﻿/// <summary>
-///     Tipos de Endereços e Telefones.
-/// </summary>
-/// <remarks>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -19,11 +16,13 @@
 ///     E NÃO INFRAÇÃO. EM NENHUM CASO OS AUTORES OU TITULARES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR 
 ///     QUALQUER REIVINDICAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO, TORT OU OUTRA 
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
-///     -----------------------------------------------------------------------------------------------------
+/// </licenca>
+/// <summary>
+///     Tipos de Endereços e Telefones.
 ///     Criação : Vovolinux
 ///     Data    : 28/06/2020
 ///     Projeto : Objetos genéricos para C#.
-/// </remarks>
+/// </summary>
 
 namespace Constantes
 {

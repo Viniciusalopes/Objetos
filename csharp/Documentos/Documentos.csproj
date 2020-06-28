@@ -46,14 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cdi.cs" />
     <Compile Include="Cnae.cs" />
     <Compile Include="Cnh.cs" />
     <Compile Include="Cnpj.cs" />
     <Compile Include="Cpf.cs" />
+    <Compile Include="Ctps.cs" />
     <Compile Include="DocumentosPessoaFisica.cs" />
     <Compile Include="DocumentosPessoaJuridica.cs" />
     <Compile Include="NaturezaJuridica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TituloEleitoral.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

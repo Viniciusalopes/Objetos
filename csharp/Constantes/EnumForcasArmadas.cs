@@ -1,4 +1,7 @@
-﻿/// <licença>
+﻿/// <summary>
+///     Forças armadas.
+/// </summary>
+/// <remarks>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -16,31 +19,22 @@
 ///     E NÃO INFRAÇÃO. EM NENHUM CASO OS AUTORES OU TITULARES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR 
 ///     QUALQUER REIVINDICAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO, TORT OU OUTRA 
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
-/// </licença>
-/// <summary>
-///     Objeto para pessoa física com documentos e outras informações pessoais.
+///     -----------------------------------------------------------------------------------------------------
 ///     Criação : Vovolinux
-///     Data    : 28/06/2020
+///     Data    : 29/06/2020
 ///     Projeto : Objetos genéricos para C#.
-/// </summary>
+/// </remarks>
 
-using System;
-using Documentos;
-using Constantes;
-
-namespace Pessoas
+namespace Constantes
 {
-    class PessoaFisica
+    public class EnumForcasArmadas
     {
-        public long idPessoa { get; set; }
-        public string NomePessoa { get; set; }
-        public DateTime DataNascimento { get; set; }
-        public EnumSexo.Sexo Sexo { get; set; }
-        public PessoaFisica Pai { get; set; }
-        public PessoaFisica Mãe { get; set; }
-        public EnumEstadoCivil.EstadoCivil EstadoCivil { get; set; }
-        public PessoaFisica Conjuge { get; set; }
-        public DocumentosPessoaFisica Documentos { get; set; }
-        public EnumEscolaridade.Escolaridade Escolaridade { get; set; }
+        public enum ForcaArmada
+        {
+            Todos,
+            Aeronáutica,
+            Exército,
+            Marinha
+        }
     }
 }

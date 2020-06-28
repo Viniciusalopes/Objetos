@@ -1,8 +1,4 @@
-﻿/// <summary>
-///     Receitas realizadas - R$ (×1000) [yyyy]
-///     Estatística para municípios segundo o IBGE: https://www.ibge.gov.br/cidades-e-estados.html?view=municipio
-/// </summary>
-/// <remarks>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -20,11 +16,14 @@
 ///     E NÃO INFRAÇÃO. EM NENHUM CASO OS AUTORES OU TITULARES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR 
 ///     QUALQUER REIVINDICAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO, TORT OU OUTRA 
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
-///     -----------------------------------------------------------------------------------------------------
+/// </licenca>
+/// <summary>
+///     Receitas realizadas - R$ (×1000) [yyyy]
+///     Estatística para municípios segundo o IBGE: https://www.ibge.gov.br/cidades-e-estados.html?view=municipio
 ///     Criação : Vovolinux
 ///     Data    : 28/06/2020
 ///     Projeto : Objetos genéricos para C#.
-/// </remarks>
+/// </summary>
 
 namespace Ibge
 {

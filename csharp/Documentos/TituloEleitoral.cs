@@ -1,4 +1,4 @@
-﻿/// <licença>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -16,31 +16,27 @@
 ///     E NÃO INFRAÇÃO. EM NENHUM CASO OS AUTORES OU TITULARES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR 
 ///     QUALQUER REIVINDICAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO, TORT OU OUTRA 
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
-/// </licença>
+/// </licenca>
 /// <summary>
-///     Objeto para pessoa física com documentos e outras informações pessoais.
+///     Título Eleitoral.
 ///     Criação : Vovolinux
 ///     Data    : 28/06/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
+using Enderecos;
 using System;
-using Documentos;
-using Constantes;
 
-namespace Pessoas
+namespace Documentos
 {
-    class PessoaFisica
+    public class TituloEleitoral
     {
-        public long idPessoa { get; set; }
-        public string NomePessoa { get; set; }
-        public DateTime DataNascimento { get; set; }
-        public EnumSexo.Sexo Sexo { get; set; }
-        public PessoaFisica Pai { get; set; }
-        public PessoaFisica Mãe { get; set; }
-        public EnumEstadoCivil.EstadoCivil EstadoCivil { get; set; }
-        public PessoaFisica Conjuge { get; set; }
-        public DocumentosPessoaFisica Documentos { get; set; }
-        public EnumEscolaridade.Escolaridade Escolaridade { get; set; }
+        public bool IdentificacaoBiometricaTitulo { get; set; }
+        public string NumeroInscricaoTitulo { get; set; }
+        public int ZonaTitulo { get; set; }
+        public int SeçãoTitulo { get; set; }
+        public Municipio MunicipioTitulo { get; set; }
+        public UF UFTitulo { get; set; }
+        public DateTime DataEmissaoTitulo { get; set; }
     }
 }

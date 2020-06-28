@@ -46,12 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnumEscolaridade.cs" />
+    <Compile Include="EnumEstadoCivil.cs" />
+    <Compile Include="EnumForcasArmadas.cs" />
     <Compile Include="EnumRegiao.cs" />
     <Compile Include="EnumSituacao.cs" />
     <Compile Include="EnumTipoEnderecoTelefone.cs" />
     <Compile Include="EnumTipoEstabelecimento.cs" />
     <Compile Include="EnumVinculoPessoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EnumSexo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

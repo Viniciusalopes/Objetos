@@ -1,7 +1,4 @@
-﻿/// <summary>
-///     Objeto de pessoa apenas com o nome.
-/// </summary>
-/// <remarks>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -19,17 +16,43 @@
 ///     E NÃO INFRAÇÃO. EM NENHUM CASO OS AUTORES OU TITULARES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR 
 ///     QUALQUER REIVINDICAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO, TORT OU OUTRA 
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
-///     -----------------------------------------------------------------------------------------------------
+/// </licenca>
+/// <summary>
+///     Escolaridade da pessoa.
 ///     Criação : Vovolinux
-///     Data    : 28/06/2020
+///     Data    : 29/06/2020
 ///     Projeto : Objetos genéricos para C#.
-/// </remarks>
-
-namespace Pessoas
+/// </summary>
+ 
+namespace Constantes
 {
-    public class Pessoa
+    public class EnumEscolaridade
     {
-        public long idPessoa { get; set; }
-        public string NomePessoa { get; set; }
+        public enum Escolaridade
+        {
+            Todos,
+            Analfabeto,
+            EnsinoFundamentalInCompleto,
+            EnsinoFundamentalCursando,
+            EnsinoFundamentalCompleto,
+            EnsinoMédioInCompleto,
+            EnsinoMédioCursando,
+            EnsinoMédioCompleto,
+            EnsinoSuperiorInCompleto,
+            EnsinoSuperiorCursando,
+            EnsinoSuperiorCompleto,
+            PósGradruaçãoIncompleta,
+            PósGradruaçãoCursando,
+            PósGradruaçãoConcluída,
+            MestradoIncompleto,
+            MestradoCursando,
+            MestradoCompleto,
+            DoutoradoIncompleto,
+            DoutoradoCursando,
+            DoutoradoCompleto,
+            PósDoutoradoIncompleto,
+            PósDoutoradoCursando,
+            PósDoutoradoCompleto
+        }
     }
 }

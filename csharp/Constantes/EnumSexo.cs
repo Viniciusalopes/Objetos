@@ -1,7 +1,4 @@
-﻿/// <summary>
-///     Objeto para pessoa com data de nascimento e filiação.
-/// </summary>
-/// <remarks>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -19,20 +16,22 @@
 ///     E NÃO INFRAÇÃO. EM NENHUM CASO OS AUTORES OU TITULARES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR 
 ///     QUALQUER REIVINDICAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO, TORT OU OUTRA 
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
-///     -----------------------------------------------------------------------------------------------------
+/// </licenca>
+/// <summary>
+///     Sexo de nascimento, conforme convenção social relacionada ao órgão genital.
 ///     Criação : Vovolinux
-///     Data    : 28/06/2020
+///     Data    : 29/06/2020
 ///     Projeto : Objetos genéricos para C#.
-/// </remarks>
+/// </summary>
 
-using System;
-
-namespace Pessoas
+namespace Constantes
 {
-    class PessoaComum : Pessoa
+    public class EnumSexo
     {
-        public DateTime DataDeNascimento { get; set; }
-        public Pessoa Pai { get; set; }
-        public Pessoa Mae { get; set; }
+        public enum Sexo
+        {
+            Feminino,
+            Masculino
+        }
     }
 }

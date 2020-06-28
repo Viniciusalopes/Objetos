@@ -46,8 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pessoa.cs" />
-    <Compile Include="PessoaComum.cs" />
     <Compile Include="PessoaFisica.cs" />
     <Compile Include="PessoaJuridica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,6 +54,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Constantes\Constantes.csproj">
+      <Project>{7ec440e3-83ea-4b89-9c54-087540f3fc80}</Project>
+      <Name>Constantes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Documentos\Documentos.csproj">
       <Project>{b04dbc56-72e3-4797-88d8-34a4006c1475}</Project>
       <Name>Documentos</Name>
