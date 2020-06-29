@@ -18,59 +18,17 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Unidades da Federação.
+///     Nomes dos arquivos em disco.
 ///     Criação : Vovolinux
-///     Data    : 28/06/2020
+///     Data    : 29/06/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Constantes;
-using System.Collections.Generic;
-
-namespace Enderecos
+namespace Constantes
 {
-    public class UF
+    public class NomesArquivos
     {
-        #region ATRIBUTOS
-
-        public int IdUf { get; set; }
-        public string SiglaUf { get; set; }
-        public EnumRegiao.Regiao Regiao { get; set; }
-        public string NomeUf { get; set; }
-
-        public List<Municipio> Municipios { get; set; }
-
-        #endregion ATRIBUTOS
-
-        #region CONSTRUTORES
-
-        public UF()
-        {
-
-        }
-
-        public UF(int idUf, string siglaUf, EnumRegiao.Regiao regiao, string nomeUf, List<Municipio> municipios = null)
-        {
-            IdUf = idUf;
-            SiglaUf = siglaUf;
-            Regiao = regiao;
-            NomeUf = nomeUf;
-            Municipios = municipios;
-        }
-
-        #endregion CONSTRUTORES
-
-        #region GET
-
-        public override string ToString()
-        {
-            char sep = ConstantesGerais.SeparadorSplit;
-            return IdUf.ToString() + sep
-                + SiglaUf + sep
-                + Regiao + sep
-                + NomeUf;
-        }
-
-        #endregion GET
+        public string ArquivoDeDados { get; set; }
+        public string ArquivoDeRelatorio { get; set; }
     }
 }

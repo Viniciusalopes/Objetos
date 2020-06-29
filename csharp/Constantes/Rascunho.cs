@@ -45,5 +45,21 @@ namespace Constantes
 
         #region VALIDAÇÃO
         #endregion VALIDAÇÃO
+
+        #region CRUD
+
+        #region CREATE
+        #endregion CREATE
+
+        #region READ
+        #endregion READ
+
+        #region UPDATE
+        #endregion UPDATE
+
+        #region DELETE
+        #endregion DELETE
+
+        #endregion CRUD
     }
 }

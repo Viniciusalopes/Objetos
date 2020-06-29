@@ -1,4 +1,5 @@
-﻿/// <licenca>
+﻿using System.Collections.Generic;
+/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -18,59 +19,49 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Unidades da Federação.
+///     Interface genérica para CRUD.
+///     Fonte   : https://www.devmedia.com.br/criando-interfaces-genericas-em-csharp/23633
 ///     Criação : Vovolinux
-///     Data    : 28/06/2020
+///     Data    : 29/06/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
+/// 
 
-using Constantes;
-using System.Collections.Generic;
-
-namespace Enderecos
+namespace Interfaces
 {
-    public class UF
+    public interface ICRUD<T> where T : new()
     {
-        #region ATRIBUTOS
+        #region CREATE
+        void Incluir(T objeto);
 
-        public int IdUf { get; set; }
-        public string SiglaUf { get; set; }
-        public EnumRegiao.Regiao Regiao { get; set; }
-        public string NomeUf { get; set; }
+        string ToString(T objeto);
 
-        public List<Municipio> Municipios { get; set; }
+        #endregion CREATE
 
-        #endregion ATRIBUTOS
+        #region READ
 
-        #region CONSTRUTORES
+        T Buscar(int id);
 
-        public UF()
-        {
+        T Buscar(object objeto);
 
-        }
+        T Consultar();
 
-        public UF(int idUf, string siglaUf, EnumRegiao.Regiao regiao, string nomeUf, List<Municipio> municipios = null)
-        {
-            IdUf = idUf;
-            SiglaUf = siglaUf;
-            Regiao = regiao;
-            NomeUf = nomeUf;
-            Municipios = municipios;
-        }
+        T ToObject(string texto);
 
-        #endregion CONSTRUTORES
+        List<T> Consultar(T objeto);
 
-        #region GET
+        #endregion READ
 
-        public override string ToString()
-        {
-            char sep = ConstantesGerais.SeparadorSplit;
-            return IdUf.ToString() + sep
-                + SiglaUf + sep
-                + Regiao + sep
-                + NomeUf;
-        }
+        #region UPDATE
 
-        #endregion GET
+        void Atualizar(T objeto);
+
+        #endregion UPDATE
+
+        #region DELETE
+
+        void Excluir(int id);
+
+        #endregion DELETE
     }
 }

@@ -200,6 +200,7 @@ namespace Arquivos
             validarNomeArquivo(caminhoArquivo);
             criarArquivo(caminhoArquivo);
         }
+        
         #endregion VALIDAÇÃO
     }
 }

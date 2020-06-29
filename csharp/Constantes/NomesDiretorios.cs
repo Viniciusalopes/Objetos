@@ -18,59 +18,39 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Unidades da Federação.
+///     Caminhos físicos de diretórios.
 ///     Criação : Vovolinux
-///     Data    : 28/06/2020
+///     Data    : 29/06/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Constantes;
-using System.Collections.Generic;
-
-namespace Enderecos
+namespace Constantes
 {
-    public class UF
+    public class NomesDiretorios
     {
-        #region ATRIBUTOS
+        /// <summary>
+        ///     Diretório C:\Users\{USUARIO}\Documentos\ do usuário atual.
+        /// </summary>
+        public string DirRoot { get; set; }
 
-        public int IdUf { get; set; }
-        public string SiglaUf { get; set; }
-        public EnumRegiao.Regiao Regiao { get; set; }
-        public string NomeUf { get; set; }
+        /// <summary>
+        ///     Diretório de trabalho do sistema.
+        /// </summary>
+        public string DirHome { get; set; }
 
-        public List<Municipio> Municipios { get; set; }
+        /// <summary>
+        ///     Caminho completo. 
+        /// </summary>
+        public string DirFull { get; }
 
-        #endregion ATRIBUTOS
+        /// <summary>
+        ///     Diretório de arquivos de dados.
+        /// </summary>
+        public string DirDados { get; set; }
 
-        #region CONSTRUTORES
-
-        public UF()
-        {
-
-        }
-
-        public UF(int idUf, string siglaUf, EnumRegiao.Regiao regiao, string nomeUf, List<Municipio> municipios = null)
-        {
-            IdUf = idUf;
-            SiglaUf = siglaUf;
-            Regiao = regiao;
-            NomeUf = nomeUf;
-            Municipios = municipios;
-        }
-
-        #endregion CONSTRUTORES
-
-        #region GET
-
-        public override string ToString()
-        {
-            char sep = ConstantesGerais.SeparadorSplit;
-            return IdUf.ToString() + sep
-                + SiglaUf + sep
-                + Regiao + sep
-                + NomeUf;
-        }
-
-        #endregion GET
+        /// <summary>
+        ///     Diretório de relatórios.
+        /// </summary>
+        public string DirRelatorios { get; set; }
     }
 }

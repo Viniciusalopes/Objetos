@@ -35,6 +35,15 @@ namespace Documentos
         public int viaCdi { get; set; }
         public DateTime DataDispensa { get; set; }
         public string MotivoDispensa { get; set; }
-        public EnumForcasArmadas.ForcaArmada ForçaArmada { get; set; }
+        public EnumForcasArmadas.ForcaArmada ForcaArmada { get; set; }
+        public override string ToString()
+        {
+            char sep = ConstantesGerais.SeparadorSplit;
+            return numeroCdi + sep
+                + viaCdi.ToString() + sep
+                + DataDispensa.ToString() + sep
+                + MotivoDispensa + sep
+                + ForcaArmada;
+        }
     }
 }

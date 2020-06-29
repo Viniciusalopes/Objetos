@@ -24,6 +24,7 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
+using Constantes;
 using Enderecos;
 using System;
 
@@ -42,5 +43,20 @@ namespace Documentos
         public Municipio MunicipioCnh { get; set; }
         public UF UfCnh { get; set; }
         public DateTime DataEmissaoCnh { get; set; }
+        public override string ToString()
+        {
+            char sep = ConstantesGerais.SeparadorSplit;
+            return NumeroCnh.ToString() + sep
+                + PermissaoCnh.ToString() + sep
+                + AccCnh.ToString() + sep
+                + CategoriaCnh + sep
+                + NumeroRegistroCnh.ToString() + sep
+                + DataValidadeCnh.ToString() + sep
+                + DataPrimeiraHabilitacao.ToString() + sep
+                + ObservacoesCNH.ToString() + sep
+                + MunicipioCnh.ToString() + sep
+                + UfCnh.ToString() + sep
+                + DataEmissaoCnh + sep;
+        }
     }
 }

@@ -24,6 +24,7 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
+using Constantes;
 using Enderecos;
 using System;
 
@@ -34,9 +35,20 @@ namespace Documentos
         public bool IdentificacaoBiometricaTitulo { get; set; }
         public string NumeroInscricaoTitulo { get; set; }
         public int ZonaTitulo { get; set; }
-        public int SeçãoTitulo { get; set; }
+        public int SecaoTitulo { get; set; }
         public Municipio MunicipioTitulo { get; set; }
         public UF UFTitulo { get; set; }
         public DateTime DataEmissaoTitulo { get; set; }
+        public override string ToString()
+        {
+            char sep = ConstantesGerais.SeparadorSplit;
+            return IdentificacaoBiometricaTitulo.ToString() + sep
+                + NumeroInscricaoTitulo + sep
+                + ZonaTitulo.ToString() + sep
+                + SecaoTitulo.ToString() + sep
+                + MunicipioTitulo.ToString() + sep
+                + UFTitulo.ToString() + sep
+                + DataEmissaoTitulo.ToString() + sep;
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿/// <licenca>
+﻿
+using Constantes;
+/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -23,12 +25,12 @@
 ///     Data    : 28/06/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
-
 namespace Enderecos
 {
     public class Municipio
     {
         public int CodigoMunicipio { get; set; }
         public string NomeMunicipio { get; set; }
+        public override string ToString() => CodigoMunicipio.ToString() + ConstantesGerais.SeparadorSplit + NomeMunicipio;
     }
 }

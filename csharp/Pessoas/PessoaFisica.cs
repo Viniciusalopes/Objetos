@@ -42,5 +42,19 @@ namespace Pessoas
         public PessoaFisica Conjuge { get; set; }
         public DocumentosPessoaFisica Documentos { get; set; }
         public EnumEscolaridade.Escolaridade Escolaridade { get; set; }
+        
+        public override string ToString()
+        {
+            char sep = ConstantesGerais.SeparadorSplit;
+            return idPessoa.ToString() + sep
+                + NomePessoa + sep
+                + Sexo + sep
+                + Pai.idPessoa + sep
+                + Mãe.idPessoa + sep
+                + EstadoCivil + sep
+                + Conjuge.idPessoa + sep
+                + (Sexo.Equals(EnumSexo.Sexo.Feminino)? Documentos.ToStringFeminino() : Documentos.ToString())  + sep
+                + Escolaridade;
+        }
     }
 }

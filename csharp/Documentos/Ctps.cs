@@ -24,6 +24,7 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
+using Constantes;
 using Enderecos;
 using System;
 
@@ -31,11 +32,22 @@ namespace Documentos
 {
     public class Ctps
     {
-		public int NumeroCtps { get; set; }
-		public string SerieCtps { get; set; }
-		public string TipoCtps { get; set; }
-		public DateTime DataEmissaoCtps { get; set; }
-		public Municipio MunicipioCtps { get; set; }
-		public UF UfCtps { get; set; }
-	}
+        public int NumeroCtps { get; set; }
+        public string SerieCtps { get; set; }
+        public string TipoCtps { get; set; }
+        public DateTime DataEmissaoCtps { get; set; }
+        public Municipio MunicipioCtps { get; set; }
+        public UF UfCtps { get; set; }
+
+        public override string ToString()
+        {
+            char sep = ConstantesGerais.SeparadorSplit;
+            return NumeroCtps.ToString() + sep
+                + SerieCtps + sep
+                + TipoCtps + sep
+                + DataEmissaoCtps + sep
+                + MunicipioCtps.ToString() + sep
+                + UfCtps.ToString();
+        }
+    }
 }

@@ -1,4 +1,6 @@
 .vs/
+Arquivos/bin/*
+Arquivos/obj/*
 Constantes/bin/*
 Constantes/obj/*
 Dados/bin/*
@@ -13,7 +15,11 @@ Folha/bin/*
 Folha/obj/*
 Ibge/bin/*
 Ibge/obj/*
+Interfaces/bin/*
+Interfaces/obj/*
 Mensagens/bin/*
+Persistencia/bin/*
+Persistencia/obj/*
 Mensagens/obj/*
 Pessoas/bin/*
 Pessoas/obj/*

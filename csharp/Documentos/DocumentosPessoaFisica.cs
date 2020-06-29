@@ -37,5 +37,32 @@ namespace Documentos
         public TituloEleitoral oTituloEleitoral { get; set; }
         public string PisNit { get; set; }
         public Cdi oCdi { get; set; }
+
+        public override string ToString()
+        {
+            char sep = ConstantesGerais.SeparadorSplit;
+            return oCpf.getNumeroCpf() + sep
+                + Rg + sep
+                + oCnh.ToString() + sep
+                + oCtps.ToString() + sep
+                + oTituloEleitoral.ToString() + sep
+                + PisNit + sep
+                + oCdi.ToString();
+        }
+
+        /// <summary>
+        ///     ToString sem o Cdi.
+        /// </summary>
+        /// <returns></returns>
+        public string ToStringFeminino()
+        {
+            char sep = ConstantesGerais.SeparadorSplit;
+            return oCpf.getNumeroCpf() + sep
+                + Rg + sep
+                + oCnh.ToString() + sep
+                + oCtps.ToString() + sep
+                + oTituloEleitoral.ToString() + sep
+                + PisNit;
+        }
     }
 }
