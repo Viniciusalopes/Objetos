@@ -33,6 +33,6 @@ namespace Folha
         public Cbo Cargo { get; set; }
         public string Funcao { get; set; }
         public float SalarioBase { get; set; }
-        public Jornada oJornada { get; set; }
+        public JornadaDeTrabalho oJornada { get; set; }
     }
 }

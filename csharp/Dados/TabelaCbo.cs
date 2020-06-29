@@ -2397,7 +2397,7 @@ namespace Dados
                 cbos.Add(new Cbo(811805, "Operador de máquina de produtos farmacêuticos"));
                 cbos.Add(new Cbo(811810, "Drageador (medicamentos)"));
                 cbos.Add(new Cbo(811815, "Operador de máquina de fabricação de cosméticos"));
-                cbos.Add(new Cbo(811820, "Operador de máquina de fabricação de produtos de higiene e limpeza (sabão, sabonete, detergente, absorvente, fraldas")); cotonetes e outros)"));
+                cbos.Add(new Cbo(811820, "Operador de máquina de fabricação de produtos de higiene e limpeza (sabão, sabonete, detergente, absorvente, fraldas, cotonetes e outros)"));
                 cbos.Add(new Cbo(812105, "Pirotécnico"));
                 cbos.Add(new Cbo(812110, "Trabalhador da fabricação de munição e explosivos"));
                 cbos.Add(new Cbo(813105, "Cilindrista (petroquímica e afins)"));
