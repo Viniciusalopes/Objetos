@@ -18,50 +18,41 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Utilitários para manipulação de strings.
+///     Utilitários para manipulação de arquivos.
 ///     Criação : Vovolinux
 ///     Data    : 28/06/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
+/// 
 
 using System;
+using System.IO;
 
 namespace Utilitarios
 {
-    public static class StringUtils
+    public static class ArquivoUtils
     {
-        /// <summary>
-        ///     Retornar somente os números de uma string.
-        /// </summary>
-        /// <param name="texto"></param>
-        /// <returns>
-        ///     Somente números 0123456789.
-        /// </returns>
-        /// <remarks>
-        ///     FONTE: https://pt.stackoverflow.com/questions/25469/como-extrair-somente-n%C3%BAmeros-de-uma-string
-        ///     ^ dentro de um conjunto([]) significa negação.
-        ///     \d atalho para 0 - 9, ou seja, números;
-        ///     Em poucas palavras a regex significa tudo que não é número;
-        /// </remarks>
-        public static string somenteNumeros(string texto)
+        public static void validarNomeDiretorio(string caminho)
         {
-            return String.Join("", System.Text.RegularExpressions.Regex.Split(texto, @"[^\d]"));
+            if (caminho.Trim().Length < 3)
+                throw new Exception("csv#001");
+        }
+        public static void validarNomeArquivo(string nomeArquivo)
+        {
+            if (nomeArquivo.Trim().Length == 0)
+                throw new Exception("csv#002");
         }
 
-        #region CRIPTOGRAFIA
-
-        public static string Base64Encode(string plainText)
+        public static void criarDiretorio(string caminho)
         {
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
-            return System.Convert.ToBase64String(plainTextBytes);
+            if (!Directory.Exists(caminho))
+                Directory.CreateDirectory(caminho);
         }
 
-        public static string Base64Decode(string base64EncodedData)
+        public static void criarArquivo(string caminhoArquivo)
         {
-            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
-            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+            if (!File.Exists(caminhoArquivo))
+                File.Create(caminhoArquivo);
         }
-
-        #endregion CRIPTOGRAFIA
     }
 }
