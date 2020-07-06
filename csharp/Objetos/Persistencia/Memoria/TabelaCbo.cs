@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-/// <licenca>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -27,6 +26,7 @@
 /// </summary>
 /// 
 
+using System.Collections.Generic;
 using Objetos.Modelos.Folha;
 
 namespace Objetos.Persistencia.Memoria
