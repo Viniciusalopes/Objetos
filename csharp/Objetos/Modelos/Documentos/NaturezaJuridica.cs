@@ -24,11 +24,26 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
+using Objetos.Constantes;
+
 namespace Objetos.Modelos.Documentos
 {
     public class NaturezaJuridica
     {
         public string CodigoNaturezaJuridica { get; set; }
         public string DescricaoNaturezaJuridica { get; set; }
+
+        public NaturezaJuridica()
+        {
+
+        }
+
+        public NaturezaJuridica(string codigoNaturezaJuridica, string descricaoNaturezaJuridica)
+        {
+            CodigoNaturezaJuridica = codigoNaturezaJuridica;
+            DescricaoNaturezaJuridica = descricaoNaturezaJuridica;
+        }
+
+        public override string ToString() => CodigoNaturezaJuridica + ConstantesGerais.SeparadorSplit + DescricaoNaturezaJuridica;
     }
 }
