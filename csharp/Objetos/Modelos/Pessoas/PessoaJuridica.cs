@@ -24,6 +24,7 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
+using Objetos.Constantes;
 using Objetos.Modelos.Documentos;
 
 namespace Objetos.Modelos.Pessoas
@@ -32,5 +33,16 @@ namespace Objetos.Modelos.Pessoas
     {
         public long idPessoa { get; set; }
         public DocumentosPessoaJuridica Documentos { get; set; }
+
+        public PessoaJuridica()
+        {
+
+        }
+
+        public override string ToString()
+        {
+            char sep = ConstantesGerais.SeparadorSplit;
+            return idPessoa.ToString() + sep + Documentos.ToString();
+        }
     }
 }

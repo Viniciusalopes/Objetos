@@ -40,8 +40,9 @@ namespace Objetos.Modelos.Pessoas
         public string NomeMae { get; set; }
         public EnumEstadoCivil.EstadoCivil EstadoCivil { get; set; }
         public string NomeConjuge { get; set; }
-        public DocumentosPessoaFisica Documentos { get; set; }
         public EnumEscolaridade.Escolaridade Escolaridade { get; set; }
+        public DocumentosPessoaFisica Documentos { get; set; }
+        
 
         public override string ToString()
         {
@@ -54,8 +55,9 @@ namespace Objetos.Modelos.Pessoas
                 + NomeMae + sep
                 + EstadoCivil + sep
                 + NomeConjuge + sep
-                + (Sexo.Equals(EnumSexo.Sexo.Feminino) ? Documentos.ToStringFeminino() : Documentos.ToString()) + sep
-                + Escolaridade;
+                + Escolaridade + sep
+                + (Sexo.Equals(EnumSexo.Sexo.Feminino) ? Documentos.ToStringFeminino() : Documentos.ToString());
+
         }
     }
 }
