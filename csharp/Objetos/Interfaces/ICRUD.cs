@@ -35,21 +35,17 @@ namespace Objetos.Interfaces
         #region CREATE
         void Incluir(T objeto);
 
-        string ToString(T objeto);
-
         #endregion CREATE
 
         #region READ
 
         T Buscar(int id);
 
-        T Buscar(object objeto);
+        List<T> Consultar();
 
-        T Consultar();
+        List<T> Consultar(object objeto);
 
         T ToObject(string texto);
-
-        List<T> Consultar(T objeto);
 
         #endregion READ
 
