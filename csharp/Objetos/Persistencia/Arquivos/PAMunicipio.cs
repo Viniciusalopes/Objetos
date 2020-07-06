@@ -46,6 +46,7 @@ namespace Objetos.Persistencia.Arquivos
         #endregion ATRIBUTOS
 
         #region CONSTRUTORES
+
         public PAMunicipio()
         {
             diretorios = new NomesDiretorios();
@@ -59,61 +60,154 @@ namespace Objetos.Persistencia.Arquivos
 
             controleArquivo = new Arquivo(diretorios.DirDados, arquivos.ArquivoDeDados);
         }
+
         #endregion CONSTRUTORES
-        public void Atualizar(Municipio objeto)
-        {
-            throw new System.NotImplementedException();
-        }
 
-        public Municipio Buscar(int id)
+        #region CREATE
+
+        public void Incluir(Municipio municipio)
         {
-            string[] linhas = controleArquivo.LerLinhas();
-            foreach (string linha in linhas)
+            try
             {
-                string[] partes = linha.Split(ConstantesGerais.SeparadorSplit);
-                int codigo = int.Parse(partes[0]);
-                if(codigo == id)
-                {
-                    municipio = new Municipio(codigo, partes[1]);
-                    return municipio;
-                }
+                controleArquivo.IncluirLinha(municipio.ToString());
             }
-            return null;
+            catch (Exception ex)
+            {
+                throw new Exception("mun#001#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+            }
         }
 
-        public Municipio Buscar(object objeto)
+        #endregion CREATE
+
+        #region READ
+
+        public Municipio Buscar(int codigoMunicipio)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                foreach (Municipio municipio in Consultar())
+                    if (municipio.CodigoMunicipio == codigoMunicipio)
+                        return municipio;
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("mun#002#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+            }
         }
 
-        public Municipio Consultar()
+        public List<Municipio> Consultar()
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                municipios = new List<Municipio>();
+                string[] linhas = controleArquivo.LerLinhas();
+
+                foreach (string linha in linhas)
+                    municipios.Add(ToObject(linha));
+
+                return municipios;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("mun#003#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+            }
+
         }
 
-        public List<Municipio> Consultar(Municipio objeto)
+        public List<Municipio> Consultar(object nomeMunicipio)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                municipios = new List<Municipio>();
+
+                foreach (Municipio municipio in Consultar())
+                {
+                    if (municipio.NomeMunicipio.Equals((string)nomeMunicipio))
+                        municipios.Add(municipio);
+                }
+                return municipios;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("mun#004#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+            }
         }
 
-        public void Excluir(int id)
+        public List<Municipio> Consultar(UF uf)
         {
-            throw new System.NotImplementedException();
-        }
+            try
+            {
+                municipios = new List<Municipio>();
 
-        public void Incluir(Municipio objeto)
-        {
-            throw new System.NotImplementedException();
+                foreach (Municipio municipio in Consultar())
+                {
+                    if (municipio.CodigoMunicipio.ToString().Substring(0,2).Equals(uf.IdUf.ToString()))
+                        municipios.Add(municipio);
+                }
+                return municipios;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("mun#008#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+            }
         }
 
         public Municipio ToObject(string texto)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                string[] partes = texto.Split(ConstantesGerais.SeparadorSplit);
+                return new Municipio(int.Parse(partes[0]), partes[1]);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("mun#005#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+            }
         }
 
-        public string ToString(Municipio objeto)
+        #endregion READ
+
+        #region UPDATE
+        public void Atualizar(Municipio municipio)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                foreach (Municipio oMunicipio in Consultar())
+                    if (oMunicipio.CodigoMunicipio == municipio.CodigoMunicipio)
+                    {
+                        controleArquivo.SubstituirLinha(oMunicipio.ToString(), municipio.ToString());
+                        break;
+                    }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("mun#006#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+            }
         }
+
+        #endregion UPDATE
+
+        #region DELETE
+
+        public void Excluir(int codigoMunicipio)
+        {
+            try
+            {
+                foreach (Municipio municipio in Consultar())
+                    if (municipio.CodigoMunicipio == codigoMunicipio)
+                    {
+                        controleArquivo.ExcluirLinha(municipio.ToString());
+                        break;
+                    }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("mun#007Camada: Persistência-Arquivos#Erro: " + ex.Message);
+            }
+        }
+
+        #endregion DELETE
     }
 }

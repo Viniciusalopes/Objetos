@@ -52,9 +52,9 @@ namespace Objetos.Persistencia.Arquivos
                 garantirArquivo(caminhoCompleto);
                 this.caminhoArquivo = caminhoCompleto;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception("arq#001#Camada: Persistência-Arquivos#caminhoCompleto: " + caminhoCompleto + "#" + ex.Message);
             }
         }
 
@@ -66,9 +66,11 @@ namespace Objetos.Persistencia.Arquivos
                 garantirArquivo(diretorioArquivo + nomeArquivo);
                 caminhoArquivo = diretorioArquivo + nomeArquivo;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception("arq#002#Camada: Persistência-Arquivos#diretorioArquivo: " + diretorioArquivo
+                    + "#nomeArquivo: " + nomeArquivo
+                    + "#" + ex.Message);
             }
         }
 
@@ -85,9 +87,9 @@ namespace Objetos.Persistencia.Arquivos
                     garantirArquivo(value);
                     caminhoArquivo = value;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    throw new Exception("arq#003#Camada: Persistência-Arquivos#" + ex.Message);
                 }
             }
         }
@@ -103,9 +105,9 @@ namespace Objetos.Persistencia.Arquivos
                 garantirArquivo(caminhoArquivo);
                 return File.ReadAllLines(caminhoArquivo);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception("arq#004#Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo + "#" + ex.Message);
             }
         }
 
@@ -130,9 +132,9 @@ namespace Objetos.Persistencia.Arquivos
                 sw.WriteLine(texto);
                 sw.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception("arq#005#Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo + "#" + ex.Message);
             }
         }
 
@@ -145,9 +147,12 @@ namespace Objetos.Persistencia.Arquivos
                 sw.WriteLine(texto);
                 sw.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception("arq#006#Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo
+                    + "#texto: " + texto
+                    + "#" + ex.Message
+                    );
             }
         }
 
@@ -165,9 +170,35 @@ namespace Objetos.Persistencia.Arquivos
 
                 File.WriteAllLines(caminhoArquivo, novasLinhas);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception("arq#007#Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo
+                    + "#referencia: " + referencia
+                    + "#novoValor: " + novoValor
+                    + "#" + ex.Message
+                    );
+            }
+        }
+
+        public void ExcluirLinha(string linha)
+        {
+            try
+            {
+                string[] linhas = LerLinhas();
+                string[] novasLinhas = new string[linhas.Length];
+
+                for (int i = 0; i < linhas.Length; i++)
+                    if (!linhas[i].Equals(linha))
+                        novasLinhas[i] = linha;
+
+                File.WriteAllLines(caminhoArquivo, novasLinhas);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("arq#008#Camada: Persistencia-Arquivos#caminhoArquivo: " + caminhoArquivo
+                    + "#linha: " + linha
+                    + ex.Message
+                    );
             }
         }
 
