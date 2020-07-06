@@ -24,7 +24,6 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-
 namespace Objetos.Constantes
 {
     public class EnumMeses

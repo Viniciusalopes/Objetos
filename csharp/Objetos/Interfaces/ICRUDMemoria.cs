@@ -18,12 +18,12 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     
+///     Interface genérica para CRUD em memória.
 ///     Criação : Vovolinux
 ///     Data    : 05/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
-using System;
+
 using System.Collections.Generic;
 
 namespace Objetos.Interfaces

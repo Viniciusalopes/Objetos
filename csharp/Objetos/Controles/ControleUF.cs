@@ -1,8 +1,4 @@
-﻿
-using Objetos.Interfaces;
-using Objetos.Modelos.Enderecos;
-using System.Collections.Generic;
-/// <licenca>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -27,6 +23,11 @@ using System.Collections.Generic;
 ///     Data    : 30/06/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
+
+using Objetos.Interfaces;
+using Objetos.Modelos.Enderecos;
+using System.Collections.Generic;
+
 namespace Objetos.Controles
 {
     public class ControleUF : ICRUD<UF>

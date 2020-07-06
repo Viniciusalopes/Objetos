@@ -1,9 +1,4 @@
-﻿
-
-using Objetos.Interfaces;
-using Objetos.Modelos.Documentos;
-using System.Collections.Generic;
-/// <licenca>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -23,11 +18,16 @@ using System.Collections.Generic;
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     
+///     Controller para CNAE.
 ///     Criação : Vovolinux
 ///     Data    : 05/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
+
+using Objetos.Interfaces;
+using Objetos.Modelos.Documentos;
+using System.Collections.Generic;
+
 namespace Objetos.Controles
 {
     public class ControleCnae : ICRUD<Cnae>
