@@ -24,8 +24,6 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Modelos.Documentos;
-
 namespace Objetos.Modelos.Folha
 {
     public class ContratoTrabalho : Contrato

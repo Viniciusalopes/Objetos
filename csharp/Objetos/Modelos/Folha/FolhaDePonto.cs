@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-/// <licenca>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -25,6 +23,10 @@ using System.Collections.Generic;
 ///     Data    : 29/06/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
+
+using System;
+using System.Collections.Generic;
+
 namespace Objetos.Modelos.Folha
 {
     public class FolhaDePonto
