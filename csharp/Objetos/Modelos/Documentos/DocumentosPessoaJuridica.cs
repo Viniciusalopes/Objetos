@@ -24,6 +24,8 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
+using Objetos.Constantes;
+
 namespace Objetos.Modelos.Documentos
 {
     public class DocumentosPessoaJuridica
@@ -31,5 +33,21 @@ namespace Objetos.Modelos.Documentos
         public Cnpj oCnpj { get; set; }
         public string InscricaoEstadual { get; set; }
         public string InscricaoMunicipal { get; set; }
+
+        public DocumentosPessoaJuridica()
+        {
+
+        }
+        public DocumentosPessoaJuridica(Cnpj oCnpj, string inscricaoEstadual, string inscricaoMunicipal)
+        {
+            this.oCnpj = oCnpj;
+            InscricaoEstadual = inscricaoEstadual;
+            InscricaoMunicipal = inscricaoMunicipal;
+        }
+        public override string ToString()
+        {
+            char sep = ConstantesGerais.SeparadorSplit;
+            return oCnpj.ToString() + sep + InscricaoEstadual + sep + InscricaoMunicipal;
+        }
     }
 }
