@@ -18,7 +18,7 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     
+///     Tipos de Cnae do CNPJ.
 ///     Criação : Vovolinux
 ///     Data    : 05/07/2020
 ///     Projeto : Objetos genéricos para C#.
@@ -26,40 +26,12 @@
 
 namespace Objetos.Constantes
 {
-    class Rascunho
+    public class EnumTipoCnae
     {
-        #region ATRIBUTOS
-        #endregion ATRIBUTOS
-
-        #region CONSTRUTORES
-        #endregion CONSTRUTORES
-
-        #region GET/SET
-        #endregion GET/SET
-
-        #region GET
-        #endregion GET
-
-        #region SET
-        #endregion SET
-
-        #region VALIDAÇÃO
-        #endregion VALIDAÇÃO
-
-        #region CRUD
-
-        #region CREATE
-        #endregion CREATE
-
-        #region READ
-        #endregion READ
-
-        #region UPDATE
-        #endregion UPDATE
-
-        #region DELETE
-        #endregion DELETE
-
-        #endregion CRUD
+        public enum TipoCnae
+        {
+            Principal,
+            Secundário
+        }
     }
 }

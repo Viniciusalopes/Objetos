@@ -28,7 +28,7 @@ namespace Objetos.Constantes
 {
     public class EnumTipoEstabelecimento
     {
-        public enum tipoEstabelecimento
+        public enum TipoEstabelecimento
         {
             Todos,
             Matriz,
