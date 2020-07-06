@@ -25,6 +25,7 @@
 /// </summary>
 
 using Objetos.Constantes;
+using static Objetos.Constantes.EnumTipoEnderecoTelefone;
 
 namespace Objetos.Modelos.Enderecos
 {
@@ -39,5 +40,47 @@ namespace Objetos.Modelos.Enderecos
         public Municipio oMunicipio { get; set; }
         public UF oUF { get; set; }
         public EnumTipoEnderecoTelefone.TipoEnderecoTelefone TipoEndereco { get; set; }
+
+        public Endereco()
+        {
+
+        }
+
+        public Endereco(
+            long idEndereco,
+            string logradouro,
+            int numero,
+            string complementoEndereco,
+            string cep,
+            string setorBairroDistrito,
+            Municipio municipio,
+            UF uf,
+            TipoEnderecoTelefone tipoEndereco
+            )
+        {
+            IdEndereco = idEndereco;
+            Logradouro = logradouro;
+            Numero = numero;
+            ComplementoEndereco = complementoEndereco;
+            Cep = cep;
+            SetorBairroDistrito = setorBairroDistrito;
+            oMunicipio = municipio;
+            oUF = uf;
+            TipoEndereco = tipoEndereco;
+        }
+
+        public override string ToString()
+        {
+            char sep = ConstantesGerais.SeparadorSplit;
+            return IdEndereco.ToString() + sep
+                + Logradouro + sep
+                + Numero.ToString() + sep
+                + ComplementoEndereco + sep
+                + Cep + sep
+                + SetorBairroDistrito + sep
+                + oMunicipio.ToString() + sep
+                + oUF.ToString() + sep
+                + TipoEndereco;
+        }
     }
 }
