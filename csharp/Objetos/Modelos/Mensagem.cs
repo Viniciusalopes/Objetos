@@ -24,7 +24,6 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-
 namespace Objetos.Modelos
 {
     public class Mensagem

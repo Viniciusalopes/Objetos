@@ -124,6 +124,8 @@ namespace Objetos.Modelos
 
         #region GET
 
+        public override string ToString() => IdTelefone.ToString() + ConstantesGerais.SeparadorSplit +  NumeroTelefoneFormatado + ConstantesGerais.SeparadorSplit + TipoTelefone;
+
         #endregion GET
 
         #region VALIDAÇÃO
