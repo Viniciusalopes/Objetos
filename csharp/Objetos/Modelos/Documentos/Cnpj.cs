@@ -28,6 +28,8 @@ using System;
 using System.Collections.Generic;
 using Objetos.Constantes;
 using Objetos.Modelos.Enderecos;
+using static Objetos.Constantes.EnumSituacao;
+using static Objetos.Constantes.EnumTipoEstabelecimento;
 
 namespace Objetos.Modelos.Documentos
 {
@@ -36,7 +38,7 @@ namespace Objetos.Modelos.Documentos
         #region ATRIBUTOS
 
         private string numeroInscricao = null;
-        public EnumTipoEstabelecimento.tipoEstabelecimento TipoEstabelecimento { get; set; }
+        public EnumTipoEstabelecimento.TipoEstabelecimento TipoEstabelecimento { get; set; }
         public DateTime DataAbertura { get; set; }
         public string NomeEmpresarial { get; set; }
         public string NomeFantasia { get; set; }
@@ -69,6 +71,69 @@ namespace Objetos.Modelos.Documentos
             this.numeroInscricao = numeroInscricao;
         }
 
+        public Cnpj(Cnpj oCnpj)
+        {
+            numeroInscricao = oCnpj.numeroInscricao;
+            TipoEstabelecimento = oCnpj.TipoEstabelecimento;
+            DataAbertura = oCnpj.DataAbertura;
+            NomeEmpresarial = oCnpj.NomeEmpresarial;
+            NomeFantasia = oCnpj.NomeFantasia;
+            PortePJ = oCnpj.PortePJ;
+            CnaePrincipal = oCnpj.CnaePrincipal;
+
+            CnaesSecundarios = new List<Cnae>();
+            foreach (Cnae cnae in oCnpj.CnaesSecundarios)
+                CnaesSecundarios.Add(cnae);
+
+            oEndereco = oCnpj.oEndereco;
+            oNaturezaJuridica = oCnpj.oNaturezaJuridica;
+            Email = oCnpj.Email;
+            oTelefone = oCnpj.oTelefone;
+            Efr = oCnpj.Efr;
+            Situacao = oCnpj.Situacao;
+            DataSituacaoCadastral = oCnpj.DataSituacaoCadastral;
+            MotivoSituacaoCadastral = oCnpj.MotivoSituacaoCadastral;
+            SituacaoEspecial = oCnpj.SituacaoEspecial;
+            DataSituacaoEspecial = oCnpj.DataSituacaoEspecial;
+        }
+
+        public Cnpj(string numeroInscricao,
+            TipoEstabelecimento tipoEstabelecimento,
+            DateTime dataAbertura,
+            string nomeEmpresarial,
+            string nomeFantasia,
+            string portePJ,
+            Cnae cnaePrincipal,
+            Endereco endereco,
+            NaturezaJuridica naturezaJuridica,
+            string email,
+            Telefone telefone,
+            string efr,
+            Situacao situacao,
+            DateTime dataSituacaoCadastral,
+            string motivoSituacaoCadastral,
+            string situacaoEspecial,
+            DateTime dataSituacaoEspecial
+            )
+        {
+            this.numeroInscricao = numeroInscricao;
+            TipoEstabelecimento = tipoEstabelecimento;
+            DataAbertura = dataAbertura;
+            NomeEmpresarial = nomeEmpresarial;
+            NomeFantasia = nomeFantasia;
+            PortePJ = portePJ;
+            CnaePrincipal = cnaePrincipal;
+            oEndereco = endereco;
+            oNaturezaJuridica = naturezaJuridica;
+            Email = email;
+            oTelefone = telefone;
+            Efr = efr;
+            Situacao = situacao;
+            DataSituacaoCadastral = dataSituacaoCadastral;
+            MotivoSituacaoCadastral = motivoSituacaoCadastral;
+            SituacaoEspecial = situacaoEspecial;
+            DataSituacaoEspecial = dataSituacaoEspecial;
+        }
         #endregion CONSTRUTORES
 
         #region GET
@@ -78,6 +143,27 @@ namespace Objetos.Modelos.Documentos
             return numeroInscricao;
         }
 
+        public override string ToString()
+        {
+            char sep = ConstantesGerais.SeparadorSplit;
+            return numeroInscricao + sep
+                + TipoEstabelecimento + sep
+                + DataAbertura.ToString() + sep
+                + NomeEmpresarial + sep
+                + NomeFantasia + sep
+                + PortePJ + sep
+                + CnaePrincipal.ToString()
+                + oEndereco.ToString() + sep
+                + oNaturezaJuridica.ToString() + sep
+                + Email + sep
+                + oTelefone.ToString() + sep
+                + Efr + sep
+                + Situacao + sep
+                + DataSituacaoCadastral.ToString() + sep
+                + MotivoSituacaoCadastral + sep
+                + Situacao + sep
+                + DataSituacaoEspecial.ToString();
+        }
         #endregion GET
 
         #region SET
