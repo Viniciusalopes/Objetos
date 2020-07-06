@@ -18,24 +18,54 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Jornada de trabalho do colaborador.
+///     Controller para Colaborador.
 ///     Criação : Vovolinux
-///     Data    : 29/06/2020
+///     Data    : 05/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Constantes;
+using Objetos.Interfaces;
+using Objetos.Modelos.Folha;
+using System;
 using System.Collections.Generic;
 
-namespace Objetos.Modelos.Folha
+namespace Objetos.Controles
 {
-    public class JornadaDeTrabalho
+    public class ControleColaborador : ICRUD<Colaborador>
     {
-        public long IdJornada { get; set; }
-        public int HorasSemanais { get; set; }
-        public List<EnumDiasDaSemana.DiaDaSemana> DiasDeTrabalho { get; set; }
-        public List<EnumDiasDaSemana.DiaDaSemana> DescansoSemanal { get; set; }
-        public Turno oTurno { get; set; }
-        public List<Intervalo> Intervalos { get; set; }
+        public void Atualizar(Colaborador objeto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Colaborador Buscar(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Colaborador> Consultar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Colaborador> Consultar(object objeto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Excluir(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Incluir(Colaborador objeto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Colaborador ToObject(string texto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

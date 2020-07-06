@@ -101,6 +101,15 @@ namespace Objetos.Persistencia.Memoria
                 i++; mensagens.Add(new Mensagem(i, "pef#006", "Erro ao atualizar a pessoa jurídica!"));
                 i++; mensagens.Add(new Mensagem(i, "pef#007", "Erro ao excluir a pessoa jurídica!"));
 
+                // Persistencia > Arquivos > PASetor.cs
+                i++; mensagens.Add(new Mensagem(i, "set#001", "Erro ao incluir o setor!"));
+                i++; mensagens.Add(new Mensagem(i, "set#002", "Erro ao buscar o setor pelo id!"));
+                i++; mensagens.Add(new Mensagem(i, "set#003", "Erro ao consultar os setores!"));
+                i++; mensagens.Add(new Mensagem(i, "set#004", "Erro ao consultar os setores por nome!"));
+                i++; mensagens.Add(new Mensagem(i, "set#005", "Erro ao converter texto para objeto Setor!"));
+                i++; mensagens.Add(new Mensagem(i, "set#006", "Erro ao atualizar o setor!"));
+                i++; mensagens.Add(new Mensagem(i, "set#007", "Erro ao excluir o setor!"));
+
                 // Modelos > Telefone.cs
                 i++; mensagens.Add(new Mensagem(i, "tel#001", "O número do telefone precisa ter no mínimo 8 dígitos e no máximo 11 dígitos!"));
 

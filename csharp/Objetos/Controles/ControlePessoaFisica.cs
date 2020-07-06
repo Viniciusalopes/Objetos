@@ -1,4 +1,9 @@
-﻿/// <licenca>
+﻿
+using Objetos.Interfaces;
+using Objetos.Modelos.Pessoas;
+using System;
+using System.Collections.Generic;
+/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -18,54 +23,48 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Controller para CNAE.
+///     Rascunho para criação de novas classes, interfaces, etc.
 ///     Criação : Vovolinux
 ///     Data    : 05/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
-
-using Objetos.Interfaces;
-using Objetos.Modelos.Documentos;
-using System.Collections.Generic;
-using System;
-
 namespace Objetos.Controles
 {
-    public class ControleCnae : ICRUD<Cnae>
+    class ControlePessoaFisica : ICRUD<PessoaFisica>
     {
-        public void Atualizar(Cnae objeto)
+        public void Atualizar(PessoaFisica objeto)
         {
-            throw new Exception(new System.NotImplementedException().Message + " (ControleCnae)");
+           throw new Exception(new System.NotImplementedException().Message + " (ControlePessoaFisica)");
         }
 
-        public Cnae Buscar(int id)
+        public PessoaFisica Buscar(int id)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleCnae)");
+           throw new Exception(new System.NotImplementedException().Message + " (ControlePessoaFisica)");
         }
 
-        public List<Cnae> Consultar()
+        public List<PessoaFisica> Consultar()
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleCnae)");
+           throw new Exception(new System.NotImplementedException().Message + " (ControlePessoaFisica)");
         }
 
-        public List<Cnae> Consultar(object objeto)
+        public List<PessoaFisica> Consultar(object objeto)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleCnae)");
+           throw new Exception(new System.NotImplementedException().Message + " (ControlePessoaFisica)");
         }
 
         public void Excluir(int id)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleCnae)");
+           throw new Exception(new System.NotImplementedException().Message + " (ControlePessoaFisica)");
         }
 
-        public void Incluir(Cnae objeto)
+        public void Incluir(PessoaFisica objeto)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleCnae)");
+           throw new Exception(new System.NotImplementedException().Message + " (ControlePessoaFisica)");
         }
 
-        public Cnae ToObject(string texto)
+        public PessoaFisica ToObject(string texto)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleCnae)");
+           throw new Exception(new System.NotImplementedException().Message + " (ControlePessoaFisica)");
         }
     }
 }

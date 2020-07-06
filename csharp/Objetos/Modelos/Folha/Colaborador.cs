@@ -24,6 +24,8 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
+using Empresas;
+using Objetos.Constantes;
 using Objetos.Modelos.Pessoas;
 using System;
 using System.Collections.Generic;
@@ -40,5 +42,15 @@ namespace Objetos.Modelos.Folha
         public List<Ferias> FeriasColaborador { get; set; }
         public List<Afastamento> AfastamentosColaborador { get; set; }
         public List<Licenca> LicencasColaborador { get; set; }
+
+        public override string ToString()
+        {
+            char sep = ConstantesGerais.SeparadorSplit;
+            return idPessoa.ToString() + sep
+                + MatriculaColaborador.ToString() + sep
+                + DataAdmissao.ToString() + sep
+                + DataDemissao.ToString() + sep
+                + JornadaColaborador.IdJornada.ToString();
+        }
     }
 }

@@ -26,6 +26,7 @@
 
 using Objetos.Interfaces;
 using Objetos.Modelos.Enderecos;
+using System;
 using System.Collections.Generic;
 
 namespace Objetos.Controles
@@ -34,37 +35,37 @@ namespace Objetos.Controles
     {
         public void Atualizar(Municipio objeto)
         {
-            throw new System.NotImplementedException();
+           throw new Exception(new System.NotImplementedException().Message + " (ControleMunicipio)");
         }
 
         public Municipio Buscar(int id)
         {
-            throw new System.NotImplementedException();
+           throw new Exception(new System.NotImplementedException().Message + " (ControleMunicipio)");
         }
 
         public List<Municipio> Consultar()
         {
-            throw new System.NotImplementedException();
+           throw new Exception(new System.NotImplementedException().Message + " (ControleMunicipio)");
         }
 
         public List<Municipio> Consultar(object objeto)
         {
-            throw new System.NotImplementedException();
+           throw new Exception(new System.NotImplementedException().Message + " (ControleMunicipio)");
         }
 
         public void Excluir(int id)
         {
-            throw new System.NotImplementedException();
+           throw new Exception(new System.NotImplementedException().Message + " (ControleMunicipio)");
         }
 
         public void Incluir(Municipio objeto)
         {
-            throw new System.NotImplementedException();
+           throw new Exception(new System.NotImplementedException().Message + " (ControleMunicipio)");
         }
 
         public Municipio ToObject(string texto)
         {
-            throw new System.NotImplementedException();
+           throw new Exception(new System.NotImplementedException().Message + " (ControleMunicipio)");
         }
     }
 }

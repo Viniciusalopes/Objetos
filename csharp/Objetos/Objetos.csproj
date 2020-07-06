@@ -64,7 +64,11 @@
     <Compile Include="Constantes\NomesDiretorios.cs" />
     <Compile Include="Constantes\Rascunho.cs" />
     <Compile Include="Controles\ControleCnae.cs" />
+    <Compile Include="Controles\ControleColaborador.cs" />
+    <Compile Include="Controles\ControleEmpresa.cs" />
     <Compile Include="Controles\ControleMunicipio.cs" />
+    <Compile Include="Controles\ControlePessoaFisica.cs" />
+    <Compile Include="Controles\ControleSetor.cs" />
     <Compile Include="Controles\ControleUF.cs" />
     <Compile Include="Interfaces\ICRUD.cs" />
     <Compile Include="Interfaces\ICRUDMemoria.cs" />
@@ -118,6 +122,7 @@
     <Compile Include="Persistencia\Arquivos\PAMunicipio.cs" />
     <Compile Include="Persistencia\Arquivos\PAPessoaFisica.cs" />
     <Compile Include="Persistencia\Arquivos\PAPessoaJuridica.cs" />
+    <Compile Include="Persistencia\Arquivos\PASetor.cs" />
     <Compile Include="Persistencia\Memoria\PMUF.cs" />
     <Compile Include="Persistencia\Memoria\TabelaCbo.cs" />
     <Compile Include="Persistencia\Memoria\TabelaMensagem.cs" />

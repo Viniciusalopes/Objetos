@@ -1,4 +1,13 @@
-﻿/// <licenca>
+﻿
+
+using Empresas;
+using Objetos.Constantes;
+using Objetos.Controles;
+using Objetos.Interfaces;
+using Objetos.Modelos.Folha;
+using System;
+using System.Collections.Generic;
+/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -18,37 +27,30 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Persistência em arquivo para CNAES de um CNPJ.
+///     Persistência em arquivo para Setor de Empresa.
 ///     Criação : Vovolinux
 ///     Data    : 05/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
-
-using System;
-using System.Collections.Generic;
-using Objetos.Constantes;
-using Objetos.Interfaces;
-using Objetos.Modelos.Documentos;
-using static Objetos.Constantes.EnumTipoCnae;
-
 namespace Objetos.Persistencia.Arquivos
 {
-    public class PACnae : ICRUD<Cnae>
+    public class PASetor : ICRUD<Setor>
     {
         #region ATRIBUTOS
 
         private NomesDiretorios diretorios = null;
         private NomesArquivos arquivos = null;
         private Arquivo controleArquivo = null;
+        private ControleColaborador controleColaborador = null;
 
-        private Cnae cnae = null;
-        private List<Cnae> cnaes = null;
+        private Setor setor = null;
+        private List<Setor> setores = null;
 
         #endregion ATRIBUTOS
 
         #region CONSTRUTORES
 
-        public PACnae()
+        public PASetor()
         {
             diretorios = new NomesDiretorios();
             diretorios.DirRoot = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
@@ -57,7 +59,7 @@ namespace Objetos.Persistencia.Arquivos
             diretorios.DirRelatorios = diretorios.DirFull + "Relatorios\\";
 
             arquivos = new NomesArquivos();
-            arquivos.ArquivoDeDados = "Cnae.bd";
+            arquivos.ArquivoDeDados = "Setor.bd";
 
             controleArquivo = new Arquivo(diretorios.DirDados, arquivos.ArquivoDeDados);
         }
@@ -66,15 +68,15 @@ namespace Objetos.Persistencia.Arquivos
 
         #region CREATE
 
-        public void Incluir(Cnae cnae)
+        public void Incluir(Setor setor)
         {
             try
             {
-                controleArquivo.IncluirLinha(cnae.ToString());
+                controleArquivo.IncluirLinha(setor.ToString());
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae#001#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("set#001#Camada: Persistência-Arquivos#Erro: " + ex.Message);
             }
         }
 
@@ -82,110 +84,98 @@ namespace Objetos.Persistencia.Arquivos
 
         #region READ
 
-        public Cnae Buscar(int idCnae)
+        public Setor Buscar(int idSetor)
         {
             try
             {
-                foreach (Cnae cnae in Consultar())
-                    if (cnae.IdCnae == idCnae)
-                        return cnae;
+                foreach (Setor setor in Consultar())
+                    if (setor.IdSetor == idSetor)
+                        return setor;
 
                 return null;
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae#002#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("set#002#Camada: Persistência-Arquivos#Erro: " + ex.Message);
             }
         }
 
-        public List<Cnae> Consultar()
+        public List<Setor> Consultar()
         {
             try
             {
-                cnaes = new List<Cnae>();
+                setores = new List<Setor>();
                 string[] linhas = controleArquivo.LerLinhas();
 
                 foreach (string linha in linhas)
-                    cnaes.Add(ToObject(linha));
+                    setores.Add(ToObject(linha));
 
-                return cnaes;
+                return setores;
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae#003#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("set#003#Camada: Persistência-Arquivos#Erro: " + ex.Message);
             }
         }
 
-        public List<Cnae> Consultar(object parametro)
+        public List<Setor> Consultar(object parametro)
         {
             try
             {
-                cnaes = new List<Cnae>();
-                cnae = new Cnae();
+                setores = new List<Setor>();
+                setor = new Setor();
                 bool retornar = false;
                 string texto = null;
 
-                #region ID DA PESSOA JURÍDICA
+                #region ID DA PESSOA JURÍDICA E ID DO RESPONSÁVEL
 
-                try { cnae.IdPessoaJuridica = (int)parametro; retornar = true; } catch (Exception) { retornar = false; }
+                try { setor.ResponsavelSetor.idPessoa = (int)parametro; retornar = true; } catch (Exception) { retornar = false; }
 
                 if (retornar)
                 {
-                    foreach (Cnae oCnae in Consultar())
-                        if (oCnae.IdPessoaJuridica == (int)parametro)
-                            cnaes.Add(oCnae);
+                    foreach (Setor oSetor in Consultar())
+                        if (oSetor.ResponsavelSetor.idPessoa == setor.ResponsavelSetor.idPessoa)
+                            setores.Add(oSetor);
 
-                    return cnaes;
+                    return setores;
                 }
 
-                #endregion ID DA PESSOA JURÍDICA
+                #endregion ID DA PESSOA JURÍDICA E ID DO RESPONSÁVEL
 
-                #region CÓDIGO E DESCRIÇÃO
+                #region NOME DO SETOR E RESPONSÁVEL
 
                 try { texto = (string)parametro; retornar = true; } catch (Exception) { retornar = false; }
 
                 if (retornar)
                 {
-                    foreach (Cnae oCnae in Consultar())
-                        if (oCnae.CodigoCnae.Equals(texto) || oCnae.DescricaoCnae.Equals(texto))
-                            cnaes.Add(oCnae);
+                    foreach (Setor oSetor in Consultar())
+                        if (oSetor.NomeSetor.Equals(texto) || oSetor.ResponsavelSetor.NomePessoa.Equals(texto))
+                            setores.Add(oSetor);
 
-                    return cnaes;
+                    return setores;
                 }
 
-                #endregion CÓDIGO E DESCRIÇÃO
+                #endregion NOME DO SETOR E RESPONSÁVEL
 
-                #region TIPO DE CNAE
-
-                try { cnae.TipoCnae = (TipoCnae)parametro; retornar = true; } catch (Exception) { retornar = false; }
-
-                if (retornar)
-                {
-                    foreach (Cnae oCnae in Consultar())
-                        if (oCnae.TipoCnae.Equals((TipoCnae)parametro))
-                            cnaes.Add(oCnae);
-
-                    return cnaes;
-                }
-                #endregion TIPO DE CNAE
-
-                return cnaes;
+                return setores;
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae#004#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("set#004#Camada: Persistência-Arquivos#Erro: " + ex.Message);
             }
         }
 
-        public Cnae ToObject(string texto)
+        public Setor ToObject(string texto)
         {
-            try { 
-            string[] partes = texto.Split(ConstantesGerais.SeparadorSplit);
-            return new Cnae(int.Parse(partes[0]), long.Parse(partes[1]), (TipoCnae)int.Parse(partes[2]), partes[3], partes[4]);
+            try
+            {
+                controleColaborador = new ControleColaborador();
+                string[] partes = texto.Split(ConstantesGerais.SeparadorSplit);
+                return new Setor(int.Parse(partes[0]), long.Parse(partes[1]), partes[2], controleColaborador.Buscar(int.Parse(partes[3])), null);
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae#005#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("set#005#Camada: Persistência-Arquivos#Erro: " + ex.Message);
             }
         }
 
@@ -193,20 +183,21 @@ namespace Objetos.Persistencia.Arquivos
 
         #region UPDATE
 
-        public void Atualizar(Cnae cnae)
+        public void Atualizar(Setor setor)
         {
-            try
+            try 
             {
-                foreach (Cnae oCnae in Consultar())
-                    if (oCnae.IdCnae == cnae.IdCnae)
+                foreach (Setor oSetor in Consultar())
+                    if(oSetor.IdSetor == setor.IdSetor)
                     {
-                        controleArquivo.SubstituirLinha(oCnae.ToString(), cnae.ToString());
+                        controleArquivo.SubstituirLinha(oSetor.ToString(), setor.ToString());
                         break;
                     }
+                
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae#006#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("set#006#Camada: Persistência-Arquivos#Erro: " + ex.Message);
             }
         }
 
@@ -214,20 +205,20 @@ namespace Objetos.Persistencia.Arquivos
 
         #region DELETE
 
-        public void Excluir(int idCnae)
+        public void Excluir(int idSetor)
         {
             try
             {
-                foreach (Cnae cnae in Consultar())
-                    if (cnae.IdCnae == idCnae)
+                foreach (Setor setor in Consultar())
+                    if (setor.IdSetor == idSetor)
                     {
-                        controleArquivo.ExcluirLinha(cnae.ToString());
+                        controleArquivo.ExcluirLinha(this.setor.ToString());
                         break;
                     }
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae#007Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("set#007Camada: Persistência-Arquivos#Erro: " + ex.Message);
             }
         }
 

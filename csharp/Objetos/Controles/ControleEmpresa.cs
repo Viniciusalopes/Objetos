@@ -18,24 +18,54 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Jornada de trabalho do colaborador.
+///     Controller para Empresa.
 ///     Criação : Vovolinux
-///     Data    : 29/06/2020
+///     Data    : 05/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Constantes;
+using Empresas;
+using Objetos.Interfaces;
+using System;
 using System.Collections.Generic;
 
-namespace Objetos.Modelos.Folha
+namespace Objetos.Controles
 {
-    public class JornadaDeTrabalho
+    public class ControleEmpresa : ICRUD<Empresa>
     {
-        public long IdJornada { get; set; }
-        public int HorasSemanais { get; set; }
-        public List<EnumDiasDaSemana.DiaDaSemana> DiasDeTrabalho { get; set; }
-        public List<EnumDiasDaSemana.DiaDaSemana> DescansoSemanal { get; set; }
-        public Turno oTurno { get; set; }
-        public List<Intervalo> Intervalos { get; set; }
+        public void Atualizar(Empresa empresa)
+        {
+           throw new Exception(new System.NotImplementedException().Message + " (ControleEmpresa-Atualizar)");
+        }
+
+        public Empresa Buscar(int idEmpresa)
+        {
+           throw new Exception(new System.NotImplementedException().Message + " (ControleEmpresa-Buscar)");
+        }
+
+        public List<Empresa> Consultar()
+        {
+           throw new Exception(new System.NotImplementedException().Message + " (ControleEmpresa-Consultar)");
+        }
+
+        public List<Empresa> Consultar(object parametro)
+        {
+           throw new Exception(new System.NotImplementedException().Message + " (ControleEmpresa-Consultar)");
+        }
+
+        public void Excluir(int idEmpresa)
+        {
+           throw new Exception(new System.NotImplementedException().Message + " (ControleEmpresa-Excluir)");
+        }
+
+        public void Incluir(Empresa empresa)
+        {
+           throw new Exception(new System.NotImplementedException().Message + " (ControleEmpresa-Incluir)");
+        }
+
+        public Empresa ToObject(string texto)
+        {
+           throw new Exception(new System.NotImplementedException().Message + " (ControleEmpresa-ToObject)");
+        }
     }
 }

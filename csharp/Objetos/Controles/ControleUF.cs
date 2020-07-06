@@ -26,6 +26,7 @@
 
 using Objetos.Interfaces;
 using Objetos.Modelos.Enderecos;
+using System;
 using System.Collections.Generic;
 
 namespace Objetos.Controles
@@ -34,37 +35,37 @@ namespace Objetos.Controles
     {
         public void Atualizar(UF objeto)
         {
-            throw new System.NotImplementedException();
+           throw new Exception(new System.NotImplementedException().Message + " (ControleUF)");
         }
 
         public UF Buscar(int id)
         {
-            throw new System.NotImplementedException();
+           throw new Exception(new System.NotImplementedException().Message + " (ControleUF)");
         }
 
         public List<UF> Consultar()
         {
-            throw new System.NotImplementedException();
+           throw new Exception(new System.NotImplementedException().Message + " (ControleUF)");
         }
 
         public List<UF> Consultar(object objeto)
         {
-            throw new System.NotImplementedException();
+           throw new Exception(new System.NotImplementedException().Message + " (ControleUF)");
         }
 
         public void Excluir(int id)
         {
-            throw new System.NotImplementedException();
+           throw new Exception(new System.NotImplementedException().Message + " (ControleUF)");
         }
 
         public void Incluir(UF objeto)
         {
-            throw new System.NotImplementedException();
+           throw new Exception(new System.NotImplementedException().Message + " (ControleUF)");
         }
 
         public UF ToObject(string texto)
         {
-            throw new System.NotImplementedException();
+           throw new Exception(new System.NotImplementedException().Message + " (ControleUF)");
         }
     }
 }

@@ -1,4 +1,9 @@
-﻿/// <licenca>
+﻿
+using Empresas;
+using Objetos.Interfaces;
+using System;
+using System.Collections.Generic;
+/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -18,24 +23,48 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Jornada de trabalho do colaborador.
+///     Controller para Setor de Empresa.
 ///     Criação : Vovolinux
-///     Data    : 29/06/2020
+///     Data    : 05/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
-
-using Objetos.Constantes;
-using System.Collections.Generic;
-
-namespace Objetos.Modelos.Folha
+namespace Objetos.Controles
 {
-    public class JornadaDeTrabalho
+    public class ControleSetor : ICRUD<Setor>
     {
-        public long IdJornada { get; set; }
-        public int HorasSemanais { get; set; }
-        public List<EnumDiasDaSemana.DiaDaSemana> DiasDeTrabalho { get; set; }
-        public List<EnumDiasDaSemana.DiaDaSemana> DescansoSemanal { get; set; }
-        public Turno oTurno { get; set; }
-        public List<Intervalo> Intervalos { get; set; }
+        public void Atualizar(Setor setor)
+        {
+           throw new Exception(new System.NotImplementedException().Message + " (ControleSetor)");
+        }
+
+        public Setor Buscar(int idSetor)
+        {
+           throw new Exception(new System.NotImplementedException().Message + " (ControleSetor)");
+        }
+
+        public List<Setor> Consultar()
+        {
+           throw new Exception(new System.NotImplementedException().Message + " (ControleSetor)");
+        }
+
+        public List<Setor> Consultar(object parametro)
+        {
+           throw new Exception(new System.NotImplementedException().Message + " (ControleSetor)");
+        }
+
+        public void Excluir(int idSetor)
+        {
+           throw new Exception(new System.NotImplementedException().Message + " (ControleSetor)");
+        }
+
+        public void Incluir(Setor setor)
+        {
+           throw new Exception(new System.NotImplementedException().Message + " (ControleSetor)");
+        }
+
+        public Setor ToObject(string texto)
+        {
+           throw new Exception(new System.NotImplementedException().Message + " (ControleSetor)");
+        }
     }
 }
