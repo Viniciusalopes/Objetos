@@ -23,7 +23,7 @@
 ///     Data    : 29/06/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
-/// 
+ 
 namespace Objetos.Constantes
 {
     public class ConstantesGerais
