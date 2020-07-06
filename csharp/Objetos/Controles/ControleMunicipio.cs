@@ -41,17 +41,12 @@ namespace Objetos.Controles
             throw new System.NotImplementedException();
         }
 
-        public Municipio Buscar(object objeto)
+        public List<Municipio> Consultar()
         {
             throw new System.NotImplementedException();
         }
 
-        public Municipio Consultar()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public List<Municipio> Consultar(Municipio objeto)
+        public List<Municipio> Consultar(object objeto)
         {
             throw new System.NotImplementedException();
         }
@@ -67,11 +62,6 @@ namespace Objetos.Controles
         }
 
         public Municipio ToObject(string texto)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public string ToString(Municipio objeto)
         {
             throw new System.NotImplementedException();
         }
