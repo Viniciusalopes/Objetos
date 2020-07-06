@@ -41,17 +41,12 @@ namespace Objetos.Controles
             throw new System.NotImplementedException();
         }
 
-        public UF Buscar(object objeto)
+        public List<UF> Consultar()
         {
             throw new System.NotImplementedException();
         }
 
-        public UF Consultar()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public List<UF> Consultar(UF objeto)
+        public List<UF> Consultar(object objeto)
         {
             throw new System.NotImplementedException();
         }
@@ -67,11 +62,6 @@ namespace Objetos.Controles
         }
 
         public UF ToObject(string texto)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public string ToString(UF objeto)
         {
             throw new System.NotImplementedException();
         }
