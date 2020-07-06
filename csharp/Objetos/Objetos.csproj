@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8803AF71-2FEC-41DD-BE51-124E376D5582}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>Objetos</RootNamespace>
     <AssemblyName>Objetos</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -119,7 +122,6 @@
     <Compile Include="Persistencia\Memoria\TabelaCbo.cs" />
     <Compile Include="Persistencia\Memoria\TabelaMensagem.cs" />
     <Compile Include="Persistencia\Memoria\TabelaUF.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilitarios\ArquivoUtils.cs" />
     <Compile Include="Utilitarios\StringUtils.cs" />

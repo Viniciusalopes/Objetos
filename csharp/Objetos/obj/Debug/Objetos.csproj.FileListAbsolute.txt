@@ -11,3 +11,4 @@ C:\Users\vinicius.lopes\Google Drive\globaltec\registro-de-ponto\ObjetosVS_20200
 C:\Users\vinicius.lopes\Google Drive\globaltec\registro-de-ponto\ObjetosVS_20200630\Objetos\obj\Debug\Objetos.csproj.CoreCompileInputs.cache
 C:\Users\vinicius.lopes\Google Drive\globaltec\registro-de-ponto\ObjetosVS_20200630\Objetos\obj\Debug\Objetos.exe
 C:\Users\vinicius.lopes\Google Drive\globaltec\registro-de-ponto\ObjetosVS_20200630\Objetos\obj\Debug\Objetos.pdb
+C:\Users\Vinicius\projetos\Objetos\csharp\Objetos\obj\Debug\Objetos.csprojAssemblyReference.cache
