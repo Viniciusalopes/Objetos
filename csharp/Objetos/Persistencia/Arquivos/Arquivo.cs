@@ -24,8 +24,11 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
+using static Objetos.Controles.ControleMensagem;
+using Objetos.Constantes;
 using System;
 using System.IO;
+using System.Text;
 using static Objetos.Utilitarios.ArquivoUtils;
 
 namespace Objetos.Persistencia.Arquivos
@@ -35,6 +38,7 @@ namespace Objetos.Persistencia.Arquivos
         #region ATRIBUTOS
 
         private string caminhoArquivo = "";
+        private ConfiguracaoPA cfg = null;
 
         #endregion ATRIBUTOS
 
@@ -54,7 +58,8 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("arq#001#Camada: Persistência-Arquivos#caminhoCompleto: " + caminhoCompleto + "#" + ex.Message);
+                throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "001#Camada: Persistência-Arquivos#caminhoCompleto: " + caminhoCompleto
+                    + "#" + MensagemCompleta(ex.Message));
             }
         }
 
@@ -68,12 +73,30 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("arq#002#Camada: Persistência-Arquivos#diretorioArquivo: " + diretorioArquivo
+                throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "002#Camada: Persistência-Arquivos#diretorioArquivo: " + diretorioArquivo
                     + "#nomeArquivo: " + nomeArquivo
-                    + "#" + ex.Message);
+                    + "#" + MensagemCompleta(ex.Message));
             }
         }
 
+        public Arquivo(string objeto, string extensao, string dirRoot = "")
+        {
+            try
+            {
+                cfg = new ConfiguracaoPA(objeto, extensao, dirRoot);
+                garantirDiretorio(cfg.Diretorios.DirDados);
+                caminhoArquivo = cfg.Diretorios.DirDados + cfg.Arquivos.ArquivoDeDados;
+                garantirArquivo(caminhoArquivo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "009#Camada: Persistência-Arquivos#diretorioArquivo: " + cfg.Diretorios.DirDados
+                    + "#nomeArquivo: " + cfg.Arquivos.ArquivoDeDados
+                    + "#" + MensagemCompleta(ex.Message));
+            }
+
+
+        }
         #endregion CONSTRUTORES
 
         #region GET / SET
@@ -89,7 +112,8 @@ namespace Objetos.Persistencia.Arquivos
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("arq#003#Camada: Persistência-Arquivos#" + ex.Message);
+                    throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "003#Camada: Persistência-Arquivos#"
+                        + MensagemCompleta(ex.Message));
                 }
             }
         }
@@ -103,11 +127,19 @@ namespace Objetos.Persistencia.Arquivos
             try
             {
                 garantirArquivo(caminhoArquivo);
-                return File.ReadAllLines(caminhoArquivo);
+                try
+                {
+                    return File.ReadAllLines(caminhoArquivo, Encoding.UTF8);
+                }
+                catch (Exception)
+                {
+                    return new string[0];
+                }
             }
             catch (Exception ex)
             {
-                throw new Exception("arq#004#Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo + "#" + ex.Message);
+                throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "004#Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo 
+                    + "#" + MensagemCompleta(ex.Message));
             }
         }
 
@@ -134,7 +166,8 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("arq#005#Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo + "#" + ex.Message);
+                throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "005#Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo 
+                    + "#" + MensagemCompleta(ex.Message));
             }
         }
 
@@ -149,9 +182,9 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("arq#006#Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo
+                throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "006#Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo
                     + "#texto: " + texto
-                    + "#" + ex.Message
+                    + "#" + MensagemCompleta(ex.Message)
                     );
             }
         }
@@ -172,10 +205,10 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("arq#007#Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo
+                throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "007#Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo
                     + "#referencia: " + referencia
                     + "#novoValor: " + novoValor
-                    + "#" + ex.Message
+                    + "#" + MensagemCompleta(ex.Message)
                     );
             }
         }
@@ -195,9 +228,9 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("arq#008#Camada: Persistencia-Arquivos#caminhoArquivo: " + caminhoArquivo
+                throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "008#Camada: Persistencia-Arquivos#caminhoArquivo: " + caminhoArquivo
                     + "#linha: " + linha
-                    + ex.Message
+                    + "#" + MensagemCompleta(ex.Message)
                     );
             }
         }

@@ -30,7 +30,7 @@ namespace Objetos.Modelos.Documentos
 {
     public class DocumentosPessoaJuridica
     {
-        public Cnpj oCnpj { get; set; }
+        public Cnpj Cnpj { get; set; }
         public string InscricaoEstadual { get; set; }
         public string InscricaoMunicipal { get; set; }
 
@@ -38,16 +38,16 @@ namespace Objetos.Modelos.Documentos
         {
 
         }
-        public DocumentosPessoaJuridica(Cnpj oCnpj, string inscricaoEstadual, string inscricaoMunicipal)
+        public DocumentosPessoaJuridica(Cnpj cnpj, string inscricaoEstadual = null, string inscricaoMunicipal = null)
         {
-            this.oCnpj = oCnpj;
+            Cnpj = cnpj;
             InscricaoEstadual = inscricaoEstadual;
             InscricaoMunicipal = inscricaoMunicipal;
         }
         public override string ToString()
         {
             char sep = ConstantesGerais.SeparadorSplit;
-            return oCnpj.ToString() + sep + InscricaoEstadual + sep + InscricaoMunicipal;
+            return Cnpj.ToString() + sep + InscricaoEstadual + sep + InscricaoMunicipal;
         }
     }
 }

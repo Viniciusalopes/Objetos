@@ -56,7 +56,7 @@ namespace Objetos.Modelos.Documentos
             char sep = ConstantesGerais.SeparadorSplit;
             return IdCnae.ToString() + sep
                 + IdPessoaJuridica.ToString() + sep
-                + TipoCnae + sep
+                + (int)TipoCnae + sep
                 + CodigoCnae + sep
                 + DescricaoCnae;
         }

@@ -24,7 +24,6 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Empresas;
 using Objetos.Constantes;
 using Objetos.Modelos.Pessoas;
 using System;
@@ -35,6 +34,7 @@ namespace Objetos.Modelos.Folha
     public class Colaborador : PessoaFisica
     {
         public int MatriculaColaborador { get; set; }
+        public long IdSetor { get; set; }
         public DateTime DataAdmissao { get; set; }
         public DateTime DataDemissao { get; set; }
         public JornadaDeTrabalho JornadaColaborador { get; set; }
@@ -42,15 +42,36 @@ namespace Objetos.Modelos.Folha
         public List<Ferias> FeriasColaborador { get; set; }
         public List<Afastamento> AfastamentosColaborador { get; set; }
         public List<Licenca> LicencasColaborador { get; set; }
+        public Colaborador()
+        {
+
+        }
+        public Colaborador(
+            long idPessoa,
+            long idSetor,
+            int matriculaColaborador,
+            DateTime dataAdmissao,
+            DateTime dataDemissao,
+            JornadaDeTrabalho jornadaColaborador
+            )
+        {
+            IdPessoa = idPessoa;
+            IdSetor = idSetor;
+            MatriculaColaborador = matriculaColaborador;
+            DataAdmissao = dataAdmissao;
+            DataDemissao = dataDemissao;
+            JornadaColaborador = jornadaColaborador;
+        }
 
         public override string ToString()
         {
             char sep = ConstantesGerais.SeparadorSplit;
-            return idPessoa.ToString() + sep
+            return IdPessoa.ToString() + sep
+                + IdSetor.ToString() + sep
                 + MatriculaColaborador.ToString() + sep
                 + DataAdmissao.ToString() + sep
                 + DataDemissao.ToString() + sep
-                + JornadaColaborador.IdJornada.ToString();
+                + ((JornadaColaborador == null) ? sep+"" : JornadaColaborador.IdJornada.ToString());
         }
     }
 }

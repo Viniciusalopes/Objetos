@@ -32,7 +32,11 @@ namespace Objetos.Constantes
         {
             Todos,
             Entrada,
-            Saída
+            Saída,
+            Receita,
+            Despesa,
+            Credito,
+            Débito
         }
     }
 }

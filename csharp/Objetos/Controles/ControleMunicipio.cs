@@ -26,6 +26,7 @@
 
 using Objetos.Interfaces;
 using Objetos.Modelos.Enderecos;
+using Objetos.Persistencia.Arquivos;
 using System;
 using System.Collections.Generic;
 
@@ -33,39 +34,74 @@ namespace Objetos.Controles
 {
     public class ControleMunicipio : ICRUD<Municipio>
     {
-        public void Atualizar(Municipio objeto)
+        #region ATRIBUTOS
+
+        private PAMunicipio persistencia = null;
+        
+        #endregion ATRIBUTOS
+
+        #region CONSTRUTORES
+
+        public ControleMunicipio()
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleMunicipio)");
+            persistencia = new PAMunicipio();
         }
 
-        public Municipio Buscar(int id)
+        #endregion CONSTRUTORES
+
+        #region CREATE
+  
+        public void Incluir(Municipio municipio)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleMunicipio)");
+            persistencia.Incluir(municipio);
+        }
+        
+        #endregion CREATE
+
+        #region READ
+        
+        public Municipio Buscar(long codigoMunicipio)
+        {
+            return persistencia.Buscar(codigoMunicipio);
         }
 
         public List<Municipio> Consultar()
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleMunicipio)");
+            return persistencia.Consultar();
         }
 
-        public List<Municipio> Consultar(object objeto)
+        public List<Municipio> Consultar(object parametro)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleMunicipio)");
-        }
-
-        public void Excluir(int id)
-        {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleMunicipio)");
-        }
-
-        public void Incluir(Municipio objeto)
-        {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleMunicipio)");
+            return persistencia.Consultar(parametro);
         }
 
         public Municipio ToObject(string texto)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleMunicipio)");
+            return persistencia.ToObject(texto);
         }
+        
+        #endregion READ
+
+        #region UPDATE
+        
+        public void Atualizar(Municipio municipio)
+        {
+            persistencia.Atualizar(municipio);
+        }
+        
+        #endregion UPDATE
+
+        #region DELETE
+        
+        public void Excluir(long codigoMunicipio)
+        {
+            persistencia.Excluir(codigoMunicipio);
+        }
+        
+        #endregion DELETE
+
+
+
+        
     }
 }

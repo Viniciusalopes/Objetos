@@ -25,6 +25,7 @@
 /// </summary>
 
 using Objetos.Constantes;
+using static Objetos.Utilitarios.StringUtils;
 
 namespace Objetos.Modelos.Documentos
 {
@@ -59,9 +60,9 @@ namespace Objetos.Modelos.Documentos
             char sep = ConstantesGerais.SeparadorSplit;
             return oCpf.getNumeroCpf() + sep
                 + Rg + sep
-                + oCnh.ToString() + sep
-                + oCtps.ToString() + sep
-                + oTituloEleitoral.ToString() + sep
+                + ((oCnh == null) ? repetir(sep + "", 11) : oCnh.ToString()) + sep
+                + ((oCtps == null) ? repetir(sep + "", 6) : oCtps.ToString()) + sep
+                + ((oTituloEleitoral == null) ? repetir(sep + "", 7) : oTituloEleitoral.ToString()) + sep
                 + PisNit;
         }
     }

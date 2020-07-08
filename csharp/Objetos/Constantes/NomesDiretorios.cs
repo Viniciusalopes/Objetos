@@ -41,7 +41,7 @@ namespace Objetos.Constantes
         /// <summary>
         ///     Caminho completo. 
         /// </summary>
-        public string DirFull { get; }
+        public string DirFull => DirRoot + DirHome;
 
         /// <summary>
         ///     Diretório de arquivos de dados.

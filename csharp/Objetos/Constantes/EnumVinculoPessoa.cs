@@ -26,14 +26,15 @@
 
 namespace Objetos.Constantes
 {
-    class EnumVinculoPessoa
+    public class EnumVinculoPessoa
     {
         public enum Vinculo
         {
             Todos,
             Cliente,
             Fornecedor,
-            Colaborador
+            Colaborador,
+            Nenhum
         }
     }
 }

@@ -27,18 +27,26 @@
 using System;
 using System.Collections.Generic;
 using Objetos.Interfaces;
+using Objetos.Constantes;
 using Objetos.Modelos.Enderecos;
 using static Objetos.Constantes.EnumRegiao;
+using static Objetos.Controles.ControleMensagem;
 
 namespace Objetos.Persistencia.Memoria
 {
-    class PMUF : ICRUDMemoria<UF>
+    public class PMUF : ICRUDMemoria<UF>
     {
-        List<UF> ufs = null;
+
+        #region ATRIBUTOS
+        
+        private List<UF> ufs = null;
+
+        #endregion ATRIBUTOS
+
 
         #region READ
 
-        public UF Buscar(int idUf)
+        public UF Buscar(long idUf)
         {
             try
             {
@@ -52,7 +60,7 @@ namespace Objetos.Persistencia.Memoria
             }
             catch (Exception ex)
             {
-                throw new Exception("uf#001#Camada: Persistência-Memória#Erro: " + ex.Message);
+                throw new Exception("uf" + ConstantesGerais.SeparadorTraco + "001#Camada: Persistência-Memória#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -126,7 +134,7 @@ namespace Objetos.Persistencia.Memoria
             }
             catch (Exception ex)
             {
-                throw new Exception("uf#002#Camada: Persistência-Memória#Erro: " + ex.Message);
+                throw new Exception("uf" + ConstantesGerais.SeparadorTraco + "002#Camada: Persistência-Memória#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 

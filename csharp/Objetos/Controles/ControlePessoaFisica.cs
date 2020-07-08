@@ -1,9 +1,4 @@
-﻿
-using Objetos.Interfaces;
-using Objetos.Modelos.Pessoas;
-using System;
-using System.Collections.Generic;
-/// <licenca>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -23,48 +18,85 @@ using System.Collections.Generic;
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Rascunho para criação de novas classes, interfaces, etc.
+///     Controller para PessoaFisica.
 ///     Criação : Vovolinux
 ///     Data    : 05/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
+
+using Objetos.Interfaces;
+using Objetos.Modelos.Pessoas;
+using Objetos.Persistencia.Arquivos;
+using System;
+using System.Collections.Generic;
+
 namespace Objetos.Controles
 {
-    class ControlePessoaFisica : ICRUD<PessoaFisica>
+    public class ControlePessoaFisica : ICRUD<PessoaFisica>
     {
-        public void Atualizar(PessoaFisica objeto)
+        #region ATRIBUTOS
+
+        private PAPessoaFisica persistencia = null;
+        #endregion ATRIBUTOS
+
+        #region CONSTRUTORES
+
+        public ControlePessoaFisica()
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControlePessoaFisica)");
+            persistencia = new PAPessoaFisica();
         }
 
-        public PessoaFisica Buscar(int id)
+        #endregion CONSTRUTORES
+
+        #region CREATE
+
+        public void Incluir(PessoaFisica pessoaFisica)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControlePessoaFisica)");
+            persistencia.Incluir(pessoaFisica);
+        }
+
+        #endregion CREATE
+
+        #region READ
+
+        public PessoaFisica Buscar(long idPessoa)
+        {
+            return persistencia.Buscar(idPessoa);
         }
 
         public List<PessoaFisica> Consultar()
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControlePessoaFisica)");
+            return persistencia.Consultar();
         }
 
-        public List<PessoaFisica> Consultar(object objeto)
+        public List<PessoaFisica> Consultar(object parametro)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControlePessoaFisica)");
-        }
-
-        public void Excluir(int id)
-        {
-           throw new Exception(new System.NotImplementedException().Message + " (ControlePessoaFisica)");
-        }
-
-        public void Incluir(PessoaFisica objeto)
-        {
-           throw new Exception(new System.NotImplementedException().Message + " (ControlePessoaFisica)");
+            return persistencia.Consultar(parametro);
         }
 
         public PessoaFisica ToObject(string texto)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControlePessoaFisica)");
+            return persistencia.ToObject(texto);
         }
+
+        #endregion READ
+
+        #region UPDATE
+
+        public void Atualizar(PessoaFisica pessoaFisica)
+        {
+            persistencia.Atualizar(pessoaFisica);
+        }
+
+        #endregion UPDATE
+
+        #region DELETE
+
+        public void Excluir(long idPessoa)
+        {
+            persistencia.Excluir(idPessoa);
+        }
+
+        #endregion DELETE
     }
 }

@@ -43,7 +43,7 @@ namespace Objetos.Modelos.Documentos
                 + viaCdi.ToString() + sep
                 + DataDispensa.ToString() + sep
                 + MotivoDispensa + sep
-                + ForcaArmada;
+                + (int)ForcaArmada;
         }
     }
 }

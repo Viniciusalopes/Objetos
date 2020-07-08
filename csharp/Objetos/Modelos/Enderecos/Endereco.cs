@@ -26,6 +26,7 @@
 
 using Objetos.Constantes;
 using static Objetos.Constantes.EnumTipoEnderecoTelefone;
+using static Objetos.Utilitarios.StringUtils;
 
 namespace Objetos.Modelos.Enderecos
 {
@@ -43,7 +44,8 @@ namespace Objetos.Modelos.Enderecos
 
         public Endereco()
         {
-
+            oMunicipio = new Municipio();
+            oUF = new UF();
         }
 
         public Endereco(
@@ -73,14 +75,14 @@ namespace Objetos.Modelos.Enderecos
         {
             char sep = ConstantesGerais.SeparadorSplit;
             return IdEndereco.ToString() + sep
-                + Logradouro + sep
-                + Numero.ToString() + sep
-                + ComplementoEndereco + sep
-                + Cep + sep
-                + SetorBairroDistrito + sep
-                + oMunicipio.ToString() + sep
-                + oUF.ToString() + sep
-                + TipoEndereco;
+                + ((string.IsNullOrEmpty(Logradouro)) ? "" : Logradouro) + sep
+                + Numero + sep
+                + ((string.IsNullOrEmpty(ComplementoEndereco)) ? "" : ComplementoEndereco) + sep
+                + ((string.IsNullOrEmpty(Cep)) ? "" : Cep) + sep
+                + ((string.IsNullOrEmpty(SetorBairroDistrito)) ? "" : SetorBairroDistrito) + sep
+                + ((oMunicipio == null) ? repetir(sep + "", 2) : oMunicipio.ToString()) + sep
+                + ((oUF == null) ? repetir(sep + "", 4) : oUF.ToString()) + sep
+                + (int)TipoEndereco;
         }
     }
 }

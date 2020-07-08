@@ -24,6 +24,7 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
+using Objetos.Constantes;
 using System;
 
 namespace Objetos.Modelos.Documentos
@@ -81,7 +82,7 @@ namespace Objetos.Modelos.Documentos
             string valor = numeroCpf.Replace(".", "").Replace("-", "");
 
             if (valor.Length != 11)
-                throw new Exception("cpf#001"); //Número do CPF não tem 11 dígitos numéricos.
+                throw new Exception("cpf" + ConstantesGerais.SeparadorTraco + "001"); //Número do CPF não tem 11 dígitos numéricos.
 
             bool igual = true;
             for (int i = 1; i < 11 && igual; i++)
@@ -89,7 +90,7 @@ namespace Objetos.Modelos.Documentos
                     igual = false;
 
             if (igual || valor == "12345678909")
-                throw new Exception("cpf#002");
+                throw new Exception("cpf" + ConstantesGerais.SeparadorTraco + "002");
 
             int[] numeros = new int[11];
 
@@ -106,10 +107,10 @@ namespace Objetos.Modelos.Documentos
             if (resultado == 1 || resultado == 0)
             {
                 if (numeros[9] != 0)
-                    throw new Exception("cpf#002");
+                    throw new Exception("cpf" + ConstantesGerais.SeparadorTraco + "002");
             }
             else if (numeros[9] != 11 - resultado)
-                throw new Exception("cpf#002");
+                throw new Exception("cpf" + ConstantesGerais.SeparadorTraco + "002");
 
             soma = 0;
             for (int i = 0; i < 10; i++)
@@ -120,12 +121,12 @@ namespace Objetos.Modelos.Documentos
             if (resultado == 1 || resultado == 0)
             {
                 if (numeros[10] != 0)
-                    throw new Exception("cpf#002");
+                    throw new Exception("cpf" + ConstantesGerais.SeparadorTraco + "002");
             }
             else
             {
                 if (numeros[10] != 11 - resultado)
-                    throw new Exception("cpf#002");
+                    throw new Exception("cpf" + ConstantesGerais.SeparadorTraco + "002");
             }
         }
         

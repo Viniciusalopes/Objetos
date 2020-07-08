@@ -24,13 +24,30 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
+using Objetos.Constantes;
 using Objetos.Modelos.Pessoas;
 using System.Collections.Generic;
 
-namespace Empresas
+namespace Objetos.Modelos.Empresas
 {
     public class Empresa : PessoaJuridica
     {
         public List<Setor> Setores { get; set; }
+
+        public Empresa()
+        {
+
+        }
+
+        public Empresa(PessoaJuridica pessoaJuridica)
+        {
+            IdPessoa = pessoaJuridica.IdPessoa;
+            TipoPessoa = pessoaJuridica.TipoPessoa;
+            Situacao = pessoaJuridica.Situacao;
+            Vinculo = pessoaJuridica.Vinculo;
+            Documentos = pessoaJuridica.Documentos;
+        }
+
+        public override string ToString() => IdPessoa + ConstantesGerais.SeparadorSplit + Documentos.Cnpj.getNumeroInscricao();
     }
 }

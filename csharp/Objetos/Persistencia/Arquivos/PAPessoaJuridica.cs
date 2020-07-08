@@ -27,29 +27,33 @@
 using System;
 using System.Collections.Generic;
 using Objetos.Constantes;
+using static Objetos.Controles.ControleMensagem;
 using Objetos.Interfaces;
 using Objetos.Modelos;
 using Objetos.Modelos.Documentos;
 using Objetos.Modelos.Enderecos;
 using Objetos.Modelos.Pessoas;
+using Objetos.Utilitarios;
 using static Objetos.Constantes.EnumRegiao;
 using static Objetos.Constantes.EnumSituacao;
 using static Objetos.Constantes.EnumTipoCnae;
 using static Objetos.Constantes.EnumTipoEnderecoTelefone;
 using static Objetos.Constantes.EnumTipoEstabelecimento;
-
+using static Objetos.Constantes.EnumTipoPessoa;
+using static Objetos.Constantes.EnumVinculoPessoa;
+using Objetos.Controles;
 
 namespace Objetos.Persistencia.Arquivos
 {
     public class PAPessoaJuridica : ICRUD<PessoaJuridica>
     {
         #region ATRIBUTOS
-        private NomesDiretorios diretorios = null;
-        private NomesArquivos arquivos = null;
+
         private Arquivo controleArquivo = null;
 
         private PessoaJuridica pessoa = null;
         private List<PessoaJuridica> pessoas = null;
+        private List<PessoaJuridica> pessoasRetorno = null;
 
         #endregion ATRIBUTOS
 
@@ -57,16 +61,7 @@ namespace Objetos.Persistencia.Arquivos
 
         public PAPessoaJuridica()
         {
-            diretorios = new NomesDiretorios();
-            diretorios.DirRoot = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            diretorios.DirHome = "\\Objetos\\";
-            diretorios.DirDados = diretorios.DirFull + "Dados\\";
-            diretorios.DirRelatorios = diretorios.DirFull + "Relatorios\\";
-
-            arquivos = new NomesArquivos();
-            arquivos.ArquivoDeDados = "PessoaJuridica.bd";
-
-            controleArquivo = new Arquivo(diretorios.DirDados, arquivos.ArquivoDeDados);
+            controleArquivo = new Arquivo("PessoaJuridica", "pho", "");
         }
 
         #endregion CONSTRUTORES
@@ -76,29 +71,30 @@ namespace Objetos.Persistencia.Arquivos
         {
             try
             {
+                pessoaJuridica.IdPessoa = GeradorID.getProximoID();
                 controleArquivo.IncluirLinha(pessoaJuridica.ToString());
             }
             catch (Exception ex)
             {
-                throw new Exception("pej#001#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "001#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
         #endregion CREATE
 
         #region READ
-        public PessoaJuridica Buscar(int idPessoa)
+        public PessoaJuridica Buscar(long idPessoa)
         {
             try
             {
                 foreach (PessoaJuridica pessoa in Consultar())
-                    if (pessoa.idPessoa == idPessoa)
+                    if (pessoa.IdPessoa == idPessoa)
                         return pessoa;
 
                 return null;
             }
             catch (Exception ex)
             {
-                throw new Exception("pej#002#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "002#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -116,7 +112,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pej#003#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "003#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -124,7 +120,8 @@ namespace Objetos.Persistencia.Arquivos
         {
             try
             {
-                pessoas = new List<PessoaJuridica>();
+                pessoas = Consultar();
+                pessoasRetorno = new List<PessoaJuridica>();
                 pessoa = new PessoaJuridica();
                 bool retornar = false;
                 string texto = null;
@@ -137,7 +134,7 @@ namespace Objetos.Persistencia.Arquivos
                 {
                     foreach (PessoaJuridica pessoaJuridica in Consultar())
                     {
-                        Cnpj oCnpj = pessoaJuridica.Documentos.oCnpj;
+                        Cnpj oCnpj = pessoaJuridica.Documentos.Cnpj;
 
                         if (pessoaJuridica.Documentos.InscricaoEstadual.Equals(texto)
                             || pessoaJuridica.Documentos.InscricaoMunicipal.Equals(texto)
@@ -155,20 +152,20 @@ namespace Objetos.Persistencia.Arquivos
                             || oCnpj.MotivoSituacaoCadastral.Equals(texto)
                             || oCnpj.Situacao.Equals(texto)
                             )
-                            pessoas.Add(pessoaJuridica);
+                            pessoasRetorno.Add(pessoaJuridica);
                     }
-                    return pessoas;
+                    return pessoasRetorno;
                 }
 
                 #endregion NOMES E DOCUMENTOS
 
                 #region TIPO DE ESTABELECIMENTO
-                try { pessoa.Documentos.oCnpj.TipoEstabelecimento = (TipoEstabelecimento)parametro; retornar = true; } catch (Exception) { retornar = false; }
+                try { pessoa.Documentos.Cnpj.TipoEstabelecimento = (TipoEstabelecimento)parametro; retornar = true; } catch (Exception) { retornar = false; }
 
                 if (retornar)
                 {
                     foreach (PessoaJuridica pessoaJuridica in Consultar())
-                        if (pessoaJuridica.Documentos.oCnpj.TipoEstabelecimento.Equals((TipoEstabelecimento)parametro))
+                        if (pessoaJuridica.Documentos.Cnpj.TipoEstabelecimento.Equals((TipoEstabelecimento)parametro))
                             pessoas.Add(pessoaJuridica);
 
                     return pessoas;
@@ -177,12 +174,12 @@ namespace Objetos.Persistencia.Arquivos
                 #endregion TIPO DE ESTABELECIMENTO
 
                 #region SITUAÇÃO
-                try { pessoa.Documentos.oCnpj.Situacao = (Situacao)parametro; retornar = true; } catch (Exception) { retornar = false; }
+                try { pessoa.Documentos.Cnpj.Situacao = (Situacao)parametro; retornar = true; } catch (Exception) { retornar = false; }
 
                 if (retornar)
                 {
                     foreach (PessoaJuridica pessoaJuridica in Consultar())
-                        if (pessoaJuridica.Documentos.oCnpj.Situacao.Equals((Situacao)parametro))
+                        if (pessoaJuridica.Documentos.Cnpj.Situacao.Equals((Situacao)parametro))
                             pessoas.Add(pessoaJuridica);
 
                     return pessoas;
@@ -194,7 +191,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pej#004#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "004#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -202,57 +199,76 @@ namespace Objetos.Persistencia.Arquivos
         {
             try
             {
+                //                                                                            10                                                                                  
+                // 0 1 2 3       4        5 6                  7             8              9  0 1 2 34                                                     
+                // 1;2;2;4;22394709000151;1;07/07/2020 12:52:02;;Viniciusalopes Tecnologia;MEI;0;1;0;0101;Cnae;0;Logradouro;0;Complemento;77485-000;setor;5208707;Goiânia;52;GO;8;Goiás;2;0;Natureza Jurídica;suporte@viniciusalopes.com.br;0;(62) 9900-11;2;;2;07/07/2020 12:52:02;Situação Cadastral;2;07/07/2020 12:52:02;;
                 string[] partes = texto.Split(ConstantesGerais.SeparadorSplit);
-                pessoa = new PessoaJuridica();
-                pessoa.idPessoa = long.Parse(partes[0]);
-                pessoa.Documentos.oCnpj = new Cnpj(partes[1],
-                    (TipoEstabelecimento)int.Parse(partes[2]),
-                    DateTime.Parse(partes[3]),
-                    partes[4],
-                    partes[5],
-                    partes[6],
-                    new Cnae(
-                        int.Parse(partes[7]),
-                        long.Parse(partes[8]),
-                        (TipoCnae)int.Parse(partes[9]),
-                        partes[10],
-                        partes[11]
-                    ),
-                    new Modelos.Enderecos.Endereco(
-                        int.Parse(partes[12]),
+
+                Cnae cnae = new Cnae(
+                        int.Parse(partes[10]),
+                        long.Parse(partes[11]),
+                        (TipoCnae)int.Parse(partes[12]),
                         partes[13],
-                        int.Parse(partes[14]),
-                        partes[15],
+                        partes[14]);
+
+                NaturezaJuridica naturezaJuridica = new NaturezaJuridica(partes[28], partes[29]);
+
+                Telefone telefone = new Telefone(int.Parse(partes[31]), partes[32], (TipoEnderecoTelefone)int.Parse(partes[33]));
+
+                Municipio municipio = new Municipio(
+                            int.Parse(partes[21]),
+                            partes[22]);
+
+                UF uf = new UF(
+                            int.Parse(partes[23]),
+                            partes[24],
+                            (Regiao)int.Parse(partes[25]),
+                            partes[26]);
+
+                Endereco endereco = new Endereco(
+                        int.Parse(partes[15]),
                         partes[16],
-                        partes[17],
-                        new Municipio(
-                            int.Parse(partes[18]),
-                            partes[19]),
-                            new UF(
-                                int.Parse(partes[20]),
-                                partes[21],
-                                (Regiao)int.Parse(partes[22]),
-                                partes[23],
-                                null
-                            ),
-                        (TipoEnderecoTelefone)int.Parse(partes[24])
-                    ),
-                    new NaturezaJuridica(partes[25], partes[26]),
-                    partes[27],
-                    new Telefone(int.Parse(partes[28]), partes[29], (TipoEnderecoTelefone)int.Parse(partes[30])),
-                    partes[31],
-                    (Situacao)int.Parse(partes[32]),
-                    DateTime.Parse(partes[33]),
+                        int.Parse(partes[17]),
+                        partes[18],
+                        partes[19],
+                        partes[20],
+                        municipio,
+                        uf,
+                        (TipoEnderecoTelefone)int.Parse(partes[27]));
+
+                pessoa = new PessoaJuridica();
+                pessoa.IdPessoa = long.Parse(partes[0]);
+                pessoa.TipoPessoa = (TipoPessoa)int.Parse(partes[1]);
+                pessoa.Situacao = (Situacao)int.Parse(partes[2]);
+                pessoa.Vinculo = (Vinculo)int.Parse(partes[3]);
+                
+                Cnpj cnpj = new Cnpj(
+                    partes[4],
+                    (TipoEstabelecimento)int.Parse(partes[5]),
+                    DateTime.Parse(partes[6]),
+                    partes[7],
+                    partes[8],
+                    partes[9],
+                    cnae,
+                    endereco,
+                    naturezaJuridica,
+                    partes[30],
+                    telefone,
                     partes[34],
-                    partes[35],
-                    DateTime.Parse(partes[36])
+                    (Situacao)int.Parse(partes[35]),
+                    DateTime.Parse(partes[36]),
+                    partes[37],
+                    partes[38],
+                    DateTime.Parse(partes[39])
                     );
+                pessoa.Documentos = new DocumentosPessoaJuridica(cnpj, "IE", "IM");
 
                 return pessoa;
             }
             catch (Exception ex)
             {
-                throw new Exception("pej#005#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "005#Camada: Persistência-Arquivos#Erro: " 
+                    + MensagemCompleta(ex.Message));
             }
         }
 
@@ -264,7 +280,7 @@ namespace Objetos.Persistencia.Arquivos
             try
             {
                 foreach (PessoaJuridica pessoa in Consultar())
-                    if (pessoa.idPessoa == pessoaJuridica.idPessoa)
+                    if (pessoa.IdPessoa == pessoaJuridica.IdPessoa)
                     {
                         controleArquivo.SubstituirLinha(pessoa.ToString(), pessoaJuridica.ToString());
                         break;
@@ -272,20 +288,20 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pej#006#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "006#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
         #endregion UPDATE
 
         #region DELETE
-       
-        public void Excluir(int idPessoa)
+
+        public void Excluir(long idPessoa)
         {
             try
             {
                 foreach (PessoaJuridica pessoa in Consultar())
-                    if (pessoa.idPessoa == idPessoa)
+                    if (pessoa.IdPessoa == idPessoa)
                     {
                         controleArquivo.ExcluirLinha(pessoa.ToString());
                         break;
@@ -293,10 +309,10 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pej#007Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "007Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
-        
+
         #endregion DELETE
     }
 }

@@ -1,9 +1,4 @@
-﻿
-using Empresas;
-using Objetos.Interfaces;
-using System;
-using System.Collections.Generic;
-/// <licenca>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -28,43 +23,78 @@ using System.Collections.Generic;
 ///     Data    : 05/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
+
+using System.Collections.Generic;
+using Objetos.Persistencia.Arquivos;
+using Objetos.Modelos.Empresas;
+using Objetos.Interfaces;
+
 namespace Objetos.Controles
 {
     public class ControleSetor : ICRUD<Setor>
     {
-        public void Atualizar(Setor setor)
+        #region ATRIBUTOS
+
+        private PASetor persistencia = null;
+
+        #endregion ATRIBUTOS
+
+        #region CONSTRUTORES
+
+        public ControleSetor()
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleSetor)");
+            persistencia = new PASetor();
         }
 
-        public Setor Buscar(int idSetor)
+        #endregion CONSTRUTORES
+
+        #region CREATE
+        public void Incluir(Setor setor)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleSetor)");
+            persistencia.Incluir(setor);
+        }
+
+        #endregion CREATE
+
+        #region READ
+
+        public Setor Buscar(long idSetor)
+        {
+            return persistencia.Buscar(idSetor);
         }
 
         public List<Setor> Consultar()
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleSetor)");
+            return persistencia.Consultar();
         }
 
         public List<Setor> Consultar(object parametro)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleSetor)");
-        }
-
-        public void Excluir(int idSetor)
-        {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleSetor)");
-        }
-
-        public void Incluir(Setor setor)
-        {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleSetor)");
+            return persistencia.Consultar(parametro);
         }
 
         public Setor ToObject(string texto)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleSetor)");
+            return persistencia.ToObject(texto);
         }
+
+        #endregion READ
+
+        #region UPDATE
+        public void Atualizar(Setor setor)
+        {
+            persistencia.Atualizar(setor);
+        }
+
+        #endregion UPDATE
+
+        #region DELETE
+
+        public void Excluir(long idSetor)
+        {
+            persistencia.Excluir(idSetor);
+        }
+
+        #endregion DELETE
     }
 }

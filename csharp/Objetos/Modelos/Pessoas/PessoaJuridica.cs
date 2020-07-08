@@ -26,12 +26,15 @@
 
 using Objetos.Constantes;
 using Objetos.Modelos.Documentos;
+using Objetos.Modelos.Empresas;
+using static Objetos.Constantes.EnumSituacao;
+using static Objetos.Constantes.EnumTipoPessoa;
+using static Objetos.Constantes.EnumVinculoPessoa;
 
 namespace Objetos.Modelos.Pessoas
 {
-    public class PessoaJuridica
+    public class PessoaJuridica : Pessoa
     {
-        public long idPessoa { get; set; }
         public DocumentosPessoaJuridica Documentos { get; set; }
 
         public PessoaJuridica()
@@ -39,10 +42,32 @@ namespace Objetos.Modelos.Pessoas
 
         }
 
+        public PessoaJuridica(Empresa empresa)
+        {
+            IdPessoa = empresa.IdPessoa;
+            TipoPessoa = TipoPessoa.Jurídica;
+            Situacao = empresa.Situacao;
+            Vinculo = empresa.Vinculo;
+            Documentos = empresa.Documentos;
+        }
+
+        public PessoaJuridica(long idPessoa, Situacao situacao = Situacao.Ativa, Vinculo vinculo = Vinculo.Nenhum, DocumentosPessoaJuridica documentos = null)
+        {
+            IdPessoa = idPessoa;
+            TipoPessoa = TipoPessoa.Jurídica;
+            Situacao = situacao;
+            Vinculo = vinculo;
+            Documentos = documentos;
+        }
+
         public override string ToString()
         {
             char sep = ConstantesGerais.SeparadorSplit;
-            return idPessoa.ToString() + sep + Documentos.ToString();
+            return IdPessoa.ToString() + sep
+                + (int)TipoPessoa + sep
+                + (int)Situacao + sep
+                + (int)Vinculo + sep
+                + Documentos.ToString();
         }
     }
 }

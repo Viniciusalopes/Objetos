@@ -46,7 +46,7 @@ namespace Objetos.Modelos
             get
             {
                 if (PrefixoTelefone.ToString().Length == 0)
-                    throw new Exception("tel#001");
+                    throw new Exception("tel" + ConstantesGerais.SeparadorTraco + "001");
 
 
                 numeroTelefoneFormatado =
@@ -124,7 +124,8 @@ namespace Objetos.Modelos
 
         #region GET
 
-        public override string ToString() => IdTelefone.ToString() + ConstantesGerais.SeparadorSplit +  NumeroTelefoneFormatado + ConstantesGerais.SeparadorSplit + TipoTelefone;
+        public override string ToString() => IdTelefone.ToString() + ConstantesGerais.SeparadorSplit 
+            + NumeroTelefoneFormatado + ConstantesGerais.SeparadorSplit + (int)TipoTelefone;
 
         #endregion GET
 
@@ -133,7 +134,7 @@ namespace Objetos.Modelos
         private void validarTelefone(string numeroTelefone)
         {
             if (numeroTelefone.Length < 8 || numeroTelefone.Length > 11)
-                throw new Exception("tel#001");
+                throw new Exception("tel" + ConstantesGerais.SeparadorTraco + "001");
         }
         #endregion VALIDAÇÃO
     }

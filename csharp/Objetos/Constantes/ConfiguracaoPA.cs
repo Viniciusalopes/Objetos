@@ -18,45 +18,31 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Cadastro de mensagens.
+///     Configuração para persistência em arquivo.
 ///     Criação : Vovolinux
-///     Data    : 30/06/2020
+///     Data    : 05/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-namespace Objetos.Modelos
+using System;
+
+namespace Objetos.Constantes
 {
-    public class Mensagem
+    public class ConfiguracaoPA
     {
+        public NomesDiretorios Diretorios { get; set; }
+        public NomesArquivos Arquivos { get; set; }
 
-        #region ATRIBUTOS
-        public long IdMensagem { get; set; }
-        public string CodigoMensagem { get; set; }
-        public string SiglaMensagem { get; set; }
-        public string NumeroMensagem { get; set; }
-        public string TextoMensagem { get; set; }
-        public string ComplementoMensagem { get; set; }
-
-        #endregion ATRIBUTOS
-
-        #region CONSTRUTORES
-
-        public Mensagem()
+        public ConfiguracaoPA(string objeto, string extensao, string dirRoot = "")
         {
+            Diretorios = new NomesDiretorios();
+            Diretorios.DirRoot = (string.IsNullOrEmpty(dirRoot)) ? Environment.GetFolderPath(Environment.SpecialFolder.Personal) : dirRoot;
+            Diretorios.DirHome = "\\Objetos\\";
+            Diretorios.DirDados = Diretorios.DirFull + "Dados\\";
+            Diretorios.DirRelatorios = Diretorios.DirFull + "Relatorios\\";
 
+            Arquivos = new NomesArquivos();
+            Arquivos.ArquivoDeDados = char.ToUpper(objeto[0]) + objeto.Substring(1) + "." + extensao;
         }
-
-        public Mensagem(long idMensagem, string codigoMensagem, string textoMensagem, string complementoMensagem = "")
-        {
-            IdMensagem = idMensagem;
-            CodigoMensagem = codigoMensagem;
-            TextoMensagem = textoMensagem;
-        }
-
-        #endregion CONSTRUTORES
-
-        #region GET/SET
-        #endregion GET/SET
-
     }
 }

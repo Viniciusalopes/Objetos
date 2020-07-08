@@ -30,7 +30,7 @@ namespace Objetos.Constantes
     {
         public enum ForcaArmada
         {
-            Todos,
+            Todas,
             Aeronáutica,
             Exército,
             Marinha

@@ -24,6 +24,7 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
+using static Objetos.Controles.ControleMensagem;
 using Objetos.Interfaces;
 using Objetos.Modelos.Enderecos;
 using Objetos.Constantes;
@@ -36,11 +37,9 @@ namespace Objetos.Persistencia.Arquivos
     {
         #region ATRIBUTOS
 
-        private NomesDiretorios diretorios = null;
-        private NomesArquivos arquivos = null;
         private Arquivo controleArquivo = null;
 
-        private Municipio municipio = null;
+        //private Municipio municipio = null;
         private List<Municipio> municipios = null;
 
         #endregion ATRIBUTOS
@@ -49,16 +48,7 @@ namespace Objetos.Persistencia.Arquivos
 
         public PAMunicipio()
         {
-            diretorios = new NomesDiretorios();
-            diretorios.DirRoot = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            diretorios.DirHome = "\\Objetos\\";
-            diretorios.DirDados = diretorios.DirFull + "Dados\\";
-            diretorios.DirRelatorios = diretorios.DirFull + "Relatorios\\";
-
-            arquivos = new NomesArquivos();
-            arquivos.ArquivoDeDados = "Municipio.bd";
-
-            controleArquivo = new Arquivo(diretorios.DirDados, arquivos.ArquivoDeDados);
+            controleArquivo = new Arquivo("Municipio", "pho", "");
         }
 
         #endregion CONSTRUTORES
@@ -73,7 +63,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun#001#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "001#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -81,7 +71,7 @@ namespace Objetos.Persistencia.Arquivos
 
         #region READ
 
-        public Municipio Buscar(int codigoMunicipio)
+        public Municipio Buscar(long codigoMunicipio)
         {
             try
             {
@@ -93,7 +83,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun#002#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "002#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -111,9 +101,8 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun#003#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "003#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
-
         }
 
         public List<Municipio> Consultar(object nomeMunicipio)
@@ -131,7 +120,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun#004#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "004#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -143,14 +132,14 @@ namespace Objetos.Persistencia.Arquivos
 
                 foreach (Municipio municipio in Consultar())
                 {
-                    if (municipio.CodigoMunicipio.ToString().Substring(0,2).Equals(uf.IdUf.ToString()))
+                    if (municipio.CodigoMunicipio.ToString().Substring(0, 2).Equals(uf.IdUf.ToString()))
                         municipios.Add(municipio);
                 }
                 return municipios;
             }
             catch (Exception ex)
             {
-                throw new Exception("mun#008#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "008#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -163,7 +152,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun#005#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "005#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -183,7 +172,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun#006#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "006#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -191,7 +180,7 @@ namespace Objetos.Persistencia.Arquivos
 
         #region DELETE
 
-        public void Excluir(int codigoMunicipio)
+        public void Excluir(long codigoMunicipio)
         {
             try
             {
@@ -204,7 +193,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun#007Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "007Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 

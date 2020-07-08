@@ -18,7 +18,7 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Controller para Colaborador.
+///     Controller para Colaboradores do Setor.
 ///     Criação : Vovolinux
 ///     Data    : 05/07/2020
 ///     Projeto : Objetos genéricos para C#.
@@ -27,55 +27,54 @@
 using Objetos.Interfaces;
 using Objetos.Modelos.Folha;
 using Objetos.Persistencia.Arquivos;
-using System;
 using System.Collections.Generic;
 
 namespace Objetos.Controles
 {
-    public class ControleColaborador : ICRUD<Colaborador>
+    public class ControleColaboradoresSetor : ICRUD<ColaboradoresSetor>
     {
         #region ATRIBUTOS
-        
-        PAColaborador persistencia = null;
-        
+
+        private PAColaboradoresSetor persistencia = null;
+
         #endregion ATRIBUTOS
 
         #region CONSTRUTORES
-        
-        public ControleColaborador()
+
+        public ControleColaboradoresSetor()
         {
-            persistencia = new PAColaborador();
+            persistencia = new PAColaboradoresSetor();
         }
-        
+
         #endregion CONSTRUTORES
 
         #region CREATE
         
-        public void Incluir(Colaborador colaborador)
+        public void Incluir(ColaboradoresSetor colaboradorSetor)
         {
-            persistencia.Incluir(colaborador);
+            persistencia.Incluir(colaboradorSetor);
         }
         
         #endregion CREATE
 
         #region READ
         
-        public Colaborador Buscar(long idPessoa)
+        public ColaboradoresSetor Buscar(long idColaborador)
         {
-            return persistencia.Buscar(idPessoa);
+            return persistencia.Buscar(idColaborador);
         }
 
-        public List<Colaborador> Consultar()
+        public List<ColaboradoresSetor> Consultar()
         {
             return persistencia.Consultar();
         }
 
-        public List<Colaborador> Consultar(object colaborador)
+        public List<ColaboradoresSetor> Consultar(object idSetor)
         {
-            return persistencia.Consultar(colaborador);
+            return persistencia.Consultar(idSetor);
         }
         
-        public Colaborador ToObject(string texto)
+        public ColaboradoresSetor ToObject(string texto)
         {
             return persistencia.ToObject(texto);
         }
@@ -84,20 +83,30 @@ namespace Objetos.Controles
 
         #region UPDATE
         
-        public void Atualizar(Colaborador colaborador)
+        public void Atualizar(ColaboradoresSetor colaboradorSetor)
         {
-            persistencia.Atualizar(colaborador);
+            persistencia.Atualizar(colaboradorSetor);
         }
         
         #endregion UPDATE
 
         #region DELETE
         
-        public void Excluir(long idPessoa)
+        public void Excluir(long idColaboradorSetor)
         {
-            persistencia.Excluir(idPessoa);
+            persistencia.Excluir(idColaboradorSetor);
         }
         
         #endregion DELETE
+
+
+
+
+
+
+
+        
+
+        
     }
 }

@@ -18,45 +18,24 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Cadastro de mensagens.
+///     Entidades da base de dados.
 ///     Criação : Vovolinux
-///     Data    : 30/06/2020
+///     Data    : 05/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-namespace Objetos.Modelos
+namespace Objetos.Constantes
 {
-    public class Mensagem
+    public class EnumEntidades
     {
-
-        #region ATRIBUTOS
-        public long IdMensagem { get; set; }
-        public string CodigoMensagem { get; set; }
-        public string SiglaMensagem { get; set; }
-        public string NumeroMensagem { get; set; }
-        public string TextoMensagem { get; set; }
-        public string ComplementoMensagem { get; set; }
-
-        #endregion ATRIBUTOS
-
-        #region CONSTRUTORES
-
-        public Mensagem()
-        {
-
+        public enum Entidades
+        {   
+            Todas,
+            PessoaFisica,
+            PessoaJuridica,
+            Setor,
+            Colaborador,
+            ColaboradoresSetor
         }
-
-        public Mensagem(long idMensagem, string codigoMensagem, string textoMensagem, string complementoMensagem = "")
-        {
-            IdMensagem = idMensagem;
-            CodigoMensagem = codigoMensagem;
-            TextoMensagem = textoMensagem;
-        }
-
-        #endregion CONSTRUTORES
-
-        #region GET/SET
-        #endregion GET/SET
-
     }
 }

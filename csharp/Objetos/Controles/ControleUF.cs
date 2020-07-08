@@ -24,48 +24,48 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Interfaces;
-using Objetos.Modelos.Enderecos;
 using System;
 using System.Collections.Generic;
+using Objetos.Interfaces;
+using Objetos.Modelos.Enderecos;
+using Objetos.Persistencia.Memoria;
 
 namespace Objetos.Controles
 {
-    public class ControleUF : ICRUD<UF>
+    public class ControleUF : ICRUDMemoria<UF>
     {
-        public void Atualizar(UF objeto)
+        #region ATRIBUTOS
+
+        private PMUF persistencia = null;
+
+        #endregion ATRIBUTOS
+
+        #region CONSTRUTORES
+
+        public ControleUF()
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleUF)");
+            persistencia = new PMUF();
         }
 
-        public UF Buscar(int id)
+        #endregion CONSTRUTORES
+
+        #region READ
+
+        public UF Buscar(long idUf)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleUF)");
+            return persistencia.Buscar(idUf);
         }
 
         public List<UF> Consultar()
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleUF)");
+            return persistencia.Consultar();
         }
 
-        public List<UF> Consultar(object objeto)
+        public List<UF> Consultar(object parametro)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleUF)");
+            return persistencia.Consultar(parametro);
         }
-
-        public void Excluir(int id)
-        {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleUF)");
-        }
-
-        public void Incluir(UF objeto)
-        {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleUF)");
-        }
-
-        public UF ToObject(string texto)
-        {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleUF)");
-        }
+        
+        #endregion READ
     }
 }

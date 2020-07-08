@@ -1,13 +1,4 @@
-﻿
-
-using Empresas;
-using Objetos.Constantes;
-using Objetos.Controles;
-using Objetos.Interfaces;
-using Objetos.Modelos.Folha;
-using System;
-using System.Collections.Generic;
-/// <licenca>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -32,19 +23,28 @@ using System.Collections.Generic;
 ///     Data    : 05/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
+
+using Objetos.Modelos.Empresas;
+using Objetos.Constantes;
+using Objetos.Controles;
+using Objetos.Interfaces;
+using System;
+using System.Collections.Generic;
+using Objetos.Utilitarios;
+using static Objetos.Controles.ControleMensagem;
+
 namespace Objetos.Persistencia.Arquivos
 {
     public class PASetor : ICRUD<Setor>
     {
         #region ATRIBUTOS
 
-        private NomesDiretorios diretorios = null;
-        private NomesArquivos arquivos = null;
         private Arquivo controleArquivo = null;
         private ControleColaborador controleColaborador = null;
 
         private Setor setor = null;
         private List<Setor> setores = null;
+        private List<Setor> setoresRetorno = null;
 
         #endregion ATRIBUTOS
 
@@ -52,16 +52,7 @@ namespace Objetos.Persistencia.Arquivos
 
         public PASetor()
         {
-            diretorios = new NomesDiretorios();
-            diretorios.DirRoot = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            diretorios.DirHome = "\\Objetos\\";
-            diretorios.DirDados = diretorios.DirFull + "Dados\\";
-            diretorios.DirRelatorios = diretorios.DirFull + "Relatorios\\";
-
-            arquivos = new NomesArquivos();
-            arquivos.ArquivoDeDados = "Setor.bd";
-
-            controleArquivo = new Arquivo(diretorios.DirDados, arquivos.ArquivoDeDados);
+            controleArquivo = new Arquivo("Setor", "pho", "");
         }
         #endregion CONSTRUTORES
 
@@ -72,11 +63,12 @@ namespace Objetos.Persistencia.Arquivos
         {
             try
             {
+                setor.IdSetor = GeradorID.getProximoID();
                 controleArquivo.IncluirLinha(setor.ToString());
             }
             catch (Exception ex)
             {
-                throw new Exception("set#001#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("set" + ConstantesGerais.SeparadorTraco + "001#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -84,7 +76,7 @@ namespace Objetos.Persistencia.Arquivos
 
         #region READ
 
-        public Setor Buscar(int idSetor)
+        public Setor Buscar(long idSetor)
         {
             try
             {
@@ -96,7 +88,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("set#002#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("set" + ConstantesGerais.SeparadorTraco + "002#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -104,17 +96,17 @@ namespace Objetos.Persistencia.Arquivos
         {
             try
             {
-                setores = new List<Setor>();
+                setoresRetorno = new List<Setor>();
                 string[] linhas = controleArquivo.LerLinhas();
 
                 foreach (string linha in linhas)
-                    setores.Add(ToObject(linha));
+                    setoresRetorno.Add(ToObject(linha));
 
-                return setores;
+                return setoresRetorno;
             }
             catch (Exception ex)
             {
-                throw new Exception("set#003#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("set" + ConstantesGerais.SeparadorTraco + "003#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -122,22 +114,31 @@ namespace Objetos.Persistencia.Arquivos
         {
             try
             {
-                setores = new List<Setor>();
-                setor = new Setor();
+                setores = Consultar();
+                setoresRetorno = new List<Setor>();
                 bool retornar = false;
                 string texto = null;
+                long id = 0;
 
                 #region ID DA PESSOA JURÍDICA E ID DO RESPONSÁVEL
 
-                try { setor.ResponsavelSetor.idPessoa = (int)parametro; retornar = true; } catch (Exception) { retornar = false; }
+                try { id = (long)parametro; retornar = true; } catch (Exception) { retornar = false; }
 
                 if (retornar)
                 {
-                    foreach (Setor oSetor in Consultar())
-                        if (oSetor.ResponsavelSetor.idPessoa == setor.ResponsavelSetor.idPessoa)
-                            setores.Add(oSetor);
+                    foreach (Setor oSetor in setores)
+                    {
+                        if (oSetor.IdEmpresa == id)
+                            setoresRetorno.Add(oSetor);
+                        else
+                        {
+                            if (oSetor.ResponsavelSetor != null)
+                                if (oSetor.ResponsavelSetor.IdPessoa == id)
+                                    setoresRetorno.Add(oSetor);
+                        }
+                    }
 
-                    return setores;
+                    return setoresRetorno;
                 }
 
                 #endregion ID DA PESSOA JURÍDICA E ID DO RESPONSÁVEL
@@ -148,20 +149,25 @@ namespace Objetos.Persistencia.Arquivos
 
                 if (retornar)
                 {
-                    foreach (Setor oSetor in Consultar())
-                        if (oSetor.NomeSetor.Equals(texto) || oSetor.ResponsavelSetor.NomePessoa.Equals(texto))
-                            setores.Add(oSetor);
+                    foreach (Setor oSetor in setores)
+                        if (oSetor.NomeSetor.Equals(texto))
+                            setoresRetorno.Add(oSetor);
+                        else
+                        {
+                            if (oSetor.ResponsavelSetor != null)
+                                if (oSetor.ResponsavelSetor.NomePessoa.Equals(texto))
+                                    setoresRetorno.Add(oSetor);
 
-                    return setores;
+                            return setoresRetorno;
+                        }
                 }
-
                 #endregion NOME DO SETOR E RESPONSÁVEL
 
-                return setores;
+                return setoresRetorno;
             }
             catch (Exception ex)
             {
-                throw new Exception("set#004#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("set" + ConstantesGerais.SeparadorTraco + "004#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -171,11 +177,11 @@ namespace Objetos.Persistencia.Arquivos
             {
                 controleColaborador = new ControleColaborador();
                 string[] partes = texto.Split(ConstantesGerais.SeparadorSplit);
-                return new Setor(int.Parse(partes[0]), long.Parse(partes[1]), partes[2], controleColaborador.Buscar(int.Parse(partes[3])), null);
+                return new Setor(long.Parse(partes[0]), long.Parse(partes[1]), partes[2], controleColaborador.Buscar(long.Parse(partes[3])), null);
             }
             catch (Exception ex)
             {
-                throw new Exception("set#005#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("set" + ConstantesGerais.SeparadorTraco + "005#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -185,19 +191,19 @@ namespace Objetos.Persistencia.Arquivos
 
         public void Atualizar(Setor setor)
         {
-            try 
+            try
             {
                 foreach (Setor oSetor in Consultar())
-                    if(oSetor.IdSetor == setor.IdSetor)
+                    if (oSetor.IdSetor == setor.IdSetor)
                     {
                         controleArquivo.SubstituirLinha(oSetor.ToString(), setor.ToString());
                         break;
                     }
-                
+
             }
             catch (Exception ex)
             {
-                throw new Exception("set#006#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("set" + ConstantesGerais.SeparadorTraco + "006#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -205,7 +211,7 @@ namespace Objetos.Persistencia.Arquivos
 
         #region DELETE
 
-        public void Excluir(int idSetor)
+        public void Excluir(long idSetor)
         {
             try
             {
@@ -218,7 +224,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("set#007Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("set" + ConstantesGerais.SeparadorTraco + "007Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 

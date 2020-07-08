@@ -32,7 +32,7 @@ namespace Objetos.Interfaces
     {
         #region READ
 
-        T Buscar(int id);
+        T Buscar(long id);
 
         List<T> Consultar();
 

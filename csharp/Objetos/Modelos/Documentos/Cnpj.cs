@@ -147,21 +147,21 @@ namespace Objetos.Modelos.Documentos
         {
             char sep = ConstantesGerais.SeparadorSplit;
             return numeroInscricao + sep
-                + TipoEstabelecimento + sep
+                + (int)TipoEstabelecimento + sep
                 + DataAbertura.ToString() + sep
                 + NomeEmpresarial + sep
                 + NomeFantasia + sep
                 + PortePJ + sep
-                + CnaePrincipal.ToString()
+                + CnaePrincipal.ToString() + sep
                 + oEndereco.ToString() + sep
                 + oNaturezaJuridica.ToString() + sep
                 + Email + sep
                 + oTelefone.ToString() + sep
                 + Efr + sep
-                + Situacao + sep
+                + (int)Situacao + sep
                 + DataSituacaoCadastral.ToString() + sep
                 + MotivoSituacaoCadastral + sep
-                + Situacao + sep
+                + SituacaoEspecial + sep
                 + DataSituacaoEspecial.ToString();
         }
         #endregion GET
@@ -231,11 +231,11 @@ namespace Objetos.Modelos.Documentos
                 }
 
                 if (!CNPJOk[0] || !CNPJOk[1])
-                    throw new Exception("cnpj#001");
+                    throw new Exception("cnpj" + ConstantesGerais.SeparadorTraco + "001");
             }
             catch
             {
-                throw new Exception("cnpj#001");
+                throw new Exception("cnpj" + ConstantesGerais.SeparadorTraco + "001");
             }
         }
 

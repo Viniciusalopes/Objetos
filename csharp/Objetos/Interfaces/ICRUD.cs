@@ -39,11 +39,11 @@ namespace Objetos.Interfaces
 
         #region READ
 
-        T Buscar(int id);
+        T Buscar(long id);
 
         List<T> Consultar();
 
-        List<T> Consultar(object objeto);
+        List<T> Consultar(object parametro);
 
         T ToObject(string texto);
 
@@ -57,7 +57,7 @@ namespace Objetos.Interfaces
 
         #region DELETE
 
-        void Excluir(int id);
+        void Excluir(long id);
 
         #endregion DELETE
     }

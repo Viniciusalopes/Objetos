@@ -18,7 +18,7 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     
+///     Constantes para uso geral.
 ///     Criação : Vovolinux
 ///     Data    : 29/06/2020
 ///     Projeto : Objetos genéricos para C#.
@@ -29,5 +29,7 @@ namespace Objetos.Constantes
     public class ConstantesGerais
     {
         public static char SeparadorSplit => ';';
+        public static char SeparadorEnter => '#';
+        public static char SeparadorTraco => '_';
     }
 }

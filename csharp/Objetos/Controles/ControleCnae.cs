@@ -27,45 +27,76 @@
 using Objetos.Interfaces;
 using Objetos.Modelos.Documentos;
 using System.Collections.Generic;
-using System;
+using Objetos.Persistencia.Arquivos;
 
 namespace Objetos.Controles
 {
     public class ControleCnae : ICRUD<Cnae>
     {
-        public void Atualizar(Cnae objeto)
+        #region ATRIBUTOS
+
+        private PACnae persistencia = null;
+
+        #endregion ATRIBUTOS
+
+        #region CONSTRUTORES
+
+        public ControleCnae()
         {
-            throw new Exception(new System.NotImplementedException().Message + " (ControleCnae)");
+            persistencia = new PACnae();
         }
 
-        public Cnae Buscar(int id)
+        #endregion CONSTRUTORES
+
+        #region CREATE
+
+        public void Incluir(Cnae cnae)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleCnae)");
+            persistencia.Incluir(cnae);
+        }
+
+        #endregion CREATE
+
+        #region READ
+
+        public Cnae Buscar(long idCnae)
+        {
+           return persistencia.Buscar(idCnae);
         }
 
         public List<Cnae> Consultar()
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleCnae)");
+            return persistencia.Consultar();
         }
 
-        public List<Cnae> Consultar(object objeto)
+        public List<Cnae> Consultar(object parametro)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleCnae)");
-        }
-
-        public void Excluir(int id)
-        {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleCnae)");
-        }
-
-        public void Incluir(Cnae objeto)
-        {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleCnae)");
+            return persistencia.Consultar(parametro);
         }
 
         public Cnae ToObject(string texto)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleCnae)");
+            return persistencia.ToObject(texto);
         }
+
+        #endregion READ
+
+        #region UPDATE
+
+        public void Atualizar(Cnae objeto)
+        {
+            persistencia.Atualizar(objeto);
+        }
+
+        #endregion UPDATE
+
+        #region DELETE
+
+        public void Excluir(long idCnae)
+        {
+            persistencia.Excluir(idCnae);
+        }
+
+        #endregion DELETE
     }
 }

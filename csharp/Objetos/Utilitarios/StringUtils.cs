@@ -48,6 +48,14 @@ namespace Objetos.Utilitarios
             return String.Join("", System.Text.RegularExpressions.Regex.Split(texto, @"[^\d]"));
         }
 
+        public static string repetir(string texto, int vezes)
+        {
+            string retorno = "";
+            for (int i = 0; i < vezes; i++)
+                retorno += texto;
+            
+            return retorno;
+        }
         #region CRIPTOGRAFIA
 
         public static string Base64Encode(string plainText)

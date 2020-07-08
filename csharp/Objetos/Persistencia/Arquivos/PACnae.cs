@@ -24,6 +24,7 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
+using static Objetos.Controles.ControleMensagem;
 using System;
 using System.Collections.Generic;
 using Objetos.Constantes;
@@ -37,8 +38,6 @@ namespace Objetos.Persistencia.Arquivos
     {
         #region ATRIBUTOS
 
-        private NomesDiretorios diretorios = null;
-        private NomesArquivos arquivos = null;
         private Arquivo controleArquivo = null;
 
         private Cnae cnae = null;
@@ -50,16 +49,7 @@ namespace Objetos.Persistencia.Arquivos
 
         public PACnae()
         {
-            diretorios = new NomesDiretorios();
-            diretorios.DirRoot = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            diretorios.DirHome = "\\Objetos\\";
-            diretorios.DirDados = diretorios.DirFull + "Dados\\";
-            diretorios.DirRelatorios = diretorios.DirFull + "Relatorios\\";
-
-            arquivos = new NomesArquivos();
-            arquivos.ArquivoDeDados = "Cnae.bd";
-
-            controleArquivo = new Arquivo(diretorios.DirDados, arquivos.ArquivoDeDados);
+            controleArquivo = new Arquivo("Cnae", "pho", "");
         }
         #endregion CONSTRUTORES
 
@@ -74,7 +64,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae#001#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("cnae" + ConstantesGerais.SeparadorTraco + "001#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -82,7 +72,7 @@ namespace Objetos.Persistencia.Arquivos
 
         #region READ
 
-        public Cnae Buscar(int idCnae)
+        public Cnae Buscar(long idCnae)
         {
             try
             {
@@ -94,7 +84,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae#002#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("cnae" + ConstantesGerais.SeparadorTraco + "002#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -112,7 +102,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae#003#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("cnae" + ConstantesGerais.SeparadorTraco + "003#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -173,7 +163,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae#004#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("cnae" + ConstantesGerais.SeparadorTraco + "004#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -185,7 +175,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae#005#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("cnae" + ConstantesGerais.SeparadorTraco + "005#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -206,7 +196,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae#006#Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("cnae" + ConstantesGerais.SeparadorTraco + "006#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -214,7 +204,7 @@ namespace Objetos.Persistencia.Arquivos
 
         #region DELETE
 
-        public void Excluir(int idCnae)
+        public void Excluir(long idCnae)
         {
             try
             {
@@ -227,7 +217,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae#007Camada: Persistência-Arquivos#Erro: " + ex.Message);
+                throw new Exception("cnae" + ConstantesGerais.SeparadorTraco + "007Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
             }
         }
 

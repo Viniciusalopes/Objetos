@@ -1,4 +1,8 @@
-﻿/// <licenca>
+﻿
+using static Objetos.Constantes.EnumSituacao;
+using static Objetos.Constantes.EnumTipoPessoa;
+using static Objetos.Constantes.EnumVinculoPessoa;
+/// <licença>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -16,47 +20,20 @@
 ///     E NÃO INFRAÇÃO. EM NENHUM CASO OS AUTORES OU TITULARES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR 
 ///     QUALQUER REIVINDICAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO, TORT OU OUTRA 
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
-/// </licenca>
+/// </licença>
 /// <summary>
-///     Cadastro de mensagens.
+///     Objeto para pessoa.
 ///     Criação : Vovolinux
-///     Data    : 30/06/2020
+///     Data    : 06/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
-
-namespace Objetos.Modelos
+namespace Objetos.Modelos.Pessoas
 {
-    public class Mensagem
+    public abstract class Pessoa
     {
-
-        #region ATRIBUTOS
-        public long IdMensagem { get; set; }
-        public string CodigoMensagem { get; set; }
-        public string SiglaMensagem { get; set; }
-        public string NumeroMensagem { get; set; }
-        public string TextoMensagem { get; set; }
-        public string ComplementoMensagem { get; set; }
-
-        #endregion ATRIBUTOS
-
-        #region CONSTRUTORES
-
-        public Mensagem()
-        {
-
-        }
-
-        public Mensagem(long idMensagem, string codigoMensagem, string textoMensagem, string complementoMensagem = "")
-        {
-            IdMensagem = idMensagem;
-            CodigoMensagem = codigoMensagem;
-            TextoMensagem = textoMensagem;
-        }
-
-        #endregion CONSTRUTORES
-
-        #region GET/SET
-        #endregion GET/SET
-
+        public long IdPessoa { get; set; }
+        public TipoPessoa TipoPessoa { get; set; }
+        public Situacao Situacao { get; set; }
+        public Vinculo Vinculo { get; set; }
     }
 }

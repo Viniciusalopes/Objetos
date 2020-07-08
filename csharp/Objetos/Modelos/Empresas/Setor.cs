@@ -28,11 +28,12 @@ using System.Collections.Generic;
 using Objetos.Constantes;
 using Objetos.Modelos.Folha;
 
-namespace Empresas
+namespace Objetos.Modelos.Empresas
 {
     public class Setor
     {
-        public int IdSetor { get; set; }
+        public long IdEmpresa { get; set; }
+        public long IdSetor { get; set; }
         public string NomeSetor { get; set; }
         public Colaborador ResponsavelSetor { get; set; }
         public List<Colaborador> Colaboradores { get; set; }
@@ -42,8 +43,9 @@ namespace Empresas
 
         }
 
-        public Setor(int idSetor, long idPessoaJuridica, string nomeSetor, Colaborador responsavelSetor, List<Colaborador> colaboradores)
+        public Setor(long idEmpresa, long idSetor, string nomeSetor, Colaborador responsavelSetor, List<Colaborador> colaboradores)
         {
+            IdEmpresa = idEmpresa;
             IdSetor = idSetor;
             NomeSetor = nomeSetor;
             ResponsavelSetor = responsavelSetor;
@@ -53,9 +55,10 @@ namespace Empresas
         public override string ToString()
         {
             char sep = ConstantesGerais.SeparadorSplit;
-            return IdSetor.ToString() + sep
+            return IdEmpresa.ToString() + sep 
+                + IdSetor.ToString() + sep
                 + NomeSetor + sep
-                + ResponsavelSetor.idPessoa;
+                + ResponsavelSetor.IdPessoa;
         }
     }
 }

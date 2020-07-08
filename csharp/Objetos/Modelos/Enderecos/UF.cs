@@ -67,7 +67,7 @@ namespace Objetos.Modelos.Enderecos
             char sep = ConstantesGerais.SeparadorSplit;
             return IdUf.ToString() + sep
                 + SiglaUf + sep
-                + Regiao + sep
+                + (int)Regiao + sep
                 + NomeUf;
         }
 
