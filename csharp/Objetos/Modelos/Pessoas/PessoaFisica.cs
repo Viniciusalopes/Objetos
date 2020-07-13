@@ -51,30 +51,40 @@ namespace Objetos.Modelos.Pessoas
 
         public PessoaFisica()
         {
-            
+
         }
 
-        public PessoaFisica(Colaborador colaborador)
+        public PessoaFisica(PessoaFisica pessoaFisica)
         {
-            IdPessoa = colaborador.IdPessoa;
+            IdPessoa = pessoaFisica.IdPessoa;
             TipoPessoa = TipoPessoa.Física;
-            Situacao = colaborador.Situacao;
-            Vinculo = colaborador.Vinculo;
-            NomePessoa = colaborador.NomePessoa;
-            DataNascimento = colaborador.DataNascimento;
-            Sexo = colaborador.Sexo;
-            NomePai = colaborador.NomePai;
-            NomeMae = colaborador.NomeMae;
-            EstadoCivil = colaborador.EstadoCivil;
-            NomeConjuge = colaborador.NomeConjuge;
-            Escolaridade = colaborador.Escolaridade;
-            Documentos = colaborador.Documentos;
+            Situacao = pessoaFisica.Situacao;
+            Vinculo = pessoaFisica.Vinculo;
+            NomePessoa = pessoaFisica.NomePessoa;
+            DataNascimento = pessoaFisica.DataNascimento;
+            Sexo = pessoaFisica.Sexo;
+            NomePai = pessoaFisica.NomePai;
+            NomeMae = pessoaFisica.NomeMae;
+            EstadoCivil = pessoaFisica.EstadoCivil;
+            NomeConjuge = pessoaFisica.NomeConjuge;
+            Escolaridade = pessoaFisica.Escolaridade;
+            Documentos = pessoaFisica.Documentos;
         }
 
-        public PessoaFisica(long idPessoa, string nome, DateTime dataNascimento, Sexo sexo,
-            Situacao situacao = Situacao.Ativa, Vinculo vinculo = Vinculo.Nenhum,
-            string nomePai = "", string nomeMae = "", EstadoCivil estadoCivil = EstadoCivil.Solteiro, string nomeConjuge = "",
-            Escolaridade escolaridade = Escolaridade.EnsinoMédioCompleto, DocumentosPessoaFisica documentos = null)
+        public PessoaFisica(
+            long idPessoa,
+            string nome,
+            DateTime dataNascimento,
+            Sexo sexo,
+            Situacao situacao = Situacao.Ativa,
+            Vinculo vinculo = Vinculo.Nenhum,
+            string nomePai = "",
+            string nomeMae = "",
+            EstadoCivil estadoCivil = EstadoCivil.Solteiro,
+            string nomeConjuge = "",
+            Escolaridade escolaridade = Escolaridade.EnsinoMédioCompleto,
+            DocumentosPessoaFisica documentos = null
+            )
         {
             IdPessoa = idPessoa;
             TipoPessoa = TipoPessoa.Física;
@@ -104,8 +114,8 @@ namespace Objetos.Modelos.Pessoas
                 + ((string.IsNullOrEmpty(NomeMae)) ? "" : NomeMae) + sep
                 + (int)EstadoCivil + sep
                 + ((string.IsNullOrEmpty(NomeConjuge)) ? "" : NomeConjuge) + sep
-                + Escolaridade + sep
-                + (Sexo.Equals(EnumSexo.Sexo.Feminino) ? Documentos.ToStringFeminino() : Documentos.ToString());
+                + (int)Escolaridade + sep
+                + (Sexo.Equals(Sexo.Feminino) ? Documentos.ToStringFeminino() : Documentos.ToString());
         }
     }
 }

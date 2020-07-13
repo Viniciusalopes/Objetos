@@ -60,7 +60,7 @@ namespace Objetos.Persistencia.Memoria
             }
             catch (Exception ex)
             {
-                throw new Exception("uf" + ConstantesGerais.SeparadorTraco + "001#Camada: Persistência-Memória#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("uf" + ConstantesGerais.SeparadorTraco + "001" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Memória" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -134,7 +134,7 @@ namespace Objetos.Persistencia.Memoria
             }
             catch (Exception ex)
             {
-                throw new Exception("uf" + ConstantesGerais.SeparadorTraco + "002#Camada: Persistência-Memória#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("uf" + ConstantesGerais.SeparadorTraco + "002" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Memória" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 

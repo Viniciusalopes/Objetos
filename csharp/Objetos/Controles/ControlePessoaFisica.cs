@@ -27,6 +27,7 @@
 using Objetos.Interfaces;
 using Objetos.Modelos.Pessoas;
 using Objetos.Persistencia.Arquivos;
+using Objetos.Utilitarios;
 using System;
 using System.Collections.Generic;
 
@@ -37,6 +38,7 @@ namespace Objetos.Controles
         #region ATRIBUTOS
 
         private PAPessoaFisica persistencia = null;
+
         #endregion ATRIBUTOS
 
         #region CONSTRUTORES
@@ -50,9 +52,9 @@ namespace Objetos.Controles
 
         #region CREATE
 
-        public void Incluir(PessoaFisica pessoaFisica)
+        public long Incluir(PessoaFisica pessoaFisica)
         {
-            persistencia.Incluir(pessoaFisica);
+            return persistencia.Incluir(pessoaFisica);
         }
 
         #endregion CREATE
@@ -69,9 +71,9 @@ namespace Objetos.Controles
             return persistencia.Consultar();
         }
 
-        public List<PessoaFisica> Consultar(object parametro)
+        public List<PessoaFisica> Consultar(object parametro, string atributo)
         {
-            return persistencia.Consultar(parametro);
+            return persistencia.Consultar(parametro, atributo);
         }
 
         public PessoaFisica ToObject(string texto)

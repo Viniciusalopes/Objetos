@@ -63,7 +63,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "001#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "001" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -83,7 +83,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "002#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "002" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -101,7 +101,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "003#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "003" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -120,7 +120,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "004#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "004" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -139,7 +139,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "008#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "008" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -152,7 +152,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "005#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "005" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -172,7 +172,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "006#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "006" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -193,7 +193,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "007Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "007Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 

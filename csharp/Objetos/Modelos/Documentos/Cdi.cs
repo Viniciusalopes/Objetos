@@ -26,21 +26,37 @@
 
 using Objetos.Constantes;
 using System;
+using static Objetos.Constantes.EnumForcasArmadas;
 
 namespace Objetos.Modelos.Documentos
 {
     public class Cdi
     {
-        public string numeroCdi { get; set; }
-        public int viaCdi { get; set; }
+        public string NumeroCdi { get; set; }
+        public int ViaCdi { get; set; }
         public DateTime DataDispensa { get; set; }
         public string MotivoDispensa { get; set; }
-        public EnumForcasArmadas.ForcaArmada ForcaArmada { get; set; }
+        public ForcaArmada ForcaArmada { get; set; }
+
+        public Cdi()
+        {
+
+        }
+
+        public Cdi(string numeroCdi, int viaCdi, DateTime dataDispensa, string motivoDispensa, ForcaArmada forcaArmada)
+        {
+            NumeroCdi = numeroCdi;
+            ViaCdi = viaCdi;
+            DataDispensa = dataDispensa;
+            MotivoDispensa = motivoDispensa;
+            ForcaArmada = forcaArmada;
+        }
+
         public override string ToString()
         {
             char sep = ConstantesGerais.SeparadorSplit;
-            return numeroCdi + sep
-                + viaCdi.ToString() + sep
+            return NumeroCdi + sep
+                + ViaCdi.ToString() + sep
                 + DataDispensa.ToString() + sep
                 + MotivoDispensa + sep
                 + (int)ForcaArmada;

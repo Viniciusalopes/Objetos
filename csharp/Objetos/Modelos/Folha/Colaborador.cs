@@ -33,8 +33,10 @@ namespace Objetos.Modelos.Folha
 {
     public class Colaborador : PessoaFisica
     {
-        public int MatriculaColaborador { get; set; }
+        public long IdColaborador { get; set; }
+        public long IdEmpresa { get; set; }
         public long IdSetor { get; set; }
+        public int MatriculaColaborador { get; set; }
         public DateTime DataAdmissao { get; set; }
         public DateTime DataDemissao { get; set; }
         public JornadaDeTrabalho JornadaColaborador { get; set; }
@@ -42,12 +44,16 @@ namespace Objetos.Modelos.Folha
         public List<Ferias> FeriasColaborador { get; set; }
         public List<Afastamento> AfastamentosColaborador { get; set; }
         public List<Licenca> LicencasColaborador { get; set; }
+
         public Colaborador()
         {
 
         }
+
         public Colaborador(
+            long idColaborador,
             long idPessoa,
+            long idEmpresa,
             long idSetor,
             int matriculaColaborador,
             DateTime dataAdmissao,
@@ -55,7 +61,9 @@ namespace Objetos.Modelos.Folha
             JornadaDeTrabalho jornadaColaborador
             )
         {
+            IdColaborador = idColaborador;
             IdPessoa = idPessoa;
+            IdEmpresa = idEmpresa;
             IdSetor = idSetor;
             MatriculaColaborador = matriculaColaborador;
             DataAdmissao = dataAdmissao;
@@ -66,9 +74,11 @@ namespace Objetos.Modelos.Folha
         public override string ToString()
         {
             char sep = ConstantesGerais.SeparadorSplit;
-            return IdPessoa.ToString() + sep
-                + IdSetor.ToString() + sep
-                + MatriculaColaborador.ToString() + sep
+            return IdColaborador.ToString() + sep
+                + IdPessoa + sep
+                + IdEmpresa + sep
+                + IdSetor + sep
+                + MatriculaColaborador + sep
                 + DataAdmissao.ToString() + sep
                 + DataDemissao.ToString() + sep
                 + ((JornadaColaborador == null) ? sep+"" : JornadaColaborador.IdJornada.ToString());

@@ -32,7 +32,7 @@ namespace Objetos.Modelos.Documentos
     public class Cnae
     {
         public int IdCnae { get; set; }
-        public long IdPessoaJuridica { get; set; }
+        public long IdPessoa { get; set; }
         public TipoCnae TipoCnae { get; set; }
         public string CodigoCnae { get; set; }
         public string DescricaoCnae { get; set; }
@@ -45,7 +45,7 @@ namespace Objetos.Modelos.Documentos
         public Cnae(int idCnae, long idPessoaJuridica, TipoCnae tipoCnae, string codigoCnae, string descricaoCnae)
         {
             IdCnae = idCnae;
-            IdPessoaJuridica = idPessoaJuridica;
+            IdPessoa = idPessoaJuridica;
             TipoCnae = tipoCnae;
             CodigoCnae = codigoCnae;
             DescricaoCnae = descricaoCnae;
@@ -55,7 +55,7 @@ namespace Objetos.Modelos.Documentos
         {
             char sep = ConstantesGerais.SeparadorSplit;
             return IdCnae.ToString() + sep
-                + IdPessoaJuridica.ToString() + sep
+                + IdPessoa.ToString() + sep
                 + (int)TipoCnae + sep
                 + CodigoCnae + sep
                 + DescricaoCnae;

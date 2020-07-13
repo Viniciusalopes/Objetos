@@ -38,15 +38,31 @@ namespace Objetos.Modelos.Documentos
         public TituloEleitoral oTituloEleitoral { get; set; }
         public string PisNit { get; set; }
         public Cdi oCdi { get; set; }
+        
+        public DocumentosPessoaFisica()
+        {
+
+        }
+
+        public DocumentosPessoaFisica(Cpf oCpf, string rg, Cnh oCnh, Ctps oCtps, TituloEleitoral oTituloEleitoral, string pisNit, Cdi oCdi)
+        {
+            this.oCpf = oCpf;
+            this.Rg = rg;
+            this.oCnh = oCnh;
+            this.oCtps = oCtps;
+            this.oTituloEleitoral = oTituloEleitoral;
+            PisNit = pisNit;
+            this.oCdi = oCdi;
+        }
 
         public override string ToString()
         {
             char sep = ConstantesGerais.SeparadorSplit;
             return oCpf.getNumeroCpf() + sep
                 + Rg + sep
-                + oCnh.ToString() + sep
-                + oCtps.ToString() + sep
-                + oTituloEleitoral.ToString() + sep
+                + ((oCnh == null) ? repetir(sep + "", 11) : oCnh.ToString()) + sep
+                + ((oCtps == null) ? repetir(sep + "", 6) : oCtps.ToString()) + sep
+                + ((oTituloEleitoral == null) ? repetir(sep + "", 7) : oTituloEleitoral.ToString()) + sep
                 + PisNit + sep
                 + oCdi.ToString();
         }

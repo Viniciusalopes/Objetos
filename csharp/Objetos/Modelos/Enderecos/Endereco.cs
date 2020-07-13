@@ -32,6 +32,7 @@ namespace Objetos.Modelos.Enderecos
 {
     public class Endereco
     {
+        public long IdPessoa { get; set; }
         public long IdEndereco { get; set; }
         public string Logradouro { get; set; }
         public int Numero { get; set; }
@@ -49,6 +50,7 @@ namespace Objetos.Modelos.Enderecos
         }
 
         public Endereco(
+            long idPessoa,
             long idEndereco,
             string logradouro,
             int numero,
@@ -60,6 +62,7 @@ namespace Objetos.Modelos.Enderecos
             TipoEnderecoTelefone tipoEndereco
             )
         {
+            IdPessoa = idPessoa;
             IdEndereco = idEndereco;
             Logradouro = logradouro;
             Numero = numero;
@@ -74,14 +77,15 @@ namespace Objetos.Modelos.Enderecos
         public override string ToString()
         {
             char sep = ConstantesGerais.SeparadorSplit;
-            return IdEndereco.ToString() + sep
+            return IdEndereco.ToString() + sep 
+                + IdPessoa + sep
                 + ((string.IsNullOrEmpty(Logradouro)) ? "" : Logradouro) + sep
                 + Numero + sep
                 + ((string.IsNullOrEmpty(ComplementoEndereco)) ? "" : ComplementoEndereco) + sep
                 + ((string.IsNullOrEmpty(Cep)) ? "" : Cep) + sep
                 + ((string.IsNullOrEmpty(SetorBairroDistrito)) ? "" : SetorBairroDistrito) + sep
-                + ((oMunicipio == null) ? repetir(sep + "", 2) : oMunicipio.ToString()) + sep
-                + ((oUF == null) ? repetir(sep + "", 4) : oUF.ToString()) + sep
+                + ((oMunicipio == null) ? "" : oMunicipio.CodigoMunicipio.ToString()) + sep
+                + ((oUF == null) ? "" : oUF.IdUf.ToString()) + sep
                 + (int)TipoEndereco;
         }
     }

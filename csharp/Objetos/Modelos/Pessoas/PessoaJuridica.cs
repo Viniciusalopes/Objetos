@@ -42,15 +42,6 @@ namespace Objetos.Modelos.Pessoas
 
         }
 
-        public PessoaJuridica(Empresa empresa)
-        {
-            IdPessoa = empresa.IdPessoa;
-            TipoPessoa = TipoPessoa.Jurídica;
-            Situacao = empresa.Situacao;
-            Vinculo = empresa.Vinculo;
-            Documentos = empresa.Documentos;
-        }
-
         public PessoaJuridica(long idPessoa, Situacao situacao = Situacao.Ativa, Vinculo vinculo = Vinculo.Nenhum, DocumentosPessoaJuridica documentos = null)
         {
             IdPessoa = idPessoa;

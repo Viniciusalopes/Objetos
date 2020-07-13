@@ -78,7 +78,7 @@ namespace Objetos.Utilitarios
             }
             catch (Exception ex)
             {
-                throw new Exception("ger" + ConstantesGerais.SeparadorTraco + "001#Objeto: " + entidade + "#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("ger" + ConstantesGerais.SeparadorTraco + "001#Objeto: " + entidade + "" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
     }

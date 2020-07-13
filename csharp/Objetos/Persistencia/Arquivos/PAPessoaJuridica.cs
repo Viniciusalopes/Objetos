@@ -41,7 +41,6 @@ using static Objetos.Constantes.EnumTipoEnderecoTelefone;
 using static Objetos.Constantes.EnumTipoEstabelecimento;
 using static Objetos.Constantes.EnumTipoPessoa;
 using static Objetos.Constantes.EnumVinculoPessoa;
-using Objetos.Controles;
 
 namespace Objetos.Persistencia.Arquivos
 {
@@ -67,16 +66,23 @@ namespace Objetos.Persistencia.Arquivos
         #endregion CONSTRUTORES
 
         #region CREATE
-        public void Incluir(PessoaJuridica pessoaJuridica)
+        public long Incluir(PessoaJuridica pessoaJuridica)
         {
             try
             {
                 pessoaJuridica.IdPessoa = GeradorID.getProximoID();
+                pessoaJuridica.Documentos.Cnpj.CnaePrincipal.IdPessoa = pessoaJuridica.IdPessoa;
+                foreach (Cnae cnae in pessoaJuridica.Documentos.Cnpj.CnaesSecundarios)
+                    cnae.IdPessoa = pessoaJuridica.IdPessoa;
+                pessoaJuridica.Documentos.Cnpj.oEndereco.IdPessoa = pessoaJuridica.IdPessoa;
+                pessoaJuridica.Documentos.Cnpj.oTelefone.IdPessoa = pessoaJuridica.IdPessoa;
+                
                 controleArquivo.IncluirLinha(pessoaJuridica.ToString());
+                return pessoaJuridica.IdPessoa;
             }
             catch (Exception ex)
             {
-                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "001#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "001" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
         #endregion CREATE
@@ -94,7 +100,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "002#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "002" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -112,11 +118,11 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "003#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "003" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
-        public List<PessoaJuridica> Consultar(object parametro)
+        public List<PessoaJuridica> Consultar(object parametro, string atributo)
         {
             try
             {
@@ -191,7 +197,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "004#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "004" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -267,7 +273,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "005#Camada: Persistência-Arquivos#Erro: " 
+                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "005" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " 
                     + MensagemCompleta(ex.Message));
             }
         }
@@ -288,7 +294,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "006#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "006" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -309,7 +315,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "007Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("pej" + ConstantesGerais.SeparadorTraco + "007Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 

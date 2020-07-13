@@ -33,7 +33,7 @@ namespace Objetos.Modelos
     public class Telefone
     {
         #region ATRIBUTOS
-
+        public long IdPessoa { get; set; }
         public long IdTelefone { get; set; }
         public int DddTelefone { get; set; }
         public int PrefixoTelefone { get; set; }
@@ -78,7 +78,7 @@ namespace Objetos.Modelos
 
         }
 
-        public Telefone(int idTelefone, string numeroTelefone, EnumTipoEnderecoTelefone.TipoEnderecoTelefone tipoTelefone)
+        public Telefone(long idPessoa, long idTelefone, string numeroTelefone, EnumTipoEnderecoTelefone.TipoEnderecoTelefone tipoTelefone)
         {
             IdTelefone = idTelefone;
 
@@ -125,6 +125,7 @@ namespace Objetos.Modelos
         #region GET
 
         public override string ToString() => IdTelefone.ToString() + ConstantesGerais.SeparadorSplit 
+            + IdPessoa + ConstantesGerais.SeparadorSplit 
             + NumeroTelefoneFormatado + ConstantesGerais.SeparadorSplit + (int)TipoTelefone;
 
         #endregion GET

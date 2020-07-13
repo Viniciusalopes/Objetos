@@ -25,29 +25,34 @@
 /// </summary>
 
 using Objetos.Constantes;
+using Objetos.Modelos.Documentos;
 using Objetos.Modelos.Pessoas;
 using System.Collections.Generic;
+using static Objetos.Constantes.EnumSituacao;
+using static Objetos.Constantes.EnumVinculoPessoa;
 
 namespace Objetos.Modelos.Empresas
 {
     public class Empresa : PessoaJuridica
     {
+        public long IdEmpresa { get; set; }
+
         public List<Setor> Setores { get; set; }
 
         public Empresa()
         {
 
         }
-
-        public Empresa(PessoaJuridica pessoaJuridica)
+        
+        public Empresa(long idEmpresa, PessoaJuridica pessoaJuridica)
         {
-            IdPessoa = pessoaJuridica.IdPessoa;
+            IdEmpresa = idEmpresa;
             TipoPessoa = pessoaJuridica.TipoPessoa;
             Situacao = pessoaJuridica.Situacao;
             Vinculo = pessoaJuridica.Vinculo;
             Documentos = pessoaJuridica.Documentos;
         }
 
-        public override string ToString() => IdPessoa + ConstantesGerais.SeparadorSplit + Documentos.Cnpj.getNumeroInscricao();
+        public override string ToString() => IdEmpresa.ToString() + ConstantesGerais.SeparadorSplit  + IdPessoa;
     }
 }

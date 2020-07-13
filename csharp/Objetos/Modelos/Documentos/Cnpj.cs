@@ -38,7 +38,7 @@ namespace Objetos.Modelos.Documentos
         #region ATRIBUTOS
 
         private string numeroInscricao = null;
-        public EnumTipoEstabelecimento.TipoEstabelecimento TipoEstabelecimento { get; set; }
+        public TipoEstabelecimento TipoEstabelecimento { get; set; }
         public DateTime DataAbertura { get; set; }
         public string NomeEmpresarial { get; set; }
         public string NomeFantasia { get; set; }
@@ -50,7 +50,7 @@ namespace Objetos.Modelos.Documentos
         public string Email { get; set; }
         public Telefone oTelefone { get; set; }
         public string Efr { get; set; }
-        public EnumSituacao.Situacao Situacao { get; set; }
+        public Situacao Situacao { get; set; }
         public DateTime DataSituacaoCadastral { get; set; }
         public string MotivoSituacaoCadastral { get; set; }
         public string SituacaoEspecial { get; set; }
@@ -104,6 +104,7 @@ namespace Objetos.Modelos.Documentos
             string nomeFantasia,
             string portePJ,
             Cnae cnaePrincipal,
+            List<Cnae> cnaesSecundarios,
             Endereco endereco,
             NaturezaJuridica naturezaJuridica,
             string email,
@@ -123,6 +124,7 @@ namespace Objetos.Modelos.Documentos
             NomeFantasia = nomeFantasia;
             PortePJ = portePJ;
             CnaePrincipal = cnaePrincipal;
+            CnaesSecundarios = cnaesSecundarios;
             oEndereco = endereco;
             oNaturezaJuridica = naturezaJuridica;
             Email = email;
@@ -152,11 +154,11 @@ namespace Objetos.Modelos.Documentos
                 + NomeEmpresarial + sep
                 + NomeFantasia + sep
                 + PortePJ + sep
-                + CnaePrincipal.ToString() + sep
-                + oEndereco.ToString() + sep
+                + CnaePrincipal.IdCnae.ToString() + sep
+                + oEndereco.IdEndereco.ToString() + sep
                 + oNaturezaJuridica.ToString() + sep
                 + Email + sep
-                + oTelefone.ToString() + sep
+                + oTelefone.IdTelefone.ToString() + sep
                 + Efr + sep
                 + (int)Situacao + sep
                 + DataSituacaoCadastral.ToString() + sep

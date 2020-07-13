@@ -24,48 +24,81 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Empresas;
+using Objetos.Modelos.Empresas;
 using Objetos.Interfaces;
 using System;
 using System.Collections.Generic;
+using Objetos.Persistencia.Arquivos;
 
 namespace Objetos.Controles
 {
     public class ControleEmpresa : ICRUD<Empresa>
     {
-        public void Atualizar(Empresa empresa)
+
+        #region ATRIBUTOS
+
+        private PAEmpresa persistencia = null;
+
+        #endregion ATRIBUTOS
+
+        #region CONSTRUTORES
+
+        public ControleEmpresa()
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleEmpresa-Atualizar)");
+            persistencia = new PAEmpresa();
         }
 
-        public Empresa Buscar(int idEmpresa)
+        #endregion CONSTRUTORES
+
+        #region CREATE
+
+        public long Incluir(Empresa empresa)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleEmpresa-Buscar)");
+            return persistencia.Incluir(empresa);
+        }
+
+        #endregion CREATE
+
+        #region READ
+
+        public Empresa Buscar(long idEmpresa)
+        {
+            return persistencia.Buscar(idEmpresa);
         }
 
         public List<Empresa> Consultar()
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleEmpresa-Consultar)");
+            return persistencia.Consultar();
         }
 
-        public List<Empresa> Consultar(object parametro)
+        public List<Empresa> Consultar(object parametro, string atributo)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleEmpresa-Consultar)");
-        }
-
-        public void Excluir(int idEmpresa)
-        {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleEmpresa-Excluir)");
-        }
-
-        public void Incluir(Empresa empresa)
-        {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleEmpresa-Incluir)");
+            return persistencia.Consultar(parametro, atributo);
         }
 
         public Empresa ToObject(string texto)
         {
-           throw new Exception(new System.NotImplementedException().Message + " (ControleEmpresa-ToObject)");
+            return persistencia.ToObject(texto);
         }
+        
+        #endregion READ
+
+        #region UPDATE
+
+        public void Atualizar(Empresa empresa)
+        {
+            persistencia.Atualizar(empresa);
+        }
+        
+        #endregion UPDATE
+
+        #region DELETE
+
+        public void Excluir(long idEmpresa)
+        {
+            persistencia.Excluir(idEmpresa);
+        }
+        
+        #endregion DELETE
     }
 }

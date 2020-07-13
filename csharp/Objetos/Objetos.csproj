@@ -68,7 +68,7 @@
     <Compile Include="Constantes\Rascunho.cs" />
     <Compile Include="Controles\ControleCnae.cs" />
     <Compile Include="Controles\ControleColaborador.cs" />
-    <Compile Include="Controles\ControleColaboradoresSetor.cs" />
+    <Compile Include="Controles\ControleEmpresa.cs" />
     <Compile Include="Controles\ControleMensagem.cs" />
     <Compile Include="Controles\ControleMunicipio.cs" />
     <Compile Include="Controles\ControlePessoaFisica.cs" />
@@ -77,7 +77,6 @@
     <Compile Include="Controles\ControleUF.cs" />
     <Compile Include="Interfaces\ICRUD.cs" />
     <Compile Include="Interfaces\ICRUDMemoria.cs" />
-    <Compile Include="Modelos\Folha\ColaboradoresSetor.cs" />
     <Compile Include="Modelos\Pessoas\Pessoa.cs" />
     <Compile Include="Persistencia\Arquivos\Arquivo.cs" />
     <Compile Include="Modelos\Dados\Tupla.cs" />
@@ -127,7 +126,7 @@
     <Compile Include="Modelos\Enderecos\UF.cs" />
     <Compile Include="Persistencia\Arquivos\PACnae.cs" />
     <Compile Include="Persistencia\Arquivos\PAColaborador.cs" />
-    <Compile Include="Persistencia\Arquivos\PAColaboradoresSetor.cs" />
+    <Compile Include="Persistencia\Arquivos\PAEmpresa.cs" />
     <Compile Include="Persistencia\Arquivos\PAMunicipio.cs" />
     <Compile Include="Persistencia\Arquivos\PAPessoaFisica.cs" />
     <Compile Include="Persistencia\Arquivos\PAPessoaJuridica.cs" />

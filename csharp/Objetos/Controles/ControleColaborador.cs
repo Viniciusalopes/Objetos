@@ -35,31 +35,31 @@ namespace Objetos.Controles
     public class ControleColaborador : ICRUD<Colaborador>
     {
         #region ATRIBUTOS
-        
+
         PAColaborador persistencia = null;
-        
+
         #endregion ATRIBUTOS
 
         #region CONSTRUTORES
-        
+
         public ControleColaborador()
         {
             persistencia = new PAColaborador();
         }
-        
+
         #endregion CONSTRUTORES
 
         #region CREATE
-        
-        public void Incluir(Colaborador colaborador)
+
+        public long Incluir(Colaborador colaborador)
         {
-            persistencia.Incluir(colaborador);
+            return persistencia.Incluir(colaborador);
         }
-        
+
         #endregion CREATE
 
         #region READ
-        
+
         public Colaborador Buscar(long idPessoa)
         {
             return persistencia.Buscar(idPessoa);
@@ -70,34 +70,34 @@ namespace Objetos.Controles
             return persistencia.Consultar();
         }
 
-        public List<Colaborador> Consultar(object colaborador)
+        public List<Colaborador> Consultar(object colaborador, string atributo)
         {
-            return persistencia.Consultar(colaborador);
+            return persistencia.Consultar(colaborador, atributo);
         }
-        
+
         public Colaborador ToObject(string texto)
         {
             return persistencia.ToObject(texto);
         }
-        
+
         #endregion READ
 
         #region UPDATE
-        
+
         public void Atualizar(Colaborador colaborador)
         {
             persistencia.Atualizar(colaborador);
         }
-        
+
         #endregion UPDATE
 
         #region DELETE
-        
+
         public void Excluir(long idPessoa)
         {
             persistencia.Excluir(idPessoa);
         }
-        
+
         #endregion DELETE
     }
 }

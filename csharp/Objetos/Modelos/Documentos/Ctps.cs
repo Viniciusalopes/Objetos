@@ -39,6 +39,22 @@ namespace Objetos.Modelos.Documentos
         public Municipio MunicipioCtps { get; set; }
         public UF UfCtps { get; set; }
 
+
+        public Ctps()
+        {
+
+        }
+
+        public Ctps(int numeroCtps, string serieCtps, string tipoCtps, DateTime dataEmissaoCtps, Municipio municipioCtps, UF ufCtps)
+        {
+            NumeroCtps = numeroCtps;
+            SerieCtps = serieCtps;
+            TipoCtps = tipoCtps;
+            DataEmissaoCtps = dataEmissaoCtps;
+            MunicipioCtps = municipioCtps;
+            UfCtps = ufCtps;
+        }
+
         public override string ToString()
         {
             char sep = ConstantesGerais.SeparadorSplit;

@@ -18,7 +18,7 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Persistencia em arquivo para Colaborador
+///     Persistencia em arquivo para Colaborador.
 ///     Criação : Vovolinux
 ///     Data    : 05/07/2020
 ///     Projeto : Objetos genéricos para C#.
@@ -30,6 +30,7 @@ using Objetos.Interfaces;
 using Objetos.Modelos.Folha;
 using System;
 using System.Collections.Generic;
+using Objetos.Utilitarios;
 
 namespace Objetos.Persistencia.Arquivos
 {
@@ -41,6 +42,7 @@ namespace Objetos.Persistencia.Arquivos
 
         private Colaborador colaborador = null;
         private List<Colaborador> colaboradores = null;
+        private List<Colaborador> colaboradoresRetorno = null;
 
         #endregion ATRIBUTOS
 
@@ -55,15 +57,17 @@ namespace Objetos.Persistencia.Arquivos
 
         #region CREATE
 
-        public void Incluir(Colaborador colaborador)
+        public long Incluir(Colaborador colaborador)
         {
             try
             {
+                colaborador.IdColaborador = GeradorID.getProximoID();
                 controleArquivo.IncluirLinha(colaborador.ToString());
+                return colaborador.IdColaborador;
             }
             catch (Exception ex)
             {
-                throw new Exception("col" + ConstantesGerais.SeparadorTraco + "001#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("col" + ConstantesGerais.SeparadorTraco + "001" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -71,19 +75,19 @@ namespace Objetos.Persistencia.Arquivos
 
         #region READ
 
-        public Colaborador Buscar(long idPessoa)
+        public Colaborador Buscar(long idColaborador)
         {
             try
             {
                 foreach (Colaborador colaborador in Consultar())
-                    if (colaborador.IdPessoa == idPessoa)
+                    if (colaborador.IdColaborador == idColaborador)
                         return colaborador;
 
                 return null;
             }
             catch (Exception ex)
             {
-                throw new Exception("col" + ConstantesGerais.SeparadorTraco + "002#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("col" + ConstantesGerais.SeparadorTraco + "002" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -91,36 +95,65 @@ namespace Objetos.Persistencia.Arquivos
         {
             try
             {
-                colaboradores = new List<Colaborador>();
+                colaboradoresRetorno = new List<Colaborador>();
                 string[] linhas = controleArquivo.LerLinhas();
 
                 foreach (string linha in linhas)
-                    colaboradores.Add(ToObject(linha));
+                    colaboradoresRetorno.Add(ToObject(linha));
 
-                return colaboradores;
+                return colaboradoresRetorno;
             }
             catch (Exception ex)
             {
-                throw new Exception("col" + ConstantesGerais.SeparadorTraco + "003#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("col" + ConstantesGerais.SeparadorTraco + "003" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
-        public List<Colaborador> Consultar(object parametro)
+        public List<Colaborador> Consultar(object parametro, string atributo)
         {
             try
             {
-                colaboradores = new List<Colaborador>();
+                colaboradores = Consultar();
+                colaboradoresRetorno = new List<Colaborador>();
 
-                foreach (Colaborador colaborador in Consultar())
-                {
-                    if (colaborador.NomePessoa.Equals((string)parametro))
-                        colaboradores.Add(colaborador);
-                }
-                return colaboradores;
+                // Retorna vazio se não informar o atributo
+                if (atributo.Trim().Length == 0)
+                    return colaboradoresRetorno;
+
+                int inteiro = (int)parametro;
+
+                foreach (Colaborador colaborador in colaboradores)
+                    switch (atributo)
+                    {
+                        case "IdPessoa":
+                            if (colaborador.IdPessoa == inteiro)
+                                colaboradoresRetorno.Add(colaborador);
+                            break;
+
+                        case "IdEmpresa":
+                            if (colaborador.IdEmpresa == inteiro)
+                                colaboradoresRetorno.Add(colaborador);
+                            break;
+
+                        case "IdSetor":
+                            if (colaborador.IdSetor == inteiro)
+                                colaboradoresRetorno.Add(colaborador);
+                            break;
+
+                        case "MartriculaColaborador":
+                            if (colaborador.MatriculaColaborador == inteiro)
+                                colaboradoresRetorno.Add(colaborador);
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                return colaboradoresRetorno;
             }
             catch (Exception ex)
             {
-                throw new Exception("col" + ConstantesGerais.SeparadorTraco + "004#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("col" + ConstantesGerais.SeparadorTraco + "004" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -132,14 +165,16 @@ namespace Objetos.Persistencia.Arquivos
                 return new Colaborador(
                     long.Parse(partes[0]),
                     long.Parse(partes[1]),
-                    int.Parse(partes[2]),
-                    DateTime.Parse(partes[3]),
-                    DateTime.Parse(partes[4]),
+                    long.Parse(partes[2]),
+                    long.Parse(partes[3]),
+                    int.Parse(partes[4]),
+                    DateTime.Parse(partes[5]),
+                    DateTime.Parse(partes[6]),
                     null);
             }
             catch (Exception ex)
             {
-                throw new Exception("col" + ConstantesGerais.SeparadorTraco + "005#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("col" + ConstantesGerais.SeparadorTraco + "005" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -151,7 +186,7 @@ namespace Objetos.Persistencia.Arquivos
             try
             {
                 foreach (Colaborador oColaborador in Consultar())
-                    if (oColaborador.IdPessoa == colaborador.IdPessoa)
+                    if (oColaborador.IdColaborador == colaborador.IdColaborador)
                     {
                         controleArquivo.SubstituirLinha(oColaborador.ToString(), colaborador.ToString());
                         break;
@@ -159,7 +194,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("col" + ConstantesGerais.SeparadorTraco + "006#Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("col" + ConstantesGerais.SeparadorTraco + "006" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -167,12 +202,12 @@ namespace Objetos.Persistencia.Arquivos
 
         #region DELETE
 
-        public void Excluir(long idPessoa)
+        public void Excluir(long idEmpresa)
         {
             try
             {
                 foreach (Colaborador oColaborador in Consultar())
-                    if (oColaborador.IdPessoa == colaborador.IdPessoa)
+                    if (oColaborador.IdColaborador == colaborador.IdColaborador)
                     {
                         controleArquivo.ExcluirLinha(oColaborador.ToString());
                         break;
@@ -180,7 +215,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("col" + ConstantesGerais.SeparadorTraco + "007Camada: Persistência-Arquivos#Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("col" + ConstantesGerais.SeparadorTraco + "007" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 

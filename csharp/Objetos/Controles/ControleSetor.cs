@@ -49,9 +49,10 @@ namespace Objetos.Controles
         #endregion CONSTRUTORES
 
         #region CREATE
-        public void Incluir(Setor setor)
+
+        public long Incluir(Setor setor)
         {
-            persistencia.Incluir(setor);
+            return persistencia.Incluir(setor);
         }
 
         #endregion CREATE
@@ -68,9 +69,9 @@ namespace Objetos.Controles
             return persistencia.Consultar();
         }
 
-        public List<Setor> Consultar(object parametro)
+        public List<Setor> Consultar(object parametro, string atributo)
         {
-            return persistencia.Consultar(parametro);
+            return persistencia.Consultar(parametro, atributo);
         }
 
         public Setor ToObject(string texto)

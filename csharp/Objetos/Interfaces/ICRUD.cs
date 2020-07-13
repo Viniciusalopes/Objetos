@@ -33,7 +33,8 @@ namespace Objetos.Interfaces
     public interface ICRUD<T> where T : new()
     {
         #region CREATE
-        void Incluir(T objeto);
+
+        long Incluir(T objeto);
 
         #endregion CREATE
 
@@ -43,7 +44,7 @@ namespace Objetos.Interfaces
 
         List<T> Consultar();
 
-        List<T> Consultar(object parametro);
+        List<T> Consultar(object parametro, string atributo);
 
         T ToObject(string texto);
 

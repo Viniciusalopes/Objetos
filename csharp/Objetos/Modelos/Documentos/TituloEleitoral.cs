@@ -37,8 +37,32 @@ namespace Objetos.Modelos.Documentos
         public int ZonaTitulo { get; set; }
         public int SecaoTitulo { get; set; }
         public Municipio MunicipioTitulo { get; set; }
-        public UF UFTitulo { get; set; }
+        public UF UfTitulo { get; set; }
         public DateTime DataEmissaoTitulo { get; set; }
+
+        public TituloEleitoral()
+        {
+
+        }
+
+        public TituloEleitoral(
+            bool identificacaoBiometricaTitulo,
+            string numeroInscricaoTitulo,
+            int zonaTitulo,
+            int secaoTitulo,
+            Municipio municipioTitulo,
+            UF ufTitulo,
+            DateTime dataEmissaoTitulo)
+        {
+            IdentificacaoBiometricaTitulo = identificacaoBiometricaTitulo;
+            NumeroInscricaoTitulo = numeroInscricaoTitulo;
+            ZonaTitulo = zonaTitulo;
+            SecaoTitulo = secaoTitulo;
+            MunicipioTitulo = municipioTitulo;
+            UfTitulo = ufTitulo;
+            DataEmissaoTitulo = dataEmissaoTitulo;
+        }
+
         public override string ToString()
         {
             char sep = ConstantesGerais.SeparadorSplit;
@@ -47,7 +71,7 @@ namespace Objetos.Modelos.Documentos
                 + ZonaTitulo.ToString() + sep
                 + SecaoTitulo.ToString() + sep
                 + MunicipioTitulo.CodigoMunicipio + sep
-                + UFTitulo.IdUf + sep
+                + UfTitulo.IdUf + sep
                 + DataEmissaoTitulo.ToString() + sep;
         }
     }
