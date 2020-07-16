@@ -20,7 +20,7 @@
 /// <summary>
 ///     Rascunho para criação de novas classes, interfaces, etc.
 ///     Criação : Vovolinux
-///     Data    : 07/07/2020
+///     Data    : 15/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 

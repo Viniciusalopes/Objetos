@@ -24,7 +24,7 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Constantes;
+using static Objetos.Constantes.ConstantesGerais;
 
 namespace Objetos.Modelos.Documentos
 {
@@ -44,6 +44,6 @@ namespace Objetos.Modelos.Documentos
             DescricaoNaturezaJuridica = descricaoNaturezaJuridica;
         }
 
-        public override string ToString() => CodigoNaturezaJuridica + ConstantesGerais.SeparadorSplit + DescricaoNaturezaJuridica;
+        public override string ToString() => CodigoNaturezaJuridica + SeparadorSplit + DescricaoNaturezaJuridica;
     }
 }

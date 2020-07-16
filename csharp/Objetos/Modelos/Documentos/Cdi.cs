@@ -24,8 +24,8 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Constantes;
 using System;
+using static Objetos.Constantes.ConstantesGerais;
 using static Objetos.Constantes.EnumForcasArmadas;
 
 namespace Objetos.Modelos.Documentos
@@ -54,12 +54,12 @@ namespace Objetos.Modelos.Documentos
 
         public override string ToString()
         {
-            char sep = ConstantesGerais.SeparadorSplit;
-            return NumeroCdi + sep
-                + ViaCdi.ToString() + sep
-                + DataDispensa.ToString() + sep
-                + MotivoDispensa + sep
-                + (int)ForcaArmada;
+            char sep = SeparadorSplit;
+            return NumeroCdi
+                + sep + ViaCdi.ToString()
+                + sep + DataDispensa.ToString()
+                + sep + MotivoDispensa
+                + sep + (int)ForcaArmada;
         }
     }
 }

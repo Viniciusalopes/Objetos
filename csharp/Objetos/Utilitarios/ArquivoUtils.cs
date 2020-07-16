@@ -27,7 +27,7 @@
 
 using System;
 using System.IO;
-using Objetos.Constantes;
+using static Objetos.Constantes.ConstantesGerais;
 namespace Objetos.Utilitarios
 {
     public static class ArquivoUtils
@@ -35,12 +35,12 @@ namespace Objetos.Utilitarios
         public static void validarNomeDiretorio(string caminho)
         {
             if (caminho.Trim().Length < 3)
-                throw new Exception("csv" + ConstantesGerais.SeparadorTraco + "001");
+                throw new Exception("csv" + SeparadorTraco + "001");
         }
         public static void validarNomeArquivo(string nomeArquivo)
         {
             if (nomeArquivo.Trim().Length == 0)
-                throw new Exception("csv" + ConstantesGerais.SeparadorTraco + "002");
+                throw new Exception("csv" + SeparadorTraco + "002");
         }
 
         public static void criarDiretorio(string caminho)

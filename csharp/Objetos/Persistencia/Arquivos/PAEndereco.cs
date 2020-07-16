@@ -18,36 +18,73 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Documentos comuns a uma Pessoa Jurídica.
+///     Persistência em arquivo para Endereco.
 ///     Criação : Vovolinux
-///     Data    : 28/06/2020
+///     Data    : 15/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Constantes;
+using Objetos.Interfaces;
+using Objetos.Modelos.Enderecos;
+using System;
+using System.Collections.Generic;
 
-namespace Objetos.Modelos.Documentos
+namespace Objetos.Persistencia.Arquivos
 {
-    public class DocumentosPessoaJuridica
+    public class PAEndereco : ICRUD<Endereco>
     {
-        public Cnpj Cnpj { get; set; }
-        public string InscricaoEstadual { get; set; }
-        public string InscricaoMunicipal { get; set; }
+        #region ATRIBUTOS
+        private Arquivo controleArquivo = null;
 
-        public DocumentosPessoaJuridica()
-        {
+        private Endereco endereco = null;
+        private List<Endereco> enderecos = null;
+        private List<Endereco> enderecosRetorno = null;
 
-        }
-        public DocumentosPessoaJuridica(Cnpj cnpj, string inscricaoEstadual = null, string inscricaoMunicipal = null)
+        #endregion ATRIBUTOS
+
+        #region CONSTRUTORES
+
+        public PAEndereco()
         {
-            Cnpj = cnpj;
-            InscricaoEstadual = inscricaoEstadual;
-            InscricaoMunicipal = inscricaoMunicipal;
+            controleArquivo = new Arquivo();
         }
-        public override string ToString()
+
+        #endregion CONSTRUTORES
+
+
+        public void Atualizar(Endereco objeto)
         {
-            char sep = ConstantesGerais.SeparadorSplit;
-            return Cnpj.ToString() + sep + InscricaoEstadual + sep + InscricaoMunicipal;
+            throw new NotImplementedException();
+        }
+
+        public Endereco Buscar(long id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Endereco> Consultar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Endereco> Consultar(object parametro, string atributo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Excluir(long id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public long Incluir(Endereco objeto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Endereco ToObject(string texto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

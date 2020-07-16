@@ -27,10 +27,12 @@
 using static Objetos.Controles.ControleMensagem;
 using System;
 using System.Collections.Generic;
-using Objetos.Constantes;
 using Objetos.Interfaces;
 using Objetos.Modelos.Documentos;
 using static Objetos.Constantes.EnumTipoCnae;
+using static Objetos.Constantes.EnumEntidade;
+using static Objetos.Constantes.ConstantesGerais;
+using Objetos.Utilitarios;
 
 namespace Objetos.Persistencia.Arquivos
 {
@@ -49,22 +51,24 @@ namespace Objetos.Persistencia.Arquivos
 
         public PACnae()
         {
-            controleArquivo = new Arquivo("Cnae", "pho", "");
+            controleArquivo = new Arquivo(Entidade.Cnae.ToString(), ExtensaoArquivoBd, "");
         }
         #endregion CONSTRUTORES
 
 
         #region CREATE
 
-        public void Incluir(Cnae cnae)
+        public long Incluir(Cnae cnae)
         {
             try
             {
+                cnae.IdCnae = GeradorID.getProximoID();
                 controleArquivo.IncluirLinha(cnae.ToString());
+                return cnae.IdCnae;
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae" + ConstantesGerais.SeparadorTraco + "001" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("cnae" + SeparadorTraco + "001" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -84,7 +88,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae" + ConstantesGerais.SeparadorTraco + "002" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("cnae" + SeparadorTraco + "002" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -102,11 +106,11 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae" + ConstantesGerais.SeparadorTraco + "003" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("cnae" + SeparadorTraco + "003" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
-        public List<Cnae> Consultar(object parametro)
+        public List<Cnae> Consultar(object parametro, string atributo)
         {
             try
             {
@@ -163,19 +167,19 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae" + ConstantesGerais.SeparadorTraco + "004" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("cnae" + SeparadorTraco + "004" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
         public Cnae ToObject(string texto)
         {
             try { 
-            string[] partes = texto.Split(ConstantesGerais.SeparadorSplit);
+            string[] partes = texto.Split(SeparadorSplit);
             return new Cnae(int.Parse(partes[0]), long.Parse(partes[1]), (TipoCnae)int.Parse(partes[2]), partes[3], partes[4]);
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae" + ConstantesGerais.SeparadorTraco + "005" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("cnae" + SeparadorTraco + "005" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -196,7 +200,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae" + ConstantesGerais.SeparadorTraco + "006" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("cnae" + SeparadorTraco + "006" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -217,7 +221,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("cnae" + ConstantesGerais.SeparadorTraco + "007Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("cnae" + SeparadorTraco + "007Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 

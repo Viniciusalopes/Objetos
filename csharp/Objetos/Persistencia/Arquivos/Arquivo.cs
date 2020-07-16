@@ -25,11 +25,12 @@
 /// </summary>
 
 using static Objetos.Controles.ControleMensagem;
-using Objetos.Constantes;
+using static Objetos.Constantes.ConstantesGerais;
 using System;
 using System.IO;
 using System.Text;
 using static Objetos.Utilitarios.ArquivoUtils;
+using Objetos.Constantes;
 
 namespace Objetos.Persistencia.Arquivos
 {
@@ -58,7 +59,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "001" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos#caminhoCompleto: " + caminhoCompleto
+                throw new Exception("arq" + SeparadorTraco + "001" + SeparadorEnter + "Camada: Persistência-Arquivos#caminhoCompleto: " + caminhoCompleto
                     + "#" + MensagemCompleta(ex.Message));
             }
         }
@@ -73,24 +74,24 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "002" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos#diretorioArquivo: " + diretorioArquivo
+                throw new Exception("arq" + SeparadorTraco + "002" + SeparadorEnter + "Camada: Persistência-Arquivos#diretorioArquivo: " + diretorioArquivo
                     + "#nomeArquivo: " + nomeArquivo
                     + "#" + MensagemCompleta(ex.Message));
             }
         }
 
-        public Arquivo(string objeto, string extensao, string dirRoot = "")
+        public Arquivo(string entidade, string extensao, string dirRoot = "")
         {
             try
             {
-                cfg = new ConfiguracaoPA(objeto, extensao, dirRoot);
+                cfg = new ConfiguracaoPA(entidade, extensao, dirRoot);
                 garantirDiretorio(cfg.Diretorios.DirDados);
                 caminhoArquivo = cfg.Diretorios.DirDados + cfg.Arquivos.ArquivoDeDados;
                 garantirArquivo(caminhoArquivo);
             }
             catch (Exception ex)
             {
-                throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "009" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos#diretorioArquivo: " + cfg.Diretorios.DirDados
+                throw new Exception("arq" + SeparadorTraco + "009" + SeparadorEnter + "Camada: Persistência-Arquivos#diretorioArquivo: " + cfg.Diretorios.DirDados
                     + "#nomeArquivo: " + cfg.Arquivos.ArquivoDeDados
                     + "#" + MensagemCompleta(ex.Message));
             }
@@ -112,7 +113,7 @@ namespace Objetos.Persistencia.Arquivos
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "003" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos#"
+                    throw new Exception("arq" + SeparadorTraco + "003" + SeparadorEnter + "Camada: Persistência-Arquivos#"
                         + MensagemCompleta(ex.Message));
                 }
             }
@@ -138,7 +139,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "004" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo 
+                throw new Exception("arq" + SeparadorTraco + "004" + SeparadorEnter + "Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo 
                     + "#" + MensagemCompleta(ex.Message));
             }
         }
@@ -161,12 +162,12 @@ namespace Objetos.Persistencia.Arquivos
                     texto += linha + Environment.NewLine;
 
                 StreamWriter sw = File.CreateText(caminhoArquivo);
-                sw.WriteLine(texto);
+                sw.Write(texto);
                 sw.Close();
             }
             catch (Exception ex)
             {
-                throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "005" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo 
+                throw new Exception("arq" + SeparadorTraco + "005" + SeparadorEnter + "Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo 
                     + "#" + MensagemCompleta(ex.Message));
             }
         }
@@ -182,7 +183,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "006" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo
+                throw new Exception("arq" + SeparadorTraco + "006" + SeparadorEnter + "Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo
                     + "#texto: " + texto
                     + "#" + MensagemCompleta(ex.Message)
                     );
@@ -205,7 +206,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "007" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo
+                throw new Exception("arq" + SeparadorTraco + "007" + SeparadorEnter + "Camada: Persistência-Arquivos#caminhoArquivo: " + caminhoArquivo
                     + "#referencia: " + referencia
                     + "#novoValor: " + novoValor
                     + "#" + MensagemCompleta(ex.Message)
@@ -228,7 +229,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("arq" + ConstantesGerais.SeparadorTraco + "008" + ConstantesGerais.SeparadorEnter + "Camada: Persistencia-Arquivos#caminhoArquivo: " + caminhoArquivo
+                throw new Exception("arq" + SeparadorTraco + "008" + SeparadorEnter + "Camada: Persistencia-Arquivos#caminhoArquivo: " + caminhoArquivo
                     + "#linha: " + linha
                     + "#" + MensagemCompleta(ex.Message)
                     );

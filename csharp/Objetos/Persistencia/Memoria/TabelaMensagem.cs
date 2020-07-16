@@ -25,7 +25,7 @@
 /// </summary>
 
 using System.Collections.Generic;
-using Objetos.Constantes;
+using static Objetos.Constantes.ConstantesGerais;
 using Objetos.Modelos;
 using Objetos.Modelos.Dados;
 
@@ -45,7 +45,7 @@ namespace Objetos.Persistencia.Memoria
         {
             get
             {
-                char sep = ConstantesGerais.SeparadorTraco;
+                char sep = SeparadorTraco;
                 mensagens = new List<Mensagem>();
                 int i = 0;
 

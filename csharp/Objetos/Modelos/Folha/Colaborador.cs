@@ -24,10 +24,10 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Constantes;
-using Objetos.Modelos.Pessoas;
 using System;
 using System.Collections.Generic;
+using Objetos.Modelos.Pessoas;
+using static Objetos.Constantes.ConstantesGerais;
 
 namespace Objetos.Modelos.Folha
 {
@@ -73,15 +73,15 @@ namespace Objetos.Modelos.Folha
 
         public override string ToString()
         {
-            char sep = ConstantesGerais.SeparadorSplit;
-            return IdColaborador.ToString() + sep
-                + IdPessoa + sep
-                + IdEmpresa + sep
-                + IdSetor + sep
-                + MatriculaColaborador + sep
-                + DataAdmissao.ToString() + sep
-                + DataDemissao.ToString() + sep
-                + ((JornadaColaborador == null) ? sep+"" : JornadaColaborador.IdJornada.ToString());
+            char sep = SeparadorSplit;
+            return IdColaborador.ToString()
+                + sep + IdPessoa
+                + sep + IdEmpresa
+                + sep + IdSetor
+                + sep + MatriculaColaborador
+                + sep + DataAdmissao.ToString()
+                + sep + DataDemissao.ToString()
+                + sep + ((JornadaColaborador == null) ? sep + "" : JornadaColaborador.IdJornada.ToString());
         }
     }
 }

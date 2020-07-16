@@ -24,13 +24,14 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Constantes;
+using static Objetos.Constantes.ConstantesGerais;
 
 namespace Objetos.Modelos.Enderecos
 {
     public class Municipio
     {
         #region ATRIBUTOS
+        public long IdMunicipio { get; set; }
         public int CodigoMunicipio { get; set; }
         public string NomeMunicipio { get; set; }
 
@@ -43,8 +44,9 @@ namespace Objetos.Modelos.Enderecos
 
         }
 
-        public Municipio(int codigo, string nome)
+        public Municipio(long idMunicipio, int codigo, string nome)
         {
+            IdMunicipio = idMunicipio;
             CodigoMunicipio = codigo;
             NomeMunicipio = nome;
         }
@@ -53,7 +55,7 @@ namespace Objetos.Modelos.Enderecos
 
         #region GET
 
-        public override string ToString() => CodigoMunicipio.ToString() + ConstantesGerais.SeparadorSplit + NomeMunicipio;
+        public override string ToString() => IdMunicipio + SeparadorSplit + CodigoMunicipio + SeparadorSplit + NomeMunicipio;
 
         #endregion GET
     }

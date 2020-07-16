@@ -1,4 +1,8 @@
-﻿/// <licenca>
+﻿
+using Objetos.Interfaces;
+using Objetos.Modelos.Enderecos;
+using System.Collections.Generic;
+/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -18,52 +22,48 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Carteira de Trabalho e Previdência Social - CTPS.
+///     Controller para Endereco.
 ///     Criação : Vovolinux
-///     Data    : 28/06/2020
+///     Data    : 15/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
-
-using System;
-using Objetos.Modelos.Enderecos;
-using static Objetos.Constantes.ConstantesGerais;
-
-namespace Objetos.Modelos.Documentos
+namespace Objetos.Controles
 {
-    public class Ctps
+    public class ControleEndereco : ICRUD<Endereco>
     {
-        public int NumeroCtps { get; set; }
-        public string SerieCtps { get; set; }
-        public string TipoCtps { get; set; }
-        public DateTime DataEmissaoCtps { get; set; }
-        public Municipio MunicipioCtps { get; set; }
-        public UF UfCtps { get; set; }
-
-
-        public Ctps()
+        public void Atualizar(Endereco objeto)
         {
-
+            throw new System.NotImplementedException();
         }
 
-        public Ctps(int numeroCtps, string serieCtps, string tipoCtps, DateTime dataEmissaoCtps, Municipio municipioCtps, UF ufCtps)
+        public Endereco Buscar(long id)
         {
-            NumeroCtps = numeroCtps;
-            SerieCtps = serieCtps;
-            TipoCtps = tipoCtps;
-            DataEmissaoCtps = dataEmissaoCtps;
-            MunicipioCtps = municipioCtps;
-            UfCtps = ufCtps;
+            throw new System.NotImplementedException();
         }
 
-        public override string ToString()
+        public List<Endereco> Consultar()
         {
-            char sep = SeparadorSplit;
-            return NumeroCtps.ToString()
-                 + sep + SerieCtps
-                 + sep + TipoCtps
-                 + sep + DataEmissaoCtps
-                 + sep + MunicipioCtps.CodigoMunicipio
-                 + sep + UfCtps.IdUf;
+            throw new System.NotImplementedException();
+        }
+
+        public List<Endereco> Consultar(object parametro, string atributo)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Excluir(long id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public long Incluir(Endereco objeto)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Endereco ToObject(string texto)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

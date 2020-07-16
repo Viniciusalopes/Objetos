@@ -50,9 +50,9 @@ namespace Objetos.Controles
 
         #region CREATE
 
-        public void Incluir(Cnae cnae)
+        public long Incluir(Cnae cnae)
         {
-            persistencia.Incluir(cnae);
+            return persistencia.Incluir(cnae);
         }
 
         #endregion CREATE
@@ -69,9 +69,9 @@ namespace Objetos.Controles
             return persistencia.Consultar();
         }
 
-        public List<Cnae> Consultar(object parametro)
+        public List<Cnae> Consultar(object parametro, string atributo)
         {
-            return persistencia.Consultar(parametro);
+            return persistencia.Consultar(parametro, atributo);
         }
 
         public Cnae ToObject(string texto)

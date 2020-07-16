@@ -51,9 +51,9 @@ namespace Objetos.Controles
 
         #region CREATE
   
-        public void Incluir(Municipio municipio)
+        public long Incluir(Municipio municipio)
         {
-            persistencia.Incluir(municipio);
+            return persistencia.Incluir(municipio);
         }
         
         #endregion CREATE
@@ -70,9 +70,9 @@ namespace Objetos.Controles
             return persistencia.Consultar();
         }
 
-        public List<Municipio> Consultar(object parametro)
+        public List<Municipio> Consultar(object parametro, string atributo)
         {
-            return persistencia.Consultar(parametro);
+            return persistencia.Consultar(parametro, atributo);
         }
 
         public Municipio ToObject(string texto)

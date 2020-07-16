@@ -27,8 +27,9 @@
 using Objetos.Constantes;
 using Objetos.Persistencia.Arquivos;
 using System;
-using static Objetos.Constantes.EnumEntidades;
+using static Objetos.Constantes.EnumEntidade;
 using static Objetos.Controles.ControleMensagem;
+using static Objetos.Constantes.ConstantesGerais;
 
 namespace Objetos.Utilitarios
 {
@@ -51,35 +52,51 @@ namespace Objetos.Utilitarios
         {
             try
             {
-                foreach (string objeto in Enum.GetNames(typeof(Entidades)))                                     // Para cada arqivo de dados
-                {
-                    if (!objeto.Equals("Todas"))
-                    {
-                        entidade = objeto;
-                        controleArquivo = new Arquivo(objeto, "pho", "");                                       // Controle de arquivo
-                        foreach (string linha in controleArquivo.LerLinhas())                                   // Para cada linha do arquivo
-                            if (linha.Trim().Length > 1 && linha.Contains(ConstantesGerais.SeparadorSplit+""))  // Verifica se o tem pelo menos uma coluna
-                            {
-                                string texto = linha.Split(ConstantesGerais.SeparadorSplit)[0];                 // Armazena o texto com o ID do registro
+                controleArquivo = new Arquivo("ID", ExtensaoArquivoBd, "");
+                string[] linhas = controleArquivo.LerLinhas();
 
-                                if (texto.Trim().Length > 0)                                                    // Verifica se o texto não está vazio
-                                {
-                                    bool numeral = long.TryParse(texto, out maior);                             // Converte o texto para inteiro
-                                    if (numeral)                                                                // Se o texto só tem números
-                                    {
-                                        id = (maior > id) ? maior : id;                                         // Maior id encontrado
-                                    }
-                                }
-                            }
-                    }
-                }
-                return id + 1;  // Retorna o próximo ID único não utilizado
+                if (linhas.Length == 0)
+                    ReindexarTabelas(); // ReindexarTabelas() já atribui valor ao id.
+                else
+                    id = long.Parse(linhas[0].Split(SeparadorSplit)[0]);
+                
+                controleArquivo = new Arquivo("ID", ExtensaoArquivoBd, "");
+                controleArquivo.EscreverLinhas(new string[] { id + 1 + "" });
+
+                return id + 1;  // Retorna o próximo ID único não utilizado, ou o id do arquivo.
 
             }
             catch (Exception ex)
             {
-                throw new Exception("ger" + ConstantesGerais.SeparadorTraco + "001#Objeto: " + entidade + "" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("ger" + SeparadorTraco + "001#Objeto: " + entidade + "" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
+        }
+
+        private static long ReindexarTabelas()
+        {
+            foreach (string objeto in Enum.GetNames(typeof(Entidade)))                                     // Para cada arqivo de dados
+            {
+                if (!objeto.Equals("Todas"))
+                {
+                    entidade = objeto;
+                    controleArquivo = new Arquivo(objeto, ExtensaoArquivoBd, "");                                       // Controle de arquivo
+                    foreach (string linha in controleArquivo.LerLinhas())                                   // Para cada linha do arquivo
+                        if (linha.Trim().Length > 1 && linha.Contains(SeparadorSplit + ""))  // Verifica se o tem pelo menos uma coluna
+                        {
+                            string texto = linha.Split(SeparadorSplit)[0];                 // Armazena o texto com o ID do registro
+
+                            if (texto.Trim().Length > 0)                                                    // Verifica se o texto não está vazio
+                            {
+                                bool numeral = long.TryParse(texto, out maior);                             // Converte o texto para inteiro
+                                if (numeral)                                                                // Se o texto só tem números
+                                {
+                                    id = (maior > id) ? maior : id;                                         // Maior id encontrado
+                                }
+                            }
+                        }
+                }
+            }
+            return id;
         }
     }
 }

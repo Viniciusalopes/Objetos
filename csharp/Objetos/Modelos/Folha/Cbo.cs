@@ -24,6 +24,9 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 /// 
+
+using static Objetos.Constantes.ConstantesGerais;
+
 namespace Objetos.Modelos.Folha
 {
     public class Cbo
@@ -39,6 +42,11 @@ namespace Objetos.Modelos.Folha
         {
             CodigoCbo = codigoCbo;
             TituloCbo = tituloCbo;
+        }
+
+        public override string ToString()
+        {
+            return CodigoCbo + SeparadorSplit + TituloCbo;
         }
     }
 }

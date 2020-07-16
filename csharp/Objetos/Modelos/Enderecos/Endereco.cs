@@ -24,16 +24,16 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Constantes;
-using static Objetos.Constantes.EnumTipoEnderecoTelefone;
-using static Objetos.Utilitarios.StringUtils;
+using static Objetos.Constantes.ConstantesGerais;
+using static Objetos.Constantes.EnumTipoEnderecoTelefoneEmail;
 
 namespace Objetos.Modelos.Enderecos
 {
     public class Endereco
     {
-        public long IdPessoa { get; set; }
+  
         public long IdEndereco { get; set; }
+        public long IdPessoa { get; set; }
         public string Logradouro { get; set; }
         public int Numero { get; set; }
         public string ComplementoEndereco { get; set; }
@@ -41,7 +41,7 @@ namespace Objetos.Modelos.Enderecos
         public string SetorBairroDistrito { get; set; }
         public Municipio oMunicipio { get; set; }
         public UF oUF { get; set; }
-        public EnumTipoEnderecoTelefone.TipoEnderecoTelefone TipoEndereco { get; set; }
+        public TipoEnderecoTelefoneEmail TipoEndereco { get; set; }
 
         public Endereco()
         {
@@ -50,8 +50,8 @@ namespace Objetos.Modelos.Enderecos
         }
 
         public Endereco(
-            long idPessoa,
             long idEndereco,
+            long idPessoa,
             string logradouro,
             int numero,
             string complementoEndereco,
@@ -59,11 +59,11 @@ namespace Objetos.Modelos.Enderecos
             string setorBairroDistrito,
             Municipio municipio,
             UF uf,
-            TipoEnderecoTelefone tipoEndereco
+            TipoEnderecoTelefoneEmail tipoEndereco
             )
         {
-            IdPessoa = idPessoa;
             IdEndereco = idEndereco;
+            IdPessoa = idPessoa;
             Logradouro = logradouro;
             Numero = numero;
             ComplementoEndereco = complementoEndereco;
@@ -76,17 +76,17 @@ namespace Objetos.Modelos.Enderecos
 
         public override string ToString()
         {
-            char sep = ConstantesGerais.SeparadorSplit;
-            return IdEndereco.ToString() + sep 
-                + IdPessoa + sep
-                + ((string.IsNullOrEmpty(Logradouro)) ? "" : Logradouro) + sep
-                + Numero + sep
-                + ((string.IsNullOrEmpty(ComplementoEndereco)) ? "" : ComplementoEndereco) + sep
-                + ((string.IsNullOrEmpty(Cep)) ? "" : Cep) + sep
-                + ((string.IsNullOrEmpty(SetorBairroDistrito)) ? "" : SetorBairroDistrito) + sep
-                + ((oMunicipio == null) ? "" : oMunicipio.CodigoMunicipio.ToString()) + sep
-                + ((oUF == null) ? "" : oUF.IdUf.ToString()) + sep
-                + (int)TipoEndereco;
+            char sep = SeparadorSplit;
+            return IdEndereco.ToString()
+                + sep + IdPessoa + sep
+                + sep + ((string.IsNullOrEmpty(Logradouro)) ? "" : Logradouro)
+                + sep + Numero
+                + sep + ((string.IsNullOrEmpty(ComplementoEndereco)) ? "" : ComplementoEndereco)
+                + sep + ((string.IsNullOrEmpty(Cep)) ? "" : Cep)
+                + sep + ((string.IsNullOrEmpty(SetorBairroDistrito)) ? "" : SetorBairroDistrito)
+                + sep + ((oMunicipio == null) ? "" : oMunicipio.CodigoMunicipio.ToString())
+                + sep + ((oUF == null) ? "" : oUF.IdUf.ToString())
+                + sep + (int)TipoEndereco;
         }
     }
 }

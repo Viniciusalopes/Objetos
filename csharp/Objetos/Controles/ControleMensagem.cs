@@ -24,7 +24,7 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Constantes;
+using static Objetos.Constantes.ConstantesGerais;
 using Objetos.Modelos;
 using Objetos.Persistencia.Memoria;
 using System;
@@ -35,9 +35,9 @@ namespace Objetos.Controles
     {
         #region ATRIBUTOS
         
-        private static char traco = ConstantesGerais.SeparadorTraco;
-        private static char enter = ConstantesGerais.SeparadorEnter;
-        private static Mensagem mensagemRetorno = new Mensagem(0, "sys" + ConstantesGerais.SeparadorTraco + "000", "", "");
+        private static char traco = SeparadorTraco;
+        private static char enter = SeparadorEnter;
+        private static Mensagem mensagemRetorno = new Mensagem(0, "sys" + SeparadorTraco + "000", "", "");
 
         #endregion ATRIBUTOS
 

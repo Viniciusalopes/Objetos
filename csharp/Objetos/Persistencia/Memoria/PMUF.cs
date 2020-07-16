@@ -27,7 +27,7 @@
 using System;
 using System.Collections.Generic;
 using Objetos.Interfaces;
-using Objetos.Constantes;
+using static Objetos.Constantes.ConstantesGerais;
 using Objetos.Modelos.Enderecos;
 using static Objetos.Constantes.EnumRegiao;
 using static Objetos.Controles.ControleMensagem;
@@ -60,7 +60,7 @@ namespace Objetos.Persistencia.Memoria
             }
             catch (Exception ex)
             {
-                throw new Exception("uf" + ConstantesGerais.SeparadorTraco + "001" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Memória" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("uf" + SeparadorTraco + "001" + SeparadorEnter + "Camada: Persistência-Memória" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -134,7 +134,7 @@ namespace Objetos.Persistencia.Memoria
             }
             catch (Exception ex)
             {
-                throw new Exception("uf" + ConstantesGerais.SeparadorTraco + "002" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Memória" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("uf" + SeparadorTraco + "002" + SeparadorEnter + "Camada: Persistência-Memória" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 

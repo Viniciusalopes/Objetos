@@ -24,9 +24,9 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Constantes;
-using Objetos.Modelos.Enderecos;
 using System;
+using Objetos.Modelos.Enderecos;
+using static Objetos.Constantes.ConstantesGerais;
 
 namespace Objetos.Modelos.Documentos
 {
@@ -65,14 +65,14 @@ namespace Objetos.Modelos.Documentos
 
         public override string ToString()
         {
-            char sep = ConstantesGerais.SeparadorSplit;
-            return IdentificacaoBiometricaTitulo.ToString() + sep
-                + NumeroInscricaoTitulo + sep
-                + ZonaTitulo.ToString() + sep
-                + SecaoTitulo.ToString() + sep
-                + MunicipioTitulo.CodigoMunicipio + sep
-                + UfTitulo.IdUf + sep
-                + DataEmissaoTitulo.ToString() + sep;
+            char sep = SeparadorSplit;
+            return IdentificacaoBiometricaTitulo.ToString()
+                 + sep + NumeroInscricaoTitulo
+                 + sep + ZonaTitulo.ToString()
+                 + sep + SecaoTitulo.ToString()
+                 + sep + MunicipioTitulo.CodigoMunicipio
+                 + sep + UfTitulo.IdUf
+                 + sep + DataEmissaoTitulo.ToString();
         }
     }
 }

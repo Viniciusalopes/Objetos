@@ -30,6 +30,8 @@ using Objetos.Modelos.Enderecos;
 using Objetos.Constantes;
 using System;
 using System.Collections.Generic;
+using Objetos.Utilitarios;
+using static Objetos.Constantes.ConstantesGerais;
 
 namespace Objetos.Persistencia.Arquivos
 {
@@ -41,6 +43,7 @@ namespace Objetos.Persistencia.Arquivos
 
         //private Municipio municipio = null;
         private List<Municipio> municipios = null;
+        private List<Municipio> municipiosRetorno = null;
 
         #endregion ATRIBUTOS
 
@@ -48,22 +51,24 @@ namespace Objetos.Persistencia.Arquivos
 
         public PAMunicipio()
         {
-            controleArquivo = new Arquivo("Municipio", "pho", "");
+            controleArquivo = new Arquivo("Municipio", ExtensaoArquivoBd, "");
         }
 
         #endregion CONSTRUTORES
 
         #region CREATE
 
-        public void Incluir(Municipio municipio)
+        public long Incluir(Municipio municipio)
         {
             try
             {
+                municipio.IdMunicipio = GeradorID.getProximoID();
                 controleArquivo.IncluirLinha(municipio.ToString());
+                return municipio.IdMunicipio;
             }
             catch (Exception ex)
             {
-                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "001" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("mun" + SeparadorTraco + "001" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -83,7 +88,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "002" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("mun" + SeparadorTraco + "002" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -91,55 +96,68 @@ namespace Objetos.Persistencia.Arquivos
         {
             try
             {
-                municipios = new List<Municipio>();
+                municipiosRetorno = new List<Municipio>();
                 string[] linhas = controleArquivo.LerLinhas();
 
                 foreach (string linha in linhas)
-                    municipios.Add(ToObject(linha));
+                    municipiosRetorno.Add(ToObject(linha));
 
-                return municipios;
+                return municipiosRetorno;
             }
             catch (Exception ex)
             {
-                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "003" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("mun" + SeparadorTraco + "003" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
-        public List<Municipio> Consultar(object nomeMunicipio)
+        public List<Municipio> Consultar(object parametro, string atributo)
         {
             try
             {
-                municipios = new List<Municipio>();
+                municipios = Consultar();
+                municipiosRetorno = new List<Municipio>();
 
-                foreach (Municipio municipio in Consultar())
+                // Retorna vazio se não informar o atributo
+                if (atributo.Trim().Length == 0)
+                    return municipiosRetorno;
+
+                string texto = "";
+                int inteiro = 0;
+
+                try { texto = (string)parametro; } catch (Exception) { inteiro = (int)parametro; }
+
+                switch (atributo)
                 {
-                    if (municipio.NomeMunicipio.Equals((string)nomeMunicipio))
-                        municipios.Add(municipio);
+                    case "CodigoMunicipio":
+                        foreach (Municipio municipio in municipios)
+                            if (municipio.CodigoMunicipio == inteiro)
+                                municipiosRetorno.Add(municipio);
+                        
+                        break;
+
+                    case "IdUf":
+                        foreach (Municipio municipio in municipios)
+                            if (municipio.CodigoMunicipio.ToString().Substring(0, 2).Equals(texto))
+                                municipiosRetorno.Add(municipio);
+                        
+                        break;
+
+                    case "NomeMunicipio":
+                        foreach (Municipio municipio in municipios)
+                            if (municipio.NomeMunicipio.Equals(texto))
+                                municipiosRetorno.Add(municipio);
+                        
+                        break;
+
+                    default:
+                        break;
                 }
-                return municipios;
+
+                return municipiosRetorno;
             }
             catch (Exception ex)
             {
-                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "004" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
-            }
-        }
-
-        public List<Municipio> Consultar(UF uf)
-        {
-            try
-            {
-                municipios = new List<Municipio>();
-
-                foreach (Municipio municipio in Consultar())
-                {
-                    if (municipio.CodigoMunicipio.ToString().Substring(0, 2).Equals(uf.IdUf.ToString()))
-                        municipios.Add(municipio);
-                }
-                return municipios;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "008" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("mun" + SeparadorTraco + "004" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -147,12 +165,12 @@ namespace Objetos.Persistencia.Arquivos
         {
             try
             {
-                string[] partes = texto.Split(ConstantesGerais.SeparadorSplit);
-                return new Municipio(int.Parse(partes[0]), partes[1]);
+                string[] partes = texto.Split(SeparadorSplit);
+                return new Municipio(long.Parse(partes[0]), int.Parse(partes[1]), partes[2]);
             }
             catch (Exception ex)
             {
-                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "005" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("mun" + SeparadorTraco + "005" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -172,7 +190,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "006" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("mun" + SeparadorTraco + "006" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -193,7 +211,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("mun" + ConstantesGerais.SeparadorTraco + "007Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("mun" + SeparadorTraco + "007Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 

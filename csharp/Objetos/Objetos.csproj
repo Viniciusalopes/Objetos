@@ -49,7 +49,7 @@
     <Compile Include="Constantes\ConfiguracaoPA.cs" />
     <Compile Include="Constantes\ConstantesGerais.cs" />
     <Compile Include="Constantes\EnumDiasDaSemana.cs" />
-    <Compile Include="Constantes\EnumEntidades.cs" />
+    <Compile Include="Constantes\EnumEntidade.cs" />
     <Compile Include="Constantes\EnumEscolaridade.cs" />
     <Compile Include="Constantes\EnumEstadoCivil.cs" />
     <Compile Include="Constantes\EnumForcasArmadas.cs" />
@@ -59,7 +59,7 @@
     <Compile Include="Constantes\EnumSexo.cs" />
     <Compile Include="Constantes\EnumSituacao.cs" />
     <Compile Include="Constantes\EnumTipoCnae.cs" />
-    <Compile Include="Constantes\EnumTipoEnderecoTelefone.cs" />
+    <Compile Include="Constantes\EnumTipoEnderecoTelefoneEmail.cs" />
     <Compile Include="Constantes\EnumTipoEstabelecimento.cs" />
     <Compile Include="Constantes\EnumTipoPessoa.cs" />
     <Compile Include="Constantes\EnumVinculoPessoa.cs" />
@@ -68,27 +68,28 @@
     <Compile Include="Constantes\Rascunho.cs" />
     <Compile Include="Controles\ControleCnae.cs" />
     <Compile Include="Controles\ControleColaborador.cs" />
+    <Compile Include="Controles\ControleEmail.cs" />
     <Compile Include="Controles\ControleEmpresa.cs" />
+    <Compile Include="Controles\ControleEndereco.cs" />
     <Compile Include="Controles\ControleMensagem.cs" />
     <Compile Include="Controles\ControleMunicipio.cs" />
     <Compile Include="Controles\ControlePessoaFisica.cs" />
     <Compile Include="Controles\ControlePessoaJuridica.cs" />
     <Compile Include="Controles\ControleSetor.cs" />
+    <Compile Include="Controles\ControleTelefone.cs" />
     <Compile Include="Controles\ControleUF.cs" />
     <Compile Include="Interfaces\ICRUD.cs" />
     <Compile Include="Interfaces\ICRUDMemoria.cs" />
+    <Compile Include="Modelos\Email.cs" />
     <Compile Include="Modelos\Pessoas\Pessoa.cs" />
     <Compile Include="Persistencia\Arquivos\Arquivo.cs" />
     <Compile Include="Modelos\Dados\Tupla.cs" />
     <Compile Include="Modelos\Documentos\Cdi.cs" />
     <Compile Include="Modelos\Documentos\Cnae.cs" />
     <Compile Include="Modelos\Documentos\Cnh.cs" />
-    <Compile Include="Modelos\Documentos\Cnpj.cs" />
     <Compile Include="Modelos\Contrato.cs" />
     <Compile Include="Modelos\Documentos\Cpf.cs" />
     <Compile Include="Modelos\Documentos\Ctps.cs" />
-    <Compile Include="Modelos\Documentos\DocumentosPessoaFisica.cs" />
-    <Compile Include="Modelos\Documentos\DocumentosPessoaJuridica.cs" />
     <Compile Include="Modelos\Empresas\Empresa.cs" />
     <Compile Include="Modelos\Empresas\Setor.cs" />
     <Compile Include="Modelos\Enderecos\Endereco.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="Persistencia\Arquivos\PACnae.cs" />
     <Compile Include="Persistencia\Arquivos\PAColaborador.cs" />
     <Compile Include="Persistencia\Arquivos\PAEmpresa.cs" />
+    <Compile Include="Persistencia\Arquivos\PAEndereco.cs" />
     <Compile Include="Persistencia\Arquivos\PAMunicipio.cs" />
     <Compile Include="Persistencia\Arquivos\PAPessoaFisica.cs" />
     <Compile Include="Persistencia\Arquivos\PAPessoaJuridica.cs" />
@@ -137,6 +139,7 @@
     <Compile Include="Persistencia\Memoria\TabelaUF.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilitarios\ArquivoUtils.cs" />
+    <Compile Include="Utilitarios\DocumentoUtils.cs" />
     <Compile Include="Utilitarios\GeradorID.cs" />
     <Compile Include="Utilitarios\StringUtils.cs" />
   </ItemGroup>

@@ -18,52 +18,53 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Carteira de Trabalho e Previdência Social - CTPS.
+///     Objeto para endereço de E-mail.
 ///     Criação : Vovolinux
-///     Data    : 28/06/2020
+///     Data    : 14/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using System;
-using Objetos.Modelos.Enderecos;
 using static Objetos.Constantes.ConstantesGerais;
+using static Objetos.Constantes.EnumTipoEnderecoTelefoneEmail;
 
-namespace Objetos.Modelos.Documentos
+namespace Objetos.Modelos
 {
-    public class Ctps
+    public class Email
     {
-        public int NumeroCtps { get; set; }
-        public string SerieCtps { get; set; }
-        public string TipoCtps { get; set; }
-        public DateTime DataEmissaoCtps { get; set; }
-        public Municipio MunicipioCtps { get; set; }
-        public UF UfCtps { get; set; }
+        #region ATRIBUTOS
 
+        public long IdEmail { get; set; }
+        public string EnderecoEmail { get; set; }
+        public TipoEnderecoTelefoneEmail TipoEmail { get; set; }
 
-        public Ctps()
+        #endregion ATRIBUTOS
+
+        #region CONSTRUTORES
+        
+        public Email()
         {
 
         }
 
-        public Ctps(int numeroCtps, string serieCtps, string tipoCtps, DateTime dataEmissaoCtps, Municipio municipioCtps, UF ufCtps)
+        public Email(long idEmail, string enderecoEmail, TipoEnderecoTelefoneEmail tipoEmail)
         {
-            NumeroCtps = numeroCtps;
-            SerieCtps = serieCtps;
-            TipoCtps = tipoCtps;
-            DataEmissaoCtps = dataEmissaoCtps;
-            MunicipioCtps = municipioCtps;
-            UfCtps = ufCtps;
+            IdEmail = idEmail;
+            EnderecoEmail = enderecoEmail;
+            TipoEmail = tipoEmail;
         }
+
+        #endregion CONSTRUTORES
+
+        #region GET
 
         public override string ToString()
         {
             char sep = SeparadorSplit;
-            return NumeroCtps.ToString()
-                 + sep + SerieCtps
-                 + sep + TipoCtps
-                 + sep + DataEmissaoCtps
-                 + sep + MunicipioCtps.CodigoMunicipio
-                 + sep + UfCtps.IdUf;
+            return IdEmail 
+                + sep + EnderecoEmail 
+                + sep + TipoEmail;
         }
+
+        #endregion GET
     }
 }

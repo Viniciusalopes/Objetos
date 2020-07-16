@@ -40,6 +40,7 @@ using static Objetos.Constantes.EnumTipoPessoa;
 using static Objetos.Constantes.EnumSituacao;
 using static Objetos.Constantes.EnumVinculoPessoa;
 using static Objetos.Constantes.EnumForcasArmadas;
+using static Objetos.Constantes.ConstantesGerais;
 
 namespace Objetos.Persistencia.Arquivos
 {
@@ -48,9 +49,6 @@ namespace Objetos.Persistencia.Arquivos
         #region ATRIBUTOS
 
         private Arquivo controleArquivo = null;
-
-        private ControleMunicipio controleMunicipio = null;
-        private ControleUF controleUF = null;
 
         private PessoaFisica pessoa = null;
         private List<PessoaFisica> pessoas = null;
@@ -61,7 +59,7 @@ namespace Objetos.Persistencia.Arquivos
         #region CONSTRUTORES
         public PAPessoaFisica()
         {
-            controleArquivo = new Arquivo("PessoaFisica", "pho", "");
+            controleArquivo = new Arquivo("PessoaFisica", ExtensaoArquivoBd, "");
         }
 
         #endregion CONSTRUTORES
@@ -78,7 +76,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pef" + ConstantesGerais.SeparadorTraco + "001" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("pef" + SeparadorTraco + "001" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -99,7 +97,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pef" + ConstantesGerais.SeparadorTraco + "002" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("pef" + SeparadorTraco + "002" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -117,7 +115,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pes" + ConstantesGerais.SeparadorTraco + "003" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("pes" + SeparadorTraco + "003" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -131,6 +129,34 @@ namespace Objetos.Persistencia.Arquivos
 
                 switch (atributo)
                 {
+                    case "TipoPessoa":
+                        foreach (PessoaFisica pessoaFisica in pessoas)
+                            if (pessoaFisica.TipoPessoa.Equals((TipoPessoa)parametro))
+                                pessoasRetorno.Add(pessoaFisica);
+
+                        break;
+
+                    case "SituacaoPessoa":
+                        foreach (PessoaFisica pessoaFisica in pessoas)
+                            if (pessoaFisica.SituacaoPessoa.Equals((Situacao)parametro))
+                                pessoasRetorno.Add(pessoaFisica);
+
+                        break;
+
+                    case "Vinculo":
+                        foreach (PessoaFisica pessoaFisica in pessoas)
+                            if (pessoaFisica.Vinculo.Equals((Vinculo)parametro))
+                                pessoasRetorno.Add(pessoaFisica);
+
+                        break;
+                    
+                    case "NomePessoa":
+                        foreach (PessoaFisica pessoaFisica in pessoas)
+                            if (pessoaFisica.NomePessoa.Equals((string)parametro))
+                                pessoasRetorno.Add(pessoaFisica);
+
+                        break;
+
                     case "Sexo":
                         foreach (PessoaFisica pessoaFisica in pessoas)
                             if (pessoaFisica.Sexo.Equals((Sexo)parametro))
@@ -138,48 +164,15 @@ namespace Objetos.Persistencia.Arquivos
 
                         break;
 
-                    case "EstadoCivil":
-                        foreach (PessoaFisica pessoaFisica in pessoas)
-                            if (pessoaFisica.EstadoCivil.Equals((EstadoCivil)parametro))
-                                pessoasRetorno.Add(pessoaFisica);
-
-                        break;
-
-                    case "Escolaridade":
-                        foreach (PessoaFisica pessoaFisica in pessoas)
-                            if (pessoaFisica.Escolaridade.Equals((Escolaridade)parametro))
-                                pessoasRetorno.Add(pessoaFisica);
-
-                        break;
 
                     default:
-                        string texto = (string)parametro; 
-
-                        foreach (PessoaFisica pessoaFisica in pessoas)
-                            if (atributo.Equals("NomePessoa") && pessoaFisica.NomePessoa.Equals(texto))
-                                pessoasRetorno.Add(pessoaFisica);
-                            else if (atributo.Equals("NomePai") && pessoaFisica.NomePai.Equals(texto))
-                                pessoasRetorno.Add(pessoaFisica);
-                            else if (atributo.Equals("NomeMae") && pessoaFisica.NomeMae.Equals(texto))
-                                pessoasRetorno.Add(pessoaFisica);
-                            else if (atributo.Equals("NomeConjuge") && pessoaFisica.NomeConjuge.Equals(texto))
-                                pessoasRetorno.Add(pessoaFisica);
-                            else if (atributo.Equals("Rg") && pessoaFisica.Documentos.Rg.Equals(texto))
-                                pessoasRetorno.Add(pessoaFisica);
-                            else if (atributo.Equals("Cpf") && pessoaFisica.Documentos.oCpf.getNumeroCpf().Equals(texto))
-                                pessoasRetorno.Add(pessoaFisica);
-                            else if (atributo.Equals("NumeroCnh") && pessoaFisica.Documentos.oCnh.NumeroCnh.Equals(texto))
-                                pessoasRetorno.Add(pessoaFisica);
-                            else if (atributo.Equals("NumeroRegistroCnh") && pessoaFisica.Documentos.oCnh.NumeroRegistroCnh.Equals(texto))
-                                pessoasRetorno.Add(pessoaFisica);
-
                         break;
                 }
                 return pessoasRetorno;
             }
             catch (Exception ex)
             {
-                throw new Exception("pef" + ConstantesGerais.SeparadorTraco + "004" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("pef" + SeparadorTraco + "004" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -187,79 +180,20 @@ namespace Objetos.Persistencia.Arquivos
         {
             try
             {
-                controleMunicipio = new ControleMunicipio();
-                controleUF = new ControleUF();
-
-                string[] partes = texto.Split(ConstantesGerais.SeparadorSplit);
+                string[] partes = texto.Split(SeparadorSplit);
                 pessoa = new PessoaFisica();
                 pessoa.IdPessoa = long.Parse(partes[0]);
                 pessoa.TipoPessoa = (TipoPessoa)int.Parse(partes[1]);
-                pessoa.Situacao = (Situacao)int.Parse(partes[2]);
+                pessoa.SituacaoPessoa = (Situacao)int.Parse(partes[2]);
                 pessoa.Vinculo = (Vinculo)int.Parse(partes[3]);
                 pessoa.NomePessoa = partes[4];
-                pessoa.DataNascimento = DateTime.Parse(partes[5]);
                 pessoa.Sexo = (Sexo)int.Parse(partes[6]);
-                pessoa.NomePai = partes[7];
-                pessoa.NomeMae = partes[8];
-                pessoa.EstadoCivil = (EstadoCivil)int.Parse(partes[9]);
-                pessoa.NomeConjuge = partes[10];
-                pessoa.Escolaridade = (Escolaridade)int.Parse(partes[11]);
-                pessoa.Documentos = new DocumentosPessoaFisica();
-                pessoa.Documentos.oCpf = new Cpf(partes[12]);
-                pessoa.Documentos.Rg = partes[13];
-                pessoa.Documentos.oCnh = (partes[14].Trim().Length == 0) ? new Cnh() :
-                                            new Cnh(
-                                                long.Parse(partes[14]),
-                                                bool.Parse(partes[15]),
-                                                bool.Parse(partes[16]),
-                                                partes[17],
-                                                long.Parse(partes[18]),
-                                                DateTime.Parse(partes[19]),
-                                                DateTime.Parse(partes[20]),
-                                                partes[21],
-                                                controleMunicipio.Buscar(long.Parse(partes[22])),
-                                                controleUF.Buscar(long.Parse(partes[23])),
-                                                DateTime.Parse(partes[24])
-                                            );
-                pessoa.Documentos.oCtps = (partes[25].Trim().Length == 0) ? new Ctps() :
-
-                                                new Ctps(
-                                                    int.Parse(partes[25]),
-                                                    partes[26],
-                                                    partes[27],
-                                                    DateTime.Parse(partes[28]),
-                                                    controleMunicipio.Buscar(long.Parse(partes[29])),
-                                                    controleUF.Buscar(long.Parse(partes[30]))
-                                                );
-                pessoa.Documentos.oTituloEleitoral = (partes[31].Trim().Length == 0) ? new TituloEleitoral() :
-                                                        new TituloEleitoral(
-                                                            bool.Parse(partes[31]),
-                                                            partes[32],
-                                                            int.Parse(partes[33]),
-                                                            int.Parse(partes[34]),
-                                                            controleMunicipio.Buscar(long.Parse(partes[35])),
-                                                            controleUF.Buscar(long.Parse(partes[36])),
-                                                            DateTime.Parse(partes[37])
-                                                        );
-                pessoa.Documentos.PisNit = partes[38];
-
-                if (!pessoa.Sexo.Equals(Sexo.Feminino))
-                {
-                    pessoa.Documentos.oCdi = (partes[39].Trim().Length == 0) ? new Cdi() :
-                                                new Cdi(
-                                                    partes[39],
-                                                    int.Parse(partes[40]),
-                                                    DateTime.Parse(partes[41]),
-                                                    partes[42],
-                                                    (ForcaArmada)int.Parse(partes[43])
-                                                );
-                }
-
+                pessoa.Enderecos = new ControleEndereco().Consultar(pessoa.IdPessoa, "IdPessoa");
                 return pessoa;
             }
             catch (Exception ex)
             {
-                throw new Exception("pef" + ConstantesGerais.SeparadorTraco + "005" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("pef" + SeparadorTraco + "005" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -280,7 +214,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pef" + ConstantesGerais.SeparadorTraco + "006" + ConstantesGerais.SeparadorEnter + "Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("pef" + SeparadorTraco + "006" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -301,7 +235,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pef" + ConstantesGerais.SeparadorTraco + "007Camada: Persistência-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("pef" + SeparadorTraco + "007Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 

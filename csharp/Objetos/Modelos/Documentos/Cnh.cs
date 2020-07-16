@@ -25,8 +25,8 @@
 /// </summary>
 
 using System;
-using Objetos.Constantes;
 using Objetos.Modelos.Enderecos;
+using static Objetos.Constantes.ConstantesGerais;
 
 namespace Objetos.Modelos.Documentos
 {
@@ -73,18 +73,18 @@ namespace Objetos.Modelos.Documentos
         #endregion CONSTRUTORES
         public override string ToString()
         {
-            char sep = ConstantesGerais.SeparadorSplit;
-            return NumeroCnh.ToString() + sep
-                + PermissaoCnh.ToString() + sep
-                + AccCnh.ToString() + sep
-                + CategoriaCnh + sep
-                + NumeroRegistroCnh.ToString() + sep
-                + DataValidadeCnh.ToString() + sep
-                + DataPrimeiraHabilitacao.ToString() + sep
-                + ObservacoesCNH.ToString() + sep
-                + MunicipioCnh.CodigoMunicipio + sep
-                + UfCnh.IdUf + sep
-                + DataEmissaoCnh + sep;
+            char sep = SeparadorSplit;
+            return NumeroCnh.ToString()
+                + sep + PermissaoCnh.ToString()
+                + sep + AccCnh.ToString()
+                + sep + CategoriaCnh
+                + sep + NumeroRegistroCnh.ToString()
+                + sep + DataValidadeCnh.ToString()
+                + sep + DataPrimeiraHabilitacao.ToString()
+                + sep + ObservacoesCNH.ToString()
+                + sep + MunicipioCnh.CodigoMunicipio
+                + sep + UfCnh.IdUf
+                + sep + DataEmissaoCnh;
         }
     }
 }

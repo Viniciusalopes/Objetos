@@ -25,15 +25,15 @@
 /// </summary>
 
 using System.Collections.Generic;
-using Objetos.Constantes;
 using Objetos.Modelos.Folha;
+using static Objetos.Constantes.ConstantesGerais;
 
 namespace Objetos.Modelos.Empresas
 {
     public class Setor
     {
-        public long IdEmpresa { get; set; }
         public long IdSetor { get; set; }
+        public long IdEmpresa { get; set; }
         public string NomeSetor { get; set; }
         public Colaborador ResponsavelSetor { get; set; }
         public List<Colaborador> Colaboradores { get; set; }
@@ -43,10 +43,10 @@ namespace Objetos.Modelos.Empresas
 
         }
 
-        public Setor(long idEmpresa, long idSetor, string nomeSetor, Colaborador responsavelSetor, List<Colaborador> colaboradores)
+        public Setor(long idSetor, long idEmpresa, string nomeSetor, Colaborador responsavelSetor, List<Colaborador> colaboradores)
         {
-            IdEmpresa = idEmpresa;
             IdSetor = idSetor;
+            IdEmpresa = idEmpresa;
             NomeSetor = nomeSetor;
             ResponsavelSetor = responsavelSetor;
             Colaboradores = colaboradores;
@@ -54,11 +54,11 @@ namespace Objetos.Modelos.Empresas
 
         public override string ToString()
         {
-            char sep = ConstantesGerais.SeparadorSplit;
-            return IdEmpresa.ToString() + sep 
-                + IdSetor.ToString() + sep
-                + NomeSetor + sep
-                + ResponsavelSetor.IdPessoa;
+            char sep = SeparadorSplit;
+            return IdEmpresa.ToString()
+                + sep + IdSetor.ToString()
+                + sep + NomeSetor
+                + sep + ResponsavelSetor.IdPessoa;
         }
     }
 }

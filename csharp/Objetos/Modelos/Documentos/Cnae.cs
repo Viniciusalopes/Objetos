@@ -24,14 +24,14 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Constantes;
+using static Objetos.Constantes.ConstantesGerais;
 using static Objetos.Constantes.EnumTipoCnae;
 
 namespace Objetos.Modelos.Documentos
 {
     public class Cnae
     {
-        public int IdCnae { get; set; }
+        public long IdCnae { get; set; }
         public long IdPessoa { get; set; }
         public TipoCnae TipoCnae { get; set; }
         public string CodigoCnae { get; set; }
@@ -42,7 +42,7 @@ namespace Objetos.Modelos.Documentos
 
         }
 
-        public Cnae(int idCnae, long idPessoaJuridica, TipoCnae tipoCnae, string codigoCnae, string descricaoCnae)
+        public Cnae(long idCnae, long idPessoaJuridica, TipoCnae tipoCnae, string codigoCnae, string descricaoCnae)
         {
             IdCnae = idCnae;
             IdPessoa = idPessoaJuridica;
@@ -53,12 +53,12 @@ namespace Objetos.Modelos.Documentos
 
         public override string ToString()
         {
-            char sep = ConstantesGerais.SeparadorSplit;
-            return IdCnae.ToString() + sep
-                + IdPessoa.ToString() + sep
-                + (int)TipoCnae + sep
-                + CodigoCnae + sep
-                + DescricaoCnae;
+            char sep = SeparadorSplit;
+            return IdCnae.ToString()
+                + sep + IdPessoa.ToString()
+                + sep + (int)TipoCnae
+                + sep + CodigoCnae
+                + sep + DescricaoCnae;
         }
     }
 }

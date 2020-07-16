@@ -26,16 +26,20 @@
 
 namespace Objetos.Constantes
 {
-    public class EnumEntidades
+    public class EnumEntidade
     {
-        public enum Entidades
+        public enum Entidade
         {   
             Todas,
+            Cnae,
+            Colaborador,
+            Email,
+            Empresa,
+            Endereco,
             PessoaFisica,
             PessoaJuridica,
             Setor,
-            Colaborador,
-            ColaboradoresSetor
+            Telefone
         }
     }
 }

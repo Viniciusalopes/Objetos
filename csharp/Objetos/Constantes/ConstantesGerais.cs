@@ -31,5 +31,6 @@ namespace Objetos.Constantes
         public static char SeparadorSplit => ';';
         public static char SeparadorEnter => '#';
         public static char SeparadorTraco => '_';
+        public static string ExtensaoArquivoBd => "pho";
     }
 }

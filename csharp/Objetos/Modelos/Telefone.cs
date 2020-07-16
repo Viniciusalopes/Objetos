@@ -27,14 +27,18 @@
 using System;
 using Objetos.Constantes;
 using static Objetos.Utilitarios.StringUtils;
+using static Objetos.Constantes.ConstantesGerais;
 
 namespace Objetos.Modelos
 {
     public class Telefone
     {
         #region ATRIBUTOS
-        public long IdPessoa { get; set; }
+       
         public long IdTelefone { get; set; }
+        
+        public long IdPessoa { get; set; }
+        
         public int DddTelefone { get; set; }
         public int PrefixoTelefone { get; set; }
         public int NumeroTelefone { get; set; }
@@ -46,7 +50,7 @@ namespace Objetos.Modelos
             get
             {
                 if (PrefixoTelefone.ToString().Length == 0)
-                    throw new Exception("tel" + ConstantesGerais.SeparadorTraco + "001");
+                    throw new Exception("tel" + SeparadorTraco + "001");
 
 
                 numeroTelefoneFormatado =
@@ -67,7 +71,7 @@ namespace Objetos.Modelos
             }
         }
 
-        public EnumTipoEnderecoTelefone.TipoEnderecoTelefone TipoTelefone { get; set; }
+        public EnumTipoEnderecoTelefoneEmail.TipoEnderecoTelefoneEmail TipoTelefone { get; set; }
 
         #endregion ATRIBUTOS
 
@@ -78,10 +82,10 @@ namespace Objetos.Modelos
 
         }
 
-        public Telefone(long idPessoa, long idTelefone, string numeroTelefone, EnumTipoEnderecoTelefone.TipoEnderecoTelefone tipoTelefone)
+        public Telefone(long idTelefone, long idPessoa, string numeroTelefone, EnumTipoEnderecoTelefoneEmail.TipoEnderecoTelefoneEmail tipoTelefone)
         {
             IdTelefone = idTelefone;
-
+            IdPessoa = idPessoa;
             string numeros = somenteNumeros(numeroTelefone);
             validarTelefone(numeros);
             setNumeroTelefone(numeros);
@@ -124,10 +128,14 @@ namespace Objetos.Modelos
 
         #region GET
 
-        public override string ToString() => IdTelefone.ToString() + ConstantesGerais.SeparadorSplit 
-            + IdPessoa + ConstantesGerais.SeparadorSplit 
-            + NumeroTelefoneFormatado + ConstantesGerais.SeparadorSplit + (int)TipoTelefone;
-
+        public override string ToString()
+        {
+            char sep = SeparadorSplit;
+            return IdTelefone.ToString() 
+                + sep + IdPessoa
+                + sep + NumeroTelefoneFormatado
+                + sep + (int)TipoTelefone;
+        }
         #endregion GET
 
         #region VALIDAÇÃO
@@ -135,7 +143,7 @@ namespace Objetos.Modelos
         private void validarTelefone(string numeroTelefone)
         {
             if (numeroTelefone.Length < 8 || numeroTelefone.Length > 11)
-                throw new Exception("tel" + ConstantesGerais.SeparadorTraco + "001");
+                throw new Exception("tel" + SeparadorTraco + "001");
         }
         #endregion VALIDAÇÃO
     }

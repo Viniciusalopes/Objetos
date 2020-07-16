@@ -24,12 +24,9 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Constantes;
-using Objetos.Modelos.Documentos;
-using Objetos.Modelos.Pessoas;
 using System.Collections.Generic;
-using static Objetos.Constantes.EnumSituacao;
-using static Objetos.Constantes.EnumVinculoPessoa;
+using Objetos.Modelos.Pessoas;
+using static Objetos.Constantes.ConstantesGerais;
 
 namespace Objetos.Modelos.Empresas
 {
@@ -48,11 +45,12 @@ namespace Objetos.Modelos.Empresas
         {
             IdEmpresa = idEmpresa;
             TipoPessoa = pessoaJuridica.TipoPessoa;
-            Situacao = pessoaJuridica.Situacao;
+            SituacaoCnpj = pessoaJuridica.SituacaoCnpj;
             Vinculo = pessoaJuridica.Vinculo;
             Documentos = pessoaJuridica.Documentos;
+            Setores = new List<Setor>();
         }
 
-        public override string ToString() => IdEmpresa.ToString() + ConstantesGerais.SeparadorSplit  + IdPessoa;
+        public override string ToString() => IdEmpresa.ToString() + SeparadorSplit  + IdPessoa;
     }
 }

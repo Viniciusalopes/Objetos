@@ -18,24 +18,54 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Tipos de Endereços e Telefones.
+///     Controller para Email.
 ///     Criação : Vovolinux
-///     Data    : 28/06/2020
+///     Data    : 15/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-namespace Objetos.Constantes
+using Objetos.Interfaces;
+using Objetos.Modelos;
+using System;
+using System.Collections.Generic;
+
+namespace Objetos.Controles
 {
-    public class EnumTipoEnderecoTelefone
+    public class ControleEmail : ICRUD<Email>
     {
-        public enum TipoEnderecoTelefone
+        public void Atualizar(Email objeto)
         {
-            Todos,
-            Residencial,
-            Comercial,
-            Pessoal,
-            Cobrança,
-            Recados
+            throw new NotImplementedException();
+        }
+
+        public Email Buscar(long id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Email> Consultar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Email> Consultar(object parametro, string atributo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Excluir(long id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public long Incluir(Email objeto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Email ToObject(string texto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

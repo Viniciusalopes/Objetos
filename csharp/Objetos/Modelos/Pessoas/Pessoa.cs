@@ -1,8 +1,4 @@
-﻿
-using static Objetos.Constantes.EnumSituacao;
-using static Objetos.Constantes.EnumTipoPessoa;
-using static Objetos.Constantes.EnumVinculoPessoa;
-/// <licença>
+﻿/// <licença>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -27,13 +23,24 @@ using static Objetos.Constantes.EnumVinculoPessoa;
 ///     Data    : 06/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
+
+using System.Collections.Generic;
+using Objetos.Modelos.Enderecos;
+using static Objetos.Constantes.EnumSituacao;
+using static Objetos.Constantes.EnumTipoPessoa;
+using static Objetos.Constantes.EnumVinculoPessoa;
+
 namespace Objetos.Modelos.Pessoas
 {
     public abstract class Pessoa
     {
         public long IdPessoa { get; set; }
         public TipoPessoa TipoPessoa { get; set; }
-        public Situacao Situacao { get; set; }
+        public Situacao SituacaoPessoa { get; set; }
         public Vinculo Vinculo { get; set; }
+
+        public List<Endereco> Enderecos { get; set; }
+        public List<Telefone> Telefones { get; set; }
+        public List<Email> Emails { get; set; }
     }
 }

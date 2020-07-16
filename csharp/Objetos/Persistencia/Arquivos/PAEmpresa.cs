@@ -1,15 +1,4 @@
-﻿
-using Objetos.Constantes;
-using Objetos.Controles;
-using Objetos.Interfaces;
-using Objetos.Modelos.Empresas;
-using Objetos.Modelos.Pessoas;
-using Objetos.Utilitarios;
-using System;
-using System.Collections.Generic;
-using static Objetos.Controles.ControleMensagem;
-
-/// <licenca>
+﻿/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -35,6 +24,17 @@ using static Objetos.Controles.ControleMensagem;
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
+using Objetos.Constantes;
+using Objetos.Controles;
+using Objetos.Interfaces;
+using Objetos.Modelos.Empresas;
+using Objetos.Modelos.Pessoas;
+using Objetos.Utilitarios;
+using System;
+using System.Collections.Generic;
+using static Objetos.Controles.ControleMensagem;
+using static Objetos.Constantes.ConstantesGerais;
+
 namespace Objetos.Persistencia.Arquivos
 {
     public class PAEmpresa : ICRUD<Empresa>
@@ -53,7 +53,7 @@ namespace Objetos.Persistencia.Arquivos
 
         public PAEmpresa()
         {
-            controleArquivo = new Arquivo("Empresa", "pho", "");
+            controleArquivo = new Arquivo("Empresa", ExtensaoArquivoBd, "");
         }
 
         #endregion CONSTRUTORES
@@ -70,7 +70,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("emp" + ConstantesGerais.SeparadorTraco + "001" + ConstantesGerais.SeparadorEnter + "Camada: Persistencia-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("emp" + SeparadorTraco + "001" + SeparadorEnter + "Camada: Persistencia-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -90,7 +90,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("emp" + ConstantesGerais.SeparadorTraco + "002" + ConstantesGerais.SeparadorEnter + "Camada: Persistencia-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("emp" + SeparadorTraco + "002" + SeparadorEnter + "Camada: Persistencia-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -108,7 +108,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("emp" + ConstantesGerais.SeparadorTraco + "003" + ConstantesGerais.SeparadorEnter + "Camada: Persistencia-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("emp" + SeparadorTraco + "003" + SeparadorEnter + "Camada: Persistencia-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -141,7 +141,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("emp" + ConstantesGerais.SeparadorTraco + "004" + ConstantesGerais.SeparadorEnter + "Camada: Persistencia-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("emp" + SeparadorTraco + "004" + SeparadorEnter + "Camada: Persistencia-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -149,13 +149,13 @@ namespace Objetos.Persistencia.Arquivos
         {
             try
             {
-                string[] partes = texto.Split(ConstantesGerais.SeparadorSplit);
+                string[] partes = texto.Split(SeparadorSplit);
                 empresa = new Empresa(long.Parse(partes[0]), new ControlePessoaJuridica().Buscar(long.Parse(partes[1])));
                 return empresa;
             }
             catch (Exception ex)
             {
-                throw new Exception("emp" + ConstantesGerais.SeparadorTraco + "005" + ConstantesGerais.SeparadorEnter + "Camada: Persistencia-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("emp" + SeparadorTraco + "005" + SeparadorEnter + "Camada: Persistencia-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
         #endregion READ
@@ -175,7 +175,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("emp" + ConstantesGerais.SeparadorTraco + "006" + ConstantesGerais.SeparadorEnter + "Camada: Persistencia-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("emp" + SeparadorTraco + "006" + SeparadorEnter + "Camada: Persistencia-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 
@@ -195,7 +195,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("emp" + ConstantesGerais.SeparadorTraco + "007" + ConstantesGerais.SeparadorEnter + "Camada: Persistencia-Arquivos" + ConstantesGerais.SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("emp" + SeparadorTraco + "007" + SeparadorEnter + "Camada: Persistencia-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 

@@ -24,12 +24,7 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using System;
-using Objetos.Constantes;
-using Objetos.Modelos.Documentos;
-using Objetos.Modelos.Folha;
-using static Objetos.Constantes.EnumEscolaridade;
-using static Objetos.Constantes.EnumEstadoCivil;
+using static Objetos.Constantes.ConstantesGerais;
 using static Objetos.Constantes.EnumSexo;
 using static Objetos.Constantes.EnumSituacao;
 using static Objetos.Constantes.EnumVinculoPessoa;
@@ -40,14 +35,7 @@ namespace Objetos.Modelos.Pessoas
     public class PessoaFisica : Pessoa
     {
         public string NomePessoa { get; set; }
-        public DateTime DataNascimento { get; set; }
         public Sexo Sexo { get; set; }
-        public string NomePai { get; set; }
-        public string NomeMae { get; set; }
-        public EstadoCivil EstadoCivil { get; set; }
-        public string NomeConjuge { get; set; }
-        public Escolaridade Escolaridade { get; set; }
-        public DocumentosPessoaFisica Documentos { get; set; }
 
         public PessoaFisica()
         {
@@ -58,64 +46,31 @@ namespace Objetos.Modelos.Pessoas
         {
             IdPessoa = pessoaFisica.IdPessoa;
             TipoPessoa = TipoPessoa.Física;
-            Situacao = pessoaFisica.Situacao;
+            SituacaoPessoa = pessoaFisica.SituacaoPessoa;
             Vinculo = pessoaFisica.Vinculo;
             NomePessoa = pessoaFisica.NomePessoa;
-            DataNascimento = pessoaFisica.DataNascimento;
             Sexo = pessoaFisica.Sexo;
-            NomePai = pessoaFisica.NomePai;
-            NomeMae = pessoaFisica.NomeMae;
-            EstadoCivil = pessoaFisica.EstadoCivil;
-            NomeConjuge = pessoaFisica.NomeConjuge;
-            Escolaridade = pessoaFisica.Escolaridade;
-            Documentos = pessoaFisica.Documentos;
         }
 
-        public PessoaFisica(
-            long idPessoa,
-            string nome,
-            DateTime dataNascimento,
-            Sexo sexo,
-            Situacao situacao = Situacao.Ativa,
-            Vinculo vinculo = Vinculo.Nenhum,
-            string nomePai = "",
-            string nomeMae = "",
-            EstadoCivil estadoCivil = EstadoCivil.Solteiro,
-            string nomeConjuge = "",
-            Escolaridade escolaridade = Escolaridade.EnsinoMédioCompleto,
-            DocumentosPessoaFisica documentos = null
-            )
+        public PessoaFisica(long idPessoa, Situacao situacaoPessoa, Vinculo vinculo, string nome, Sexo sexo)
         {
             IdPessoa = idPessoa;
             TipoPessoa = TipoPessoa.Física;
-            Situacao = situacao;
+            SituacaoPessoa = situacaoPessoa;
             Vinculo = vinculo;
             NomePessoa = nome;
-            DataNascimento = dataNascimento;
             Sexo = sexo;
-            NomePai = nomePai;
-            NomeMae = nomeMae;
-            EstadoCivil = estadoCivil;
-            NomeConjuge = nomeConjuge;
-            Escolaridade = escolaridade;
-            Documentos = documentos;
         }
+
         public override string ToString()
         {
-            char sep = ConstantesGerais.SeparadorSplit;
-            return IdPessoa.ToString() + sep
-                + (int)TipoPessoa + sep
-                + (int)Situacao + sep
-                + (int)Vinculo + sep
-                + NomePessoa + sep
-                + DataNascimento.ToString() + sep
-                + (int)Sexo + sep
-                + ((string.IsNullOrEmpty(NomePai)) ? "" : NomePai) + sep
-                + ((string.IsNullOrEmpty(NomeMae)) ? "" : NomeMae) + sep
-                + (int)EstadoCivil + sep
-                + ((string.IsNullOrEmpty(NomeConjuge)) ? "" : NomeConjuge) + sep
-                + (int)Escolaridade + sep
-                + (Sexo.Equals(Sexo.Feminino) ? Documentos.ToStringFeminino() : Documentos.ToString());
+            char sep = SeparadorSplit;
+            return IdPessoa.ToString()
+                + sep + (int)TipoPessoa
+                + sep + (int)SituacaoPessoa
+                + sep + (int)Vinculo
+                + sep + NomePessoa
+                + sep + (int)Sexo;
         }
     }
 }

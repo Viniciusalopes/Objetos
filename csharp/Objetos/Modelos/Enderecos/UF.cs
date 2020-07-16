@@ -24,8 +24,9 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Constantes;
 using System.Collections.Generic;
+using Objetos.Constantes;
+using static Objetos.Constantes.ConstantesGerais;
 
 namespace Objetos.Modelos.Enderecos
 {
@@ -64,11 +65,11 @@ namespace Objetos.Modelos.Enderecos
 
         public override string ToString()
         {
-            char sep = ConstantesGerais.SeparadorSplit;
-            return IdUf.ToString() + sep
-                + SiglaUf + sep
-                + (int)Regiao + sep
-                + NomeUf;
+            char sep = SeparadorSplit;
+            return IdUf.ToString()
+                + sep + SiglaUf
+                + sep + (int)Regiao
+                + sep + NomeUf;
         }
 
         #endregion GET
