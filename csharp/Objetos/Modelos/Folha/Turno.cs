@@ -25,12 +25,38 @@
 /// </summary>
 
 using System;
+using System.Collections.Generic;
+using static Objetos.Constantes.ConstantesGerais;
 
 namespace Objetos.Modelos.Folha
 {
     public class Turno
     {
+        public long IdTurno { get; set; }
         public DateTime HoraInicioTurno { get; set; }
+        public List<Intervalo> Intervalos { get; set; }
         public DateTime HoraFimTurno { get; set; }
+        
+
+        public Turno()
+        {
+
+        }
+
+        public Turno (long idTurno, DateTime horaInicioTurno, DateTime horaFimTurno)
+        {
+            IdTurno = idTurno;
+            HoraInicioTurno = horaInicioTurno;
+            HoraFimTurno = horaFimTurno;
+        }
+
+        public override string ToString()
+        {
+            char sep = SeparadorSplit;
+
+            return IdTurno.ToString()
+                + sep + HoraInicioTurno.ToString()
+                + sep + HoraFimTurno.ToString();
+        }
     }
 }

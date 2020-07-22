@@ -24,8 +24,7 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Constantes;
-using System.Collections.Generic;
+using static Objetos.Constantes.ConstantesGerais;
 
 namespace Objetos.Modelos.Folha
 {
@@ -33,9 +32,26 @@ namespace Objetos.Modelos.Folha
     {
         public long IdJornada { get; set; }
         public int HorasSemanais { get; set; }
-        public List<EnumDiasDaSemana.DiaDaSemana> DiasDeTrabalho { get; set; }
-        public List<EnumDiasDaSemana.DiaDaSemana> DescansoSemanal { get; set; }
-        public Turno oTurno { get; set; }
-        public List<Intervalo> Intervalos { get; set; }
+        public long IdTurno { get; set; }
+
+        public JornadaDeTrabalho()
+        {
+
+        }
+
+        public JornadaDeTrabalho (long idJornada, int horasSemanais, long idTurno)
+        {
+            IdJornada = idJornada;
+            HorasSemanais = horasSemanais;
+            IdTurno = idTurno;
+        }
+
+        public override string ToString()
+        {
+            char sep = SeparadorSplit;
+            return IdJornada.ToString()
+                + sep + HorasSemanais.ToString()
+                + sep + IdTurno.ToString();
+        }
     }
 }

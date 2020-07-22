@@ -188,7 +188,7 @@ namespace Objetos.Persistencia.Arquivos
                 pessoa.Vinculo = (Vinculo)int.Parse(partes[3]);
                 pessoa.NomePessoa = partes[4];
                 pessoa.Sexo = (Sexo)int.Parse(partes[6]);
-                pessoa.Enderecos = new ControleEndereco().Consultar(pessoa.IdPessoa, "IdPessoa");
+                //pessoa.Enderecos = new ControleEndereco().Consultar(pessoa.IdPessoa, "IdPessoa");
                 return pessoa;
             }
             catch (Exception ex)
@@ -235,7 +235,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pef" + SeparadorTraco + "007Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+                throw new Exception("pef" + SeparadorTraco + "007" + SeparadorTraco + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
             }
         }
 

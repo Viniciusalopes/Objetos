@@ -39,7 +39,13 @@ namespace Objetos.Constantes
             PessoaFisica,
             PessoaJuridica,
             Setor,
-            Telefone
+            Telefone,
+            JornadaDeTrabalho,
+            Turno,
+            DiasDeTrabalho,
+            DescansoSemanal,
+            Intervalos
+
         }
     }
 }

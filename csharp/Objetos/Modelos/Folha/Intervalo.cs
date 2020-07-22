@@ -18,20 +18,44 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Intervalos do turno de trabalho.
+///     Intervalos do turno de trabalho do .
 ///     Criação : Vovolinux
-///     Data    : 29/06/2020
+///     Data    : 19/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 /// 
 
 using System;
-
+using static Objetos.Constantes.ConstantesGerais;
 namespace Objetos.Modelos.Folha
 {
     public class Intervalo
     {
+        public long IdIntervalo { get; set; }
+        public long IdTurno { get; set; }
         public DateTime HoraInicioIntervalo { get; set; }
         public DateTime HoraFimIntervalo { get; set; }
+
+        public Intervalo()
+        {
+
+        }
+
+        public Intervalo(long idIntervalo, long idTurno, DateTime horaInicioIntervalo, DateTime horaFimIntervalo)
+        {
+            IdIntervalo = idIntervalo;
+            IdTurno = idTurno;
+            HoraInicioIntervalo = horaInicioIntervalo;
+            HoraFimIntervalo = horaFimIntervalo;
+        }
+
+        public override string ToString()
+        {
+            char sep = SeparadorSplit;
+            return IdIntervalo.ToString()
+                + sep + IdTurno.ToString()
+                + sep + HoraInicioIntervalo.ToString()
+                + sep + HoraFimIntervalo.ToString();
+        }
     }
 }

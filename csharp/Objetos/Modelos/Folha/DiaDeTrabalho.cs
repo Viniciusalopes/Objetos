@@ -18,85 +18,40 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Controller para CNAE.
+///     Dia de trabalho da Jornada de um Colaborador de uma empresa, do ponto de vista da Folha de Pagamento.
 ///     Criação : Vovolinux
-///     Data    : 05/07/2020
+///     Data    : 19/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Interfaces;
-using Objetos.Modelos.Documentos;
-using System.Collections.Generic;
-using Objetos.Persistencia.Arquivos;
+using static Objetos.Constantes.EnumDiasDaSemana;
+using static Objetos.Constantes.ConstantesGerais;
 
-namespace Objetos.Controles
+namespace Objetos.Modelos.Folha
 {
-    public class ControleCnae : ICRUD<Cnae>
+    public class DiaDeTrabalho
     {
-        #region ATRIBUTOS
+        public long IdDiaDeTrabalho { get; set; }
+        public long IdJornada { get; set; }
+        public DiaDaSemana DiaDaSemana { get; set; }
 
-        private PACnae persistencia = null;
-
-        #endregion ATRIBUTOS
-
-        #region CONSTRUTORES
-
-        public ControleCnae()
+        public DiaDeTrabalho()
         {
-            persistencia = new PACnae();
+
         }
 
-        #endregion CONSTRUTORES
-
-        #region CREATE
-
-        public long Incluir(Cnae cnae)
+        public DiaDeTrabalho(long idDiaDeTrabalho, long idJornada, DiaDaSemana diaDaSemana)
         {
-            return persistencia.Incluir(cnae);
+            IdDiaDeTrabalho = idDiaDeTrabalho;
+            IdJornada = idJornada;
+            DiaDaSemana = diaDaSemana;
         }
 
-        #endregion CREATE
-
-        #region READ
-
-        public Cnae Buscar(long idCnae)
+        public override string ToString()
         {
-           return persistencia.Buscar(idCnae);
+            return IdDiaDeTrabalho.ToString()
+                + SeparadorSplit + IdJornada.ToString()
+                + SeparadorSplit + (int)DiaDaSemana;
         }
-
-        public List<Cnae> Consultar()
-        {
-            return persistencia.Consultar();
-        }
-
-        public List<Cnae> Consultar(object parametro, string atributo)
-        {
-            return persistencia.Consultar(parametro, atributo);
-        }
-
-        public Cnae ToObject(string texto)
-        {
-            return persistencia.ToObject(texto);
-        }
-
-        #endregion READ
-
-        #region UPDATE
-
-        public void Atualizar(Cnae objeto)
-        {
-            persistencia.Atualizar(objeto);
-        }
-
-        #endregion UPDATE
-
-        #region DELETE
-
-        public void Excluir(long idCnae)
-        {
-            persistencia.Excluir(idCnae);
-        }
-
-        #endregion DELETE
     }
 }

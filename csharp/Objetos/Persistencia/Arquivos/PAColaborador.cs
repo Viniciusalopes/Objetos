@@ -171,7 +171,7 @@ namespace Objetos.Persistencia.Arquivos
                     int.Parse(partes[4]),
                     DateTime.Parse(partes[5]),
                     DateTime.Parse(partes[6]),
-                    null);
+                    new PAJornada().Buscar(long.Parse(partes[7]);
             }
             catch (Exception ex)
             {

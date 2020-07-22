@@ -131,7 +131,6 @@ namespace Objetos.Modelos.Dados
             ValorBoolTupla = valor;
             ValorObjectTupla = null;
         }
-
         public Tupla(long id, string nome, Object valor, string alias = "")
         {
             IdTupla = id;

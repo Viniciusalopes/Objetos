@@ -255,7 +255,7 @@ namespace Objetos.Persistencia.Arquivos
                 char sep = SeparadorSplit;
                 string[] partes = texto.Split(SeparadorSplit);
 
-                PessoaJuridica pj = new PessoaJuridica(
+                return new PessoaJuridica(
                     long.Parse(partes[0]),
                     (Situacao)int.Parse(partes[2]),
                     (Vinculo)int.Parse(partes[3]),
@@ -274,15 +274,6 @@ namespace Objetos.Persistencia.Arquivos
                     partes[16],
                     DateTime.Parse(partes[17])
                     );
-
-                // Enderecos
-                pj.Enderecos = new ControleEndereco().Consultar(pj.IdPessoa, "IdPessoa");
-                // Telefones
-                pj.Telefones = new ControleTelefone().Consultar(pj.IdPessoa, "IdPessoa");
-                // Emails
-                pj.Emails = new ControleEmail().Consultar(pj.IdPessoa, "IdPessoa");
-
-                return pessoa;
             }
             catch (Exception ex)
             {

@@ -54,8 +54,7 @@ namespace Objetos.Modelos.Pessoas
         public string MotivoSituacaoCadastral { get; set; }
         public string SituacaoEspecial { get; set; }
         public DateTime DataSituacaoEspecial { get; set; }
-        public object Documentos { get; internal set; }
-
+        
         public PessoaJuridica()
         {
 

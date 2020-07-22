@@ -44,11 +44,38 @@ namespace Objetos.Modelos.Empresas
         public Empresa(long idEmpresa, PessoaJuridica pessoaJuridica)
         {
             IdEmpresa = idEmpresa;
+
+            #region Pessoa
+
+            IdPessoa = pessoaJuridica.IdPessoa;
             TipoPessoa = pessoaJuridica.TipoPessoa;
-            SituacaoCnpj = pessoaJuridica.SituacaoCnpj;
+            SituacaoPessoa = pessoaJuridica.SituacaoPessoa;
             Vinculo = pessoaJuridica.Vinculo;
-            Documentos = pessoaJuridica.Documentos;
-            Setores = new List<Setor>();
+            Enderecos = pessoaJuridica.Enderecos;
+            Telefones = pessoaJuridica.Telefones;
+            Emails = pessoaJuridica.Emails;
+            
+            #endregion Pessoa
+
+            #region PessoaJuridica
+            
+            Cnpj = pessoaJuridica.Cnpj;
+            TipoEstabelecimento = pessoaJuridica.TipoEstabelecimento;
+            DataAbertura = pessoaJuridica.DataAbertura;
+            NomeEmpresarial = pessoaJuridica.NomeEmpresarial;
+            NomeFantasia = pessoaJuridica.NomeFantasia;
+            PortePJ = pessoaJuridica.PortePJ;
+            Cnaes = pessoaJuridica.Cnaes;
+            CodigoNaturezaJuridica = pessoaJuridica.CodigoNaturezaJuridica;
+            DescricaoNaturezaJuridica = pessoaJuridica.DescricaoNaturezaJuridica;
+            Efr = pessoaJuridica.Efr;
+            SituacaoCnpj = pessoaJuridica.SituacaoCnpj;
+            DataSituacaoCadastral = pessoaJuridica.DataSituacaoCadastral;
+            MotivoSituacaoCadastral = pessoaJuridica.MotivoSituacaoCadastral;
+            SituacaoEspecial = pessoaJuridica.SituacaoEspecial;
+            DataSituacaoEspecial = pessoaJuridica.DataSituacaoEspecial;
+
+            #endregion PessoaJuridica
         }
 
         public override string ToString() => IdEmpresa.ToString() + SeparadorSplit  + IdPessoa;

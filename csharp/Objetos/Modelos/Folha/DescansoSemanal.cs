@@ -18,54 +18,40 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Controller para UF.
+///     Dias de descanso semnanal da Jornada de um Colaborador de uma empresa, do ponto de vista da Folha de Pagamento.
 ///     Criação : Vovolinux
-///     Data    : 30/06/2020
+///     Data    : 19/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using System;
-using System.Collections.Generic;
-using Objetos.Interfaces;
-using Objetos.Modelos.Enderecos;
-using Objetos.Persistencia.Memoria;
+using static Objetos.Constantes.ConstantesGerais;
+using static Objetos.Constantes.EnumDiasDaSemana;
 
-namespace Objetos.Controles
+namespace Objetos.Modelos.Folha
 {
-    public class ControleUF : ICRUDMemoria<UF>
+    public class DescansoSemanal
     {
-        #region ATRIBUTOS
+        public long IdDescansoSemanal { get; set; }
+        public long IdJornada { get; set; }
+        public DiaDaSemana DiaDaSemana { get; set; }
 
-        private PMUF persistencia = null;
-
-        #endregion ATRIBUTOS
-
-        #region CONSTRUTORES
-
-        public ControleUF()
+        public DescansoSemanal()
         {
-            persistencia = new PMUF();
+
         }
 
-        #endregion CONSTRUTORES
-
-        #region READ
-
-        public UF Buscar(long idUf)
+        public DescansoSemanal(long idDescansoSemanal, long idJornada, DiaDaSemana diaDaSemana)
         {
-            return persistencia.Buscar(idUf);
+            IdDescansoSemanal = idDescansoSemanal;
+            IdJornada = idJornada;
+            DiaDaSemana = diaDaSemana;
         }
 
-        public List<UF> Consultar()
+        public override string ToString()
         {
-            return persistencia.Consultar();
+            return IdDescansoSemanal.ToString()
+                + SeparadorSplit + IdJornada.ToString()
+                + SeparadorSplit + (int)DiaDaSemana;
         }
-
-        public List<UF> Consultar(object parametro)
-        {
-            return persistencia.Consultar(parametro);
-        }
-        
-        #endregion READ
     }
 }

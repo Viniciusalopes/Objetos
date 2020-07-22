@@ -1,6 +1,6 @@
 ﻿
-using Objetos.Interfaces;
-using Objetos.Modelos;
+
+using System;
 using System.Collections.Generic;
 /// <licenca>
 ///     Licença MIT
@@ -22,48 +22,26 @@ using System.Collections.Generic;
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Controller para Telefone.
+///     Utilitários para datas e horarios.
 ///     Criação : Vovolinux
 ///     Data    : 15/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
-namespace Objetos.Controles
+namespace Objetos.Utilitarios
 {
-    public class ControleTelefone : ICRUD<Telefone>
+    public static class DataUtils
     {
-        public void Atualizar(Telefone objeto)
+        public static List<DateTime> FaixaDeHoras(DateTime horaInicial, DateTime horaFinal, int intervaloMinutos = 30)
         {
-            throw new System.NotImplementedException();
-        }
+            List<DateTime> horas = new List<DateTime>();
 
-        public Telefone Buscar(long id)
-        {
-            throw new System.NotImplementedException();
-        }
+            DateTime time = DateTime.Today;
+            for (DateTime _time = horaInicial; _time <= horaFinal; _time = _time.AddMinutes(intervaloMinutos))
+            {
+                 horas.Add(_time);
+            }
 
-        public List<Telefone> Consultar()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public List<Telefone> Consultar(object parametro, string atributo)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Excluir(long id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public long Incluir(Telefone objeto)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Telefone ToObject(string texto)
-        {
-            throw new System.NotImplementedException();
+            return horas;
         }
     }
 }

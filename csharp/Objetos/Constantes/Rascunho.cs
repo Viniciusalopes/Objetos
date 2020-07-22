@@ -24,14 +24,31 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
+using System.Collections.Generic;
+using Objetos.Persistencia.Arquivos;
+using static Objetos.Constantes.ConstantesGerais;
+
 namespace Objetos.Constantes
 {
     class Rascunho
     {
         #region ATRIBUTOS
+
+        private Arquivo controleArquivo = null;
+
+        //private Entidade entidade = null;
+        //private List<Entidade> entidades = null;
+        //private List<Entidade> entidadesRetorno = null;
+
         #endregion ATRIBUTOS
 
         #region CONSTRUTORES
+
+        //public PAEntidade()
+        //{
+        //    controleArquivo = new Arquivo("Entidade", ExtensaoArquivoBd, "");
+        //}
+
         #endregion CONSTRUTORES
 
         #region GET/SET
@@ -48,18 +65,147 @@ namespace Objetos.Constantes
 
         #region CRUD
 
-        #region CREATE
-        #endregion CREATE
+        //#region CREATE
 
-        #region READ
-        #endregion READ
+        //public long Incluir(Entidade objeto)
+        //{
+        //    try
+        //    {
+        //        objeto.Id = GeradorID.getProximoID();
+        //        controleArquivo.IncluirLinha(objeto.ToString());
+        //        return objeto.Id;
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //         throw new Exception("ent" + SeparadorTraco + "001" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+        //    }
+        //}
 
-        #region UPDATE
-        #endregion UPDATE
+        //#endregion CREATE
 
-        #region DELETE
-        #endregion DELETE
+        //#region READ
+
+        //public Entidade Buscar(long id)
+        //{
+        //  try
+        //  {
+        //      foreach(Entidade entidade in Consultar())
+        //          if(entidade.Id == id)
+        //              return entidade;
+        //
+        //      return null;
+        //  }
+        //  catch(Exception ex)
+        //  {
+        //      throw new Exception("ent" + SeparadorTraco + "002" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+        //  }
+        //}
+
+        //public List<Entidade> Consultar()
+        //{
+        //  try
+        //  {
+        //      entidades = new List<Entidade>();
+        //      string[] linhas = controleArquivo.LerLinhas();
+        //
+        //      foreach (string linha in linhas)
+        //      entidades.Add(ToObject(linha));
+        //
+        //      return entidades;
+        //  }
+        //      catch (Exception ex)
+        //  {
+        //        throw new Exception("ent" + SeparadorTraco + "003" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+        //  }
+
+        //public List<Entidade> Consultar(object parametro, string atributo)
+        //{
+        //  try
+        //  {
+        //      entidades = Consultar();
+        //      entidadesRetorno = new List<Entidade>();
+        //      entidade = new Entidade();
+        //
+        //      switch (atributo)
+        //      {
+        //          case "atributo":
+        //              foreach (Entidade entidade in entidades)
+        //                  if(entidade.atributo.Equals(parametro))
+        //                      entidades.Add(entidade);
+        //              break;
+        //          
+        //          default:
+        //              break;
+        //      }
+        //      return entidades;
+        //  }
+        //  catch(Exception ex)
+        //  {
+        //      throw new Exception("ent" + SeparadorTraco + "004" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+        //  }
+        //}
+
+        //public Entidade ToObject(string texto)
+        //{
+        //     try
+        //     {
+        //          string[] partes = texto.Split(SeparadorSplit);
+        //          entidade = new Entidade();
+        //          entidade.Id = long.Parse(partes[0]);
+        //
+        //          return pessoa;
+        //      }
+        //      catch (Exception ex)
+        //      {
+        //          throw new Exception("pef" + SeparadorTraco + "005" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+        //      }
+        //}
+
+        //#endregion READ
+
+        //#region UPDATE
+
+        //public void Atualizar(Entidade objeto)
+        //{
+        //  try
+        //  {
+        //      foreach (Entidade entidade in Consultar())
+        //          if (entidade.IdPessoa == objeto.Id)
+        //              {
+        //                  controleArquivo.SubstituirLinha(entidade.ToString(), objeto.ToString());
+        //                  break;
+        //              }
+        //  }
+        //  catch (Exception ex)
+        //  {
+        //      throw new Exception("ent" + SeparadorTraco + "006" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+        //  }
+        //}
+
+        //#endregion UPDATE
+
+        //#region DELETE
+
+        //public void Excluir(long id)
+        //{
+        //  try
+        //  {
+        //      foreach (Entidade entidade in Consultar())
+        //          if (entidade.IdPessoa == id)
+        //              {
+        //                  controleArquivo.ExcluirLinha(entidade.ToString());
+        //                  break;
+        //              }
+        //  }
+        //  catch (Exception ex)
+        //  {
+        //      throw new Exception("ent" + SeparadorTraco + "007" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " + MensagemCompleta(ex.Message));
+        //  }
+        //}
+
+        //#endregion DELETE
 
         #endregion CRUD
+
     }
 }

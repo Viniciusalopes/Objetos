@@ -18,54 +18,23 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Controller para Email.
+///     Tipo de persistencia utilizada no sistema.
 ///     Criação : Vovolinux
-///     Data    : 15/07/2020
+///     Data    : 18/07/2020
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Interfaces;
-using Objetos.Modelos;
-using System;
-using System.Collections.Generic;
-
-namespace Objetos.Controles
+namespace Objetos.Constantes
 {
-    public class ControleEmail : ICRUD<Email>
+    public class EnumTipoPersistencia
     {
-        public void Atualizar(Email objeto)
+        public enum TipoPersistencia
         {
-            throw new NotImplementedException();
-        }
-
-        public Email Buscar(long id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Email> Consultar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Email> Consultar(object parametro, string atributo)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Excluir(long id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public long Incluir(Email objeto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Email ToObject(string texto)
-        {
-            throw new NotImplementedException();
+            Memória,
+            Arquivo,
+            MySql,
+            MariaDB,
+            PostgreSQL
         }
     }
 }

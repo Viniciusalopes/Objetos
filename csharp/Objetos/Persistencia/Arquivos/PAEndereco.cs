@@ -24,16 +24,20 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Interfaces;
-using Objetos.Modelos.Enderecos;
 using System;
 using System.Collections.Generic;
+using Objetos.Interfaces;
+using Objetos.Modelos.Empresas;
+using Objetos.Modelos.Enderecos;
+using Objetos.Persistencia.Arquivos;
+using static Objetos.Constantes.ConstantesGerais;
 
 namespace Objetos.Persistencia.Arquivos
 {
     public class PAEndereco : ICRUD<Endereco>
     {
         #region ATRIBUTOS
+
         private Arquivo controleArquivo = null;
 
         private Endereco endereco = null;
@@ -46,7 +50,7 @@ namespace Objetos.Persistencia.Arquivos
 
         public PAEndereco()
         {
-            controleArquivo = new Arquivo();
+            controleArquivo = new Arquivo("Endereco", ExtensaoArquivoBd, "");
         }
 
         #endregion CONSTRUTORES

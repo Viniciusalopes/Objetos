@@ -33,6 +33,7 @@ using System.Collections.Generic;
 using Objetos.Utilitarios;
 using static Objetos.Controles.ControleMensagem;
 using static Objetos.Constantes.ConstantesGerais;
+using Objetos.Modelos.Folha;
 
 namespace Objetos.Persistencia.Arquivos
 {
@@ -41,7 +42,6 @@ namespace Objetos.Persistencia.Arquivos
         #region ATRIBUTOS
 
         private Arquivo controleArquivo = null;
-        private ControleColaborador controleColaborador = null;
 
         private Setor setor = null;
         private List<Setor> setores = null;
@@ -176,9 +176,11 @@ namespace Objetos.Persistencia.Arquivos
         {
             try
             {
-                controleColaborador = new ControleColaborador();
                 string[] partes = texto.Split(SeparadorSplit);
-                return new Setor(long.Parse(partes[0]), long.Parse(partes[1]), partes[2], controleColaborador.Buscar(long.Parse(partes[3])), null);
+                long idSetor = long.Parse(partes[0]);
+                PAColaborador paColaborador = new PAColaborador();
+                List<Colaborador> colaboradores = paColaborador.Consultar(idSetor, "IdSetor");
+                return new Setor(idSetor, long.Parse(partes[1]), partes[2], paColaborador.Buscar(long.Parse(partes[3])), colaboradores);
             }
             catch (Exception ex)
             {

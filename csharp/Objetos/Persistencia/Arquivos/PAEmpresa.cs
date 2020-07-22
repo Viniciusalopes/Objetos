@@ -24,11 +24,9 @@
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
-using Objetos.Constantes;
 using Objetos.Controles;
 using Objetos.Interfaces;
 using Objetos.Modelos.Empresas;
-using Objetos.Modelos.Pessoas;
 using Objetos.Utilitarios;
 using System;
 using System.Collections.Generic;
@@ -150,7 +148,8 @@ namespace Objetos.Persistencia.Arquivos
             try
             {
                 string[] partes = texto.Split(SeparadorSplit);
-                empresa = new Empresa(long.Parse(partes[0]), new ControlePessoaJuridica().Buscar(long.Parse(partes[1])));
+                empresa = new Empresa(long.Parse(partes[0]), new PAPessoaJuridica().Buscar(long.Parse(partes[1])));
+                empresa.Setores = new PASetor().Consultar(empresa.IdEmpresa, "IdEmpresa");
                 return empresa;
             }
             catch (Exception ex)
