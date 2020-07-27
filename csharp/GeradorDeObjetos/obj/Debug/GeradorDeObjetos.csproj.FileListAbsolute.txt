@@ -1,0 +1,14 @@
+C:\Users\Vinicius\projetos\Objetos\csharp\GeradorDeObjetos\bin\Debug\GeradorDeObjetos.exe.config
+C:\Users\Vinicius\projetos\Objetos\csharp\GeradorDeObjetos\bin\Debug\GeradorDeObjetos.exe
+C:\Users\Vinicius\projetos\Objetos\csharp\GeradorDeObjetos\bin\Debug\GeradorDeObjetos.pdb
+C:\Users\Vinicius\projetos\Objetos\csharp\GeradorDeObjetos\bin\Debug\Objetos.dll
+C:\Users\Vinicius\projetos\Objetos\csharp\GeradorDeObjetos\bin\Debug\Objetos.pdb
+C:\Users\Vinicius\projetos\Objetos\csharp\GeradorDeObjetos\bin\Debug\Objetos.dll.config
+C:\Users\Vinicius\projetos\Objetos\csharp\GeradorDeObjetos\obj\Debug\GeradorDeObjetos.csprojAssemblyReference.cache
+C:\Users\Vinicius\projetos\Objetos\csharp\GeradorDeObjetos\obj\Debug\GeradorDeObjetos.FormGeradorDeObjetos.resources
+C:\Users\Vinicius\projetos\Objetos\csharp\GeradorDeObjetos\obj\Debug\GeradorDeObjetos.Properties.Resources.resources
+C:\Users\Vinicius\projetos\Objetos\csharp\GeradorDeObjetos\obj\Debug\GeradorDeObjetos.csproj.GenerateResource.cache
+C:\Users\Vinicius\projetos\Objetos\csharp\GeradorDeObjetos\obj\Debug\GeradorDeObjetos.csproj.CoreCompileInputs.cache
+C:\Users\Vinicius\projetos\Objetos\csharp\GeradorDeObjetos\obj\Debug\GeradorDeObjetos.csproj.CopyComplete
+C:\Users\Vinicius\projetos\Objetos\csharp\GeradorDeObjetos\obj\Debug\GeradorDeObjetos.exe
+C:\Users\Vinicius\projetos\Objetos\csharp\GeradorDeObjetos\obj\Debug\GeradorDeObjetos.pdb

@@ -31,6 +31,8 @@ using System.IO;
 using System.Text;
 using static Objetos.Utilitarios.ArquivoUtils;
 using Objetos.Constantes;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Objetos.Persistencia.Arquivos
 {
@@ -122,6 +124,11 @@ namespace Objetos.Persistencia.Arquivos
         #endregion GET / SET
 
         #region LEITOR
+
+        public List<string> ListaDeLinhas()
+        {
+            return LerLinhas().OfType<string>().ToList();
+        }
 
         public string[] LerLinhas()
         {

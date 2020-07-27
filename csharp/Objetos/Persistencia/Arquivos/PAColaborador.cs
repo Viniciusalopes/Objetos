@@ -163,6 +163,8 @@ namespace Objetos.Persistencia.Arquivos
             try
             {
                 string[] partes = texto.Split(SeparadorSplit);
+                return null;
+                /*
                 return new Colaborador(
                     long.Parse(partes[0]),
                     long.Parse(partes[1]),
@@ -171,7 +173,8 @@ namespace Objetos.Persistencia.Arquivos
                     int.Parse(partes[4]),
                     DateTime.Parse(partes[5]),
                     DateTime.Parse(partes[6]),
-                    new PAJornada().Buscar(long.Parse(partes[7]);
+                    new PAJornada().Buscar(long.Parse(partes[7]));
+                */
             }
             catch (Exception ex)
             {

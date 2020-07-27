@@ -30,6 +30,7 @@ using Objetos.Interfaces;
 using Objetos.Modelos.Folha;
 using Objetos.Utilitarios;
 using static Objetos.Constantes.ConstantesGerais;
+using static Objetos.Controles.ControleMensagem;
 
 namespace Objetos.Persistencia.Arquivos
 {
@@ -118,9 +119,9 @@ namespace Objetos.Persistencia.Arquivos
                 switch (atributo)
                 {
                     case "atributo":
-                        foreach (JornadaDeTrabalho jornadaDeTrabalho in jornadas)
+                        /*foreach (JornadaDeTrabalho jornadaDeTrabalho in jornadas)
                             if (jornadaDeTrabalho.atributo.Equals(parametro))
-                                jornadasRetorno.Add(jornadaDeTrabalho);
+                                jornadasRetorno.Add(jornadaDeTrabalho);*/
                         break;
 
                     default:

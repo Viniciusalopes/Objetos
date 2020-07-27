@@ -18,53 +18,47 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Objeto para endereço de E-mail.
-///     Criação : Vovolinux
-///     Data    : 14/07/2020
-///     Projeto : Objetos genéricos para C#.
+///     [DescricaoObjeto]
+///     Criação : [Autor]
+///     Data    : [DataCriacao]
+///     Projeto : Objetos genéricos para [Linguagem].
 /// </summary>
-
+/*
 using static Objetos.Constantes.ConstantesGerais;
-using static Objetos.Constantes.EnumTipoEnderecoTelefoneEmail;
 
-namespace Objetos.Modelos
+namespace [NamespaceObjeto]
 {
-    public class Email
+    public class [Modelo]
     {
         #region ATRIBUTOS
-
-        public long IdEmail { get; set; }
-        public string EnderecoEmail { get; set; }
-        public TipoEnderecoTelefoneEmail TipoEmail { get; set; }
+        
+        [Atributos]
 
         #endregion ATRIBUTOS
 
         #region CONSTRUTORES
         
-        public Email()
+        public [Modelo]()
         {
 
         }
 
-        public Email(long idEmail, string enderecoEmail, TipoEnderecoTelefoneEmail tipoEmail)
+        public [Modelo]([AtributosParametrosConstrutorUmaLinha])
         {
-            IdEmail = idEmail;
-            EnderecoEmail = enderecoEmail;
-            TipoEmail = tipoEmail;
+            [AtribuicaoParametros]
         }
 
         #endregion CONSTRUTORES
-
+        
         #region GET
 
         public override string ToString()
         {
             char sep = SeparadorSplit;
-            return IdEmail.ToString() 
-                + sep + EnderecoEmail 
-                + sep + TipoEmail;
+            return [AtributosToStringRecuar2aLinha];
         }
 
         #endregion GET
     }
 }
+*/

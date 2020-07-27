@@ -58,6 +58,8 @@
     <Compile Include="Constantes\EnumRegiao.cs" />
     <Compile Include="Constantes\EnumSexo.cs" />
     <Compile Include="Constantes\EnumSituacao.cs" />
+    <Compile Include="Constantes\EnumTags.cs" />
+    <Compile Include="Constantes\EnumTipoAtributo.cs" />
     <Compile Include="Constantes\EnumTipoCnae.cs" />
     <Compile Include="Constantes\EnumTipoEnderecoTelefoneEmail.cs" />
     <Compile Include="Constantes\EnumTipoEstabelecimento.cs" />
@@ -70,10 +72,12 @@
     <Compile Include="Controles\ControleMensagem.cs" />
     <Compile Include="Interfaces\ICRUD.cs" />
     <Compile Include="Interfaces\ICRUDMemoria.cs" />
+    <Compile Include="Modelos\Dados\Atributo.cs" />
     <Compile Include="Modelos\Email.cs" />
     <Compile Include="Modelos\Folha\DescansoSemanal.cs" />
     <Compile Include="Modelos\Folha\DiaDeTrabalho.cs" />
     <Compile Include="Modelos\Pessoas\Pessoa.cs" />
+    <Compile Include="Padroes\ObjetoPadrao.cs" />
     <Compile Include="Padroes\PAPadrao.cs" />
     <Compile Include="Persistencia\Arquivos\Arquivo.cs" />
     <Compile Include="Modelos\Dados\Tupla.cs" />

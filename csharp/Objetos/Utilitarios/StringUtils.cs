@@ -56,6 +56,22 @@ namespace Objetos.Utilitarios
             
             return retorno;
         }
+
+        public static string indentacao(string linha, int tamanho, bool avancar)
+        {
+            string retorno = (avancar) ? repetir(" ", tamanho) : "";
+
+            foreach (char c in linha)
+            {
+                if (!c.Equals(' '))
+                    break;
+
+                retorno += ' ';
+            }
+
+            return retorno;
+        }
+
         #region CRIPTOGRAFIA
 
         public static string Base64Encode(string plainText)

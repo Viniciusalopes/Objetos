@@ -26,6 +26,7 @@
 /// 
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using static Objetos.Constantes.ConstantesGerais;
 namespace Objetos.Utilitarios
@@ -54,6 +55,26 @@ namespace Objetos.Utilitarios
             if (!File.Exists(caminhoArquivo))
                 File.Create(caminhoArquivo).Close();
             
+        }
+        /// <summary>
+        ///     Lista os arquivos do diretório e dos sub-diretórios.
+        ///     FONTE: https://social.msdn.microsoft.com/Forums/pt-BR/3c784a0b-c5fb-4a27-b74f-54c05f90b9ab/ler-todos-os-arquivos-do-diretorio-selecionado?forum=vscsharppt
+        /// </summary>
+        /// <param name="dir"></param>
+        /// <returns> Lista de FileInfo. </returns>
+        public static List<FileInfo> arquivosDoDiretorio(DirectoryInfo dir, List<FileInfo> lista)
+        {
+            List<FileInfo> retorno = (lista == null) ? new List<FileInfo>() : lista;
+
+            // lista arquivos do diretorio corrente
+            foreach (FileInfo file in dir.GetFiles())
+                retorno.Add(file);
+
+            // busca arquivos do proximo sub-diretorio
+            foreach (DirectoryInfo subDir in dir.GetDirectories())
+                arquivosDoDiretorio(subDir, retorno);
+
+            return retorno;
         }
     }
 }

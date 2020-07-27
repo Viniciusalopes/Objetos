@@ -1,6 +1,6 @@
 ﻿/// <licenca>
 ///     Licença MIT
-///     Copyright(c) 2020 Viniciusalopes Tecnologia
+///     Copyright © 2020 Viniciusalopes Tecnologia
 ///     
 ///     A permissão é concedida, gratuitamente, a qualquer pessoa que obtenha uma cópia deste software e dos 
 ///     arquivos de documentação associados (o "Software"), para negociar no Software sem restrições, 
@@ -18,25 +18,18 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Padrão de projeto para classe de persistência em arquivo.
-///     Criação : Vovolinux
-///     Data    : 22/07/2020
-///     Projeto : Objetos genéricos para C#.
+///     [DescricaoPersistencia]
+///     Criação : [Autor]
+///     Data    : [DataCriacao]
+///     Projeto : Objetos genéricos para [Linguagem].
 /// </summary>
-///<substituir>
-///     [Modelo]            = Modelo
-///     [modeloSingular]    = modelo
-///     [oModeloSingular]   = oModelo
-///     [modeloPlural]      = modelos
-///     [IdModeloAtributo]  = IdModelo
-///     [idModeloParametro] = idModelo
-///     [prefixoErro]       = err
-///</substituir>
-
+/*
 using System;
 using System.Collections.Generic;
+using static Objetos.Constantes.ConstantesGerais;
+using static Objetos.Controles.ControleMensagem;
 
-namespace Objetos.Padroes
+namespace [NamespacePersistencia]
 {
 
     public class PA[Modelo] : ICRUD<[Modelo]>
@@ -55,7 +48,7 @@ namespace Objetos.Padroes
 
         public PA[Modelo] ()
         {
-            controleArquivo = new Arquivo("[modeloSingular]", ExtensaoArquivoBd, "");
+            controleArquivo = new Arquivo("[Modelo]", ExtensaoArquivoBd, "");
         }
 
         #endregion CONSTRUTORES
@@ -66,7 +59,7 @@ namespace Objetos.Padroes
         {
             try
             {
-                [Modelo].[IdModeloAtributo] = GeradorID.getProximoID();
+                [modeloSingular].[IdModeloAtributo] = GeradorID.getProximoID();
                 controleArquivo.IncluirLinha([modeloSingular].ToString());
                 return [modeloSingular].[IdModeloAtributo];
             }
@@ -119,15 +112,10 @@ namespace Objetos.Padroes
             {
                 [modeloPlural] = Consultar();
                 [modeloPlural]Retorno = new List<[Modelo]>();
-                [modeloSingular] = new[Modelo]();
 
                 switch (atributo)
                 {
-                    case "atributo":
-                        foreach ([Modelo] [modeloSingular] in [modeloPlural])
-                            if ([modeloSingular].atributo.Equals(parametro))
-                                [modeloPlural]Retorno.Add([modeloSingular]);
-                        break;
+                    [CasesConsultar]
 
                     default:
                         break;
@@ -146,7 +134,7 @@ namespace Objetos.Padroes
             {
                 string[] partes = texto.Split(SeparadorSplit);
                 [modeloSingular] = new[Modelo]();
-                [modeloSingular].[IdModeloAtributo] = long.Parse(partes[0]);
+                [AtributosToObjectRecuar2aLinha]
 
                 return [modeloSingular];
             }
@@ -201,3 +189,4 @@ namespace Objetos.Padroes
         #endregion DELETE
     }
 }
+*/

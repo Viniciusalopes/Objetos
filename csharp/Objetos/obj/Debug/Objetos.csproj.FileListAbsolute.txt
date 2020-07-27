@@ -12,10 +12,10 @@ C:\Users\Vinicius\Google Drive\globaltec\registro-de-ponto\PHO+Objetos\Objetos\c
 C:\Users\Vinicius\Google Drive\globaltec\registro-de-ponto\PHO+Objetos\Objetos\csharp\Objetos\bin\Debug\Objetos.dll.config
 C:\Users\Vinicius\Google Drive\globaltec\registro-de-ponto\PHO+Objetos\Objetos\csharp\Objetos\bin\Debug\Objetos.dll
 C:\Users\Vinicius\Google Drive\globaltec\registro-de-ponto\PHO+Objetos\Objetos\csharp\Objetos\bin\Debug\Objetos.pdb
-C:\Users\Vinicius\projetos\Objetos\csharp\Objetos\obj\Debug\Objetos.csproj.CoreCompileInputs.cache
 C:\Users\Vinicius\projetos\Objetos\csharp\Objetos\bin\Debug\Objetos.dll.config
 C:\Users\Vinicius\projetos\Objetos\csharp\Objetos\bin\Debug\Objetos.dll
 C:\Users\Vinicius\projetos\Objetos\csharp\Objetos\bin\Debug\Objetos.pdb
+C:\Users\Vinicius\projetos\Objetos\csharp\Objetos\obj\Debug\Objetos.csproj.CoreCompileInputs.cache
 C:\Users\Vinicius\projetos\Objetos\csharp\Objetos\obj\Debug\Objetos.dll
 C:\Users\Vinicius\projetos\Objetos\csharp\Objetos\obj\Debug\Objetos.pdb
 C:\Users\Vinicius\projetos\Objetos\csharp\Objetos\obj\Debug\Objetos.csprojAssemblyReference.cache

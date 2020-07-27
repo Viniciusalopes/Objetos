@@ -1,4 +1,4 @@
-﻿/// <licenca>
+/// <licenca>
 ///     Licença MIT
 ///     Copyright(c) 2020 Viniciusalopes Tecnologia
 ///     
@@ -18,53 +18,56 @@
 ///     FORMA, PROVENIENTE, FORA OU EM CONEXÃO COM O SOFTWARE OU O USO, OU OUTROS ACORDOS NOS PROGRAMAS.
 /// </licenca>
 /// <summary>
-///     Objeto para endereço de E-mail.
+///     Objeto Atributo.
 ///     Criação : Vovolinux
-///     Data    : 14/07/2020
+///     Data    : 27/07/2020 03:19:36 - Gerado automaGicamente pelo Gerador de Objetos - Versão 1.0.0.0
 ///     Projeto : Objetos genéricos para C#.
 /// </summary>
 
 using static Objetos.Constantes.ConstantesGerais;
-using static Objetos.Constantes.EnumTipoEnderecoTelefoneEmail;
 
-namespace Objetos.Modelos
+namespace Objetos.Modelos.Dados
 {
-    public class Email
+    public class Atributo
     {
         #region ATRIBUTOS
-
-        public long IdEmail { get; set; }
-        public string EnderecoEmail { get; set; }
-        public TipoEnderecoTelefoneEmail TipoEmail { get; set; }
+        
+        public long IdAtributo { get; set; }
+        public string NomeAtributo { get; set; }
+        public string TipoAtributo { get; set; }
+        public string ObjetoAtributo { get; set; }
 
         #endregion ATRIBUTOS
 
         #region CONSTRUTORES
         
-        public Email()
+        public Atributo()
         {
 
         }
 
-        public Email(long idEmail, string enderecoEmail, TipoEnderecoTelefoneEmail tipoEmail)
+        public Atributo(long idAtributo, string nomeAtributo, string tipoAtributo, string objetoAtributo)
         {
-            IdEmail = idEmail;
-            EnderecoEmail = enderecoEmail;
-            TipoEmail = tipoEmail;
+            IdAtributo = idAtributo;
+            NomeAtributo = char.ToUpper(nomeAtributo[0]) + nomeAtributo.Substring(1);
+            TipoAtributo = tipoAtributo;
+            ObjetoAtributo = objetoAtributo;
         }
 
         #endregion CONSTRUTORES
-
+        
         #region GET
 
         public override string ToString()
         {
             char sep = SeparadorSplit;
-            return IdEmail.ToString() 
-                + sep + EnderecoEmail 
-                + sep + TipoEmail;
+            return IdAtributo.ToString()
+                + sep + NomeAtributo
+                + sep + TipoAtributo
+                + sep + ObjetoAtributo;
         }
 
         #endregion GET
     }
 }
+
