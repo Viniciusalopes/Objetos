@@ -129,115 +129,131 @@ namespace Objetos.Persistencia.Arquivos
                 if (atributo.Trim().Length == 0)
                     return pessoasRetorno;
 
-                foreach (PessoaJuridica pessoaJuridica in pessoas)
+
+
+                switch (atributo)
                 {
-                    switch (atributo)
-                    {
-                        case "TipoPessoa":
+                    case "TipoPessoa":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.TipoPessoa.Equals((TipoPessoa)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        case "SituacaoPessoa":
+                    case "SituacaoPessoa":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.SituacaoPessoa.Equals((Situacao)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        case "Vinculo":
+                    case "Vinculo":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.Vinculo.Equals((Vinculo)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        case "Cnpj":
+                    case "Cnpj":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.Cnpj.Equals((string)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        case "TipoEstabelecimento":
+                    case "TipoEstabelecimento":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.TipoEstabelecimento.Equals((TipoEstabelecimento)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        case "DataAbertura":
+                    case "DataAbertura":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.DataAbertura.Equals((DateTime)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        case "NomeEmpresarial":
+                    case "NomeEmpresarial":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.NomeEmpresarial.Equals((string)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        case "NomeFantasia":
+                    case "NomeFantasia":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.NomeFantasia.Equals((string)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        case "PortePJ":
+                    case "PortePJ":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.PortePJ.Equals((string)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        case "CodigoNaturezaJuridica":
+                    case "CodigoNaturezaJuridica":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.CodigoNaturezaJuridica.Equals((string)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        case "DescricaoNaturezaJuridica":
+                    case "DescricaoNaturezaJuridica":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.DescricaoNaturezaJuridica.Equals((string)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        case "Efr":
+                    case "Efr":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.Efr.Equals((string)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        case "SituacaoCnpj":
+                    case "SituacaoCnpj":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.SituacaoCnpj.Equals((Situacao)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        case "DataSituacaoCadastral":
+                    case "DataSituacaoCadastral":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.DataSituacaoCadastral.Equals((DateTime)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        case "MotivoSituacaoCadastral":
+                    case "MotivoSituacaoCadastral":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.MotivoSituacaoCadastral.Equals((string)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        case "SituacaoEspecial":
+                    case "SituacaoEspecial":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.SituacaoEspecial.Equals((string)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        case "DataSituacaoEspecial":
+                    case "DataSituacaoEspecial":
+                        foreach (PessoaJuridica pessoaJuridica in pessoas)
                             if (pessoaJuridica.DataSituacaoEspecial.Equals((DateTime)parametro))
                                 pessoasRetorno.Add(pessoaJuridica);
 
-                            break;
+                        break;
 
-                        default:
-                            break;
-                    }
+                    default:
+                        break;
                 }
 
                 return pessoasRetorno;
@@ -277,7 +293,7 @@ namespace Objetos.Persistencia.Arquivos
             }
             catch (Exception ex)
             {
-                throw new Exception("pej" + SeparadorTraco + "005" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: " 
+                throw new Exception("pej" + SeparadorTraco + "005" + SeparadorEnter + "Camada: Persistência-Arquivos" + SeparadorEnter + "Erro: "
                     + MensagemCompleta(ex.Message));
             }
         }

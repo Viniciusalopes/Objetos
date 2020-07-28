@@ -428,7 +428,27 @@ namespace GeradorDeObjetos
                     }
                     break;
 
-                case TagCompostaCsharp.AtributosToObjectRecuar2aLinha:
+                case TagCompostaCsharp.AtributosToObject:
+                    if (Atributos.Count > 0)
+                    {
+                        retorno = new List<string>();
+                        int i = 0;
+                        foreach (Atributo atributo in Atributos)
+                        {
+                            string modeloSingular = SubstituirTag("modeloSingular")[0];
+                            string tipo = atributo.TipoAtributo;
+                            string[] parseaveis = { "int", "long", "float", "double", "char", "DateTime" };
+
+                            if (parseaveis.Contains(tipo))
+                                retorno.Add(modeloSingular + "." + atributo.NomeAtributo + " = " + tipo + ".Parse(partes[" + i + "]);");
+                            else if (tipo.Equals("string"))
+                                retorno.Add(modeloSingular + "." + atributo.NomeAtributo + " = partes[" + i + "]);");
+                            else
+                                retorno.Add(modeloSingular + ".Id" + atributo.NomeAtributo + " = long.Parse(partes[" + i + "]));");
+                            
+                            i++;
+                        }
+                    }
                     break;
 
                 case TagCompostaCsharp.AtributosToStringRecuar2aLinha:
@@ -463,14 +483,16 @@ namespace GeradorDeObjetos
                                 string modeloSingular = SubstituirTag("modeloSingular")[0];
                                 string modeloPlural = SubstituirTag("modeloPlural")[0];
                                 string tipo = atributo.TipoAtributo;
+                                string parametro = "p" + atributo.NomeAtributo;
                                 string comparador = (tipo.Equals("int") || tipo.Equals("long") || tipo.Equals("float") || tipo.Equals("double"))
-                                                    ? " == param)" : ".Equals(param))";
+                                                    ? " == " + parametro + ")" : ".Equals(" + parametro + "))";
 
                                 retorno.Add("    case \"" + atributo.NomeAtributo + "\":");
-                                retorno.Add("        " + tipo + " param = (" + tipo + ")parametro;");
+                                retorno.Add("        " + tipo + " " + parametro + " = (" + tipo + ")parametro;");
                                 retorno.Add("        foreach (" + NomeDoObjeto + " " + modeloSingular + " in " + modeloPlural + ")");
                                 retorno.Add("            if (" + modeloSingular + "." + atributo.NomeAtributo + comparador);
                                 retorno.Add("                " + modeloPlural + "Retorno.Add(" + modeloSingular + ");");
+                                retorno.Add("");
                                 retorno.Add("        break;");
                                 retorno.Add("");
                             }

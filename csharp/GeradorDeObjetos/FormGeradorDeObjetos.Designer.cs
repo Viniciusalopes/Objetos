@@ -501,6 +501,7 @@
             this.listBoxPersistencia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxPersistencia.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxPersistencia.FormattingEnabled = true;
+            this.listBoxPersistencia.HorizontalScrollbar = true;
             this.listBoxPersistencia.ItemHeight = 14;
             this.listBoxPersistencia.Location = new System.Drawing.Point(3, 3);
             this.listBoxPersistencia.Name = "listBoxPersistencia";

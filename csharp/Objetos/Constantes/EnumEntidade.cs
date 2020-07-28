@@ -45,7 +45,6 @@ namespace Objetos.Constantes
             DiasDeTrabalho,
             DescansoSemanal,
             Intervalos
-
         }
     }
 }

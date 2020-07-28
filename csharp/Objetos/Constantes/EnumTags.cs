@@ -26,7 +26,7 @@ namespace Objetos.Constantes
             AtribuicaoParametros,
             Atributos,
             AtributosParametrosConstrutorUmaLinha,
-            AtributosToObjectRecuar2aLinha,
+            AtributosToObject,
             AtributosToStringRecuar2aLinha,
             CasesConsultar
         }

@@ -26,6 +26,9 @@
 /*
 using System;
 using System.Collections.Generic;
+using Objetos.Interfaces;
+using Objetos.Utilitarios;
+using [NamespaceObjeto];
 using static Objetos.Constantes.ConstantesGerais;
 using static Objetos.Controles.ControleMensagem;
 
@@ -116,7 +119,6 @@ namespace [NamespacePersistencia]
                 switch (atributo)
                 {
                     [CasesConsultar]
-
                     default:
                         break;
                 }
@@ -133,9 +135,9 @@ namespace [NamespacePersistencia]
             try
             {
                 string[] partes = texto.Split(SeparadorSplit);
-                [modeloSingular] = new[Modelo]();
-                [AtributosToObjectRecuar2aLinha]
-
+                [modeloSingular] = new [Modelo]();
+                [AtributosToObject]
+                
                 return [modeloSingular];
             }
             catch (Exception ex)
@@ -153,7 +155,7 @@ namespace [NamespacePersistencia]
             try
             {
                 foreach ([Modelo] [oModeloSingular] in Consultar())
-                    if ([modeloSingular].[IdModeloAtributo] == [modeloSingular].[IdModeloAtributo])
+                    if ([oModeloSingular].[IdModeloAtributo] == [modeloSingular].[IdModeloAtributo])
                     {
                         controleArquivo.SubstituirLinha([oModeloSingular].ToString(), [modeloSingular].ToString());
                         break;
@@ -173,10 +175,10 @@ namespace [NamespacePersistencia]
         {
             try
             {
-                foreach ([Modelo] [modeloSingular] in Consultar())
-                    if ([modeloSingular].[IdModeloAtributo] == [idModeloParametro])
+                foreach ([Modelo] [oModeloSingular] in Consultar())
+                    if ([oModeloSingular].[IdModeloAtributo] == [idModeloParametro])
                     {
-                        controleArquivo.ExcluirLinha([modeloSingular].ToString());
+                        controleArquivo.ExcluirLinha([oModeloSingular].ToString());
                         break;
                     }
             }
