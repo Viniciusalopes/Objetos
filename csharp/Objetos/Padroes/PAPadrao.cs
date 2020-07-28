@@ -96,13 +96,13 @@ namespace [NamespacePersistencia]
         {
             try
             {
-                [modeloPlural]Retorno = new List<[Modelo]>();
+                [modeloPlural] = new List<[Modelo]>();
                 string[] linhas = controleArquivo.LerLinhas();
 
                 foreach (string linha in linhas)
-                    [modeloPlural]Retorno.Add(ToObject(linha));
+                    [modeloPlural].Add(ToObject(linha));
 
-                return [modeloPlural]Retorno;
+                return [modeloPlural];
             }
             catch (Exception ex)
             {
@@ -115,6 +115,10 @@ namespace [NamespacePersistencia]
             {
                 [modeloPlural] = Consultar();
                 [modeloPlural]Retorno = new List<[Modelo]>();
+
+                // Retorna vazio se não informar o atributo
+                if (atributo.Trim().Length == 0)
+                    return [modeloPlural]Retorno;
 
                 switch (atributo)
                 {

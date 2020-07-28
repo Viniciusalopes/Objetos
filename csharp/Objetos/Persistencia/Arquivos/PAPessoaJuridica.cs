@@ -26,18 +26,11 @@
 
 using System;
 using System.Collections.Generic;
-using Objetos.Constantes;
 using static Objetos.Controles.ControleMensagem;
 using Objetos.Interfaces;
-using Objetos.Modelos;
-using Objetos.Modelos.Documentos;
-using Objetos.Modelos.Enderecos;
 using Objetos.Modelos.Pessoas;
 using Objetos.Utilitarios;
-using static Objetos.Constantes.EnumRegiao;
 using static Objetos.Constantes.EnumSituacao;
-using static Objetos.Constantes.EnumTipoCnae;
-using static Objetos.Constantes.EnumTipoEnderecoTelefoneEmail;
 using static Objetos.Constantes.EnumTipoEstabelecimento;
 using static Objetos.Constantes.EnumTipoPessoa;
 using static Objetos.Constantes.EnumVinculoPessoa;
@@ -268,7 +261,6 @@ namespace Objetos.Persistencia.Arquivos
         {
             try
             {
-                char sep = SeparadorSplit;
                 string[] partes = texto.Split(SeparadorSplit);
 
                 return new PessoaJuridica(

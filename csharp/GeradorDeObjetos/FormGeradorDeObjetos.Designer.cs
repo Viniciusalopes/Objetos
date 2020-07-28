@@ -76,6 +76,10 @@
             this.openFileDialogLocalObjetoPadrao = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialogLocalObjetos = new System.Windows.Forms.FolderBrowserDialog();
             this.folderBrowserDialogLocalObjetoGerado = new System.Windows.Forms.FolderBrowserDialog();
+            this.buttonProcurarLocalEnum = new System.Windows.Forms.Button();
+            this.labelLocalEnum = new System.Windows.Forms.Label();
+            this.textBoxLocalEnum = new System.Windows.Forms.TextBox();
+            this.folderBrowserDialogLocalEnum = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAtributos)).BeginInit();
             this.tabControlPrincipal.SuspendLayout();
             this.tabPageConfiguracao.SuspendLayout();
@@ -157,6 +161,9 @@
             // 
             // tabPageConfiguracao
             // 
+            this.tabPageConfiguracao.Controls.Add(this.textBoxLocalEnum);
+            this.tabPageConfiguracao.Controls.Add(this.labelLocalEnum);
+            this.tabPageConfiguracao.Controls.Add(this.buttonProcurarLocalEnum);
             this.tabPageConfiguracao.Controls.Add(this.buttonProcurarLocalObjetos);
             this.tabPageConfiguracao.Controls.Add(this.labelLocalObjetos);
             this.tabPageConfiguracao.Controls.Add(this.textBoxLocalObjetos);
@@ -184,7 +191,7 @@
             // 
             // buttonProcurarLocalObjetos
             // 
-            this.buttonProcurarLocalObjetos.Location = new System.Drawing.Point(533, 56);
+            this.buttonProcurarLocalObjetos.Location = new System.Drawing.Point(569, 72);
             this.buttonProcurarLocalObjetos.Name = "buttonProcurarLocalObjetos";
             this.buttonProcurarLocalObjetos.Size = new System.Drawing.Size(75, 23);
             this.buttonProcurarLocalObjetos.TabIndex = 32;
@@ -195,7 +202,7 @@
             // labelLocalObjetos
             // 
             this.labelLocalObjetos.AutoSize = true;
-            this.labelLocalObjetos.Location = new System.Drawing.Point(31, 61);
+            this.labelLocalObjetos.Location = new System.Drawing.Point(67, 77);
             this.labelLocalObjetos.Name = "labelLocalObjetos";
             this.labelLocalObjetos.Size = new System.Drawing.Size(92, 13);
             this.labelLocalObjetos.TabIndex = 31;
@@ -203,7 +210,7 @@
             // 
             // textBoxLocalObjetos
             // 
-            this.textBoxLocalObjetos.Location = new System.Drawing.Point(129, 58);
+            this.textBoxLocalObjetos.Location = new System.Drawing.Point(165, 74);
             this.textBoxLocalObjetos.Name = "textBoxLocalObjetos";
             this.textBoxLocalObjetos.Size = new System.Drawing.Size(398, 20);
             this.textBoxLocalObjetos.TabIndex = 30;
@@ -211,7 +218,7 @@
             // labelModeloObjeto
             // 
             this.labelModeloObjeto.AutoSize = true;
-            this.labelModeloObjeto.Location = new System.Drawing.Point(48, 113);
+            this.labelModeloObjeto.Location = new System.Drawing.Point(84, 203);
             this.labelModeloObjeto.Name = "labelModeloObjeto";
             this.labelModeloObjeto.Size = new System.Drawing.Size(75, 13);
             this.labelModeloObjeto.TabIndex = 29;
@@ -219,7 +226,7 @@
             // 
             // buttonProcurarObjetoPadrao
             // 
-            this.buttonProcurarObjetoPadrao.Location = new System.Drawing.Point(533, 108);
+            this.buttonProcurarObjetoPadrao.Location = new System.Drawing.Point(569, 198);
             this.buttonProcurarObjetoPadrao.Name = "buttonProcurarObjetoPadrao";
             this.buttonProcurarObjetoPadrao.Size = new System.Drawing.Size(75, 23);
             this.buttonProcurarObjetoPadrao.TabIndex = 28;
@@ -229,7 +236,7 @@
             // 
             // textBoxObjetoPadrao
             // 
-            this.textBoxObjetoPadrao.Location = new System.Drawing.Point(129, 110);
+            this.textBoxObjetoPadrao.Location = new System.Drawing.Point(165, 200);
             this.textBoxObjetoPadrao.Name = "textBoxObjetoPadrao";
             this.textBoxObjetoPadrao.Size = new System.Drawing.Size(398, 20);
             this.textBoxObjetoPadrao.TabIndex = 27;
@@ -237,7 +244,7 @@
             // labelTag
             // 
             this.labelTag.AutoSize = true;
-            this.labelTag.Location = new System.Drawing.Point(97, 141);
+            this.labelTag.Location = new System.Drawing.Point(133, 231);
             this.labelTag.Name = "labelTag";
             this.labelTag.Size = new System.Drawing.Size(26, 13);
             this.labelTag.TabIndex = 26;
@@ -246,7 +253,7 @@
             // labelLocalPersistencia
             // 
             this.labelLocalPersistencia.AutoSize = true;
-            this.labelLocalPersistencia.Location = new System.Drawing.Point(13, 35);
+            this.labelLocalPersistencia.Location = new System.Drawing.Point(49, 51);
             this.labelLocalPersistencia.Name = "labelLocalPersistencia";
             this.labelLocalPersistencia.Size = new System.Drawing.Size(108, 13);
             this.labelLocalPersistencia.TabIndex = 25;
@@ -254,7 +261,7 @@
             // 
             // buttonProcurarLocalPersistencia
             // 
-            this.buttonProcurarLocalPersistencia.Location = new System.Drawing.Point(533, 30);
+            this.buttonProcurarLocalPersistencia.Location = new System.Drawing.Point(569, 46);
             this.buttonProcurarLocalPersistencia.Name = "buttonProcurarLocalPersistencia";
             this.buttonProcurarLocalPersistencia.Size = new System.Drawing.Size(75, 23);
             this.buttonProcurarLocalPersistencia.TabIndex = 24;
@@ -264,14 +271,14 @@
             // 
             // textBoxLocalPersistencia
             // 
-            this.textBoxLocalPersistencia.Location = new System.Drawing.Point(129, 32);
+            this.textBoxLocalPersistencia.Location = new System.Drawing.Point(165, 48);
             this.textBoxLocalPersistencia.Name = "textBoxLocalPersistencia";
             this.textBoxLocalPersistencia.Size = new System.Drawing.Size(398, 20);
             this.textBoxLocalPersistencia.TabIndex = 23;
             // 
             // textBoxLocalProjeto
             // 
-            this.textBoxLocalProjeto.Location = new System.Drawing.Point(129, 6);
+            this.textBoxLocalProjeto.Location = new System.Drawing.Point(165, 22);
             this.textBoxLocalProjeto.Name = "textBoxLocalProjeto";
             this.textBoxLocalProjeto.Size = new System.Drawing.Size(398, 20);
             this.textBoxLocalProjeto.TabIndex = 17;
@@ -279,7 +286,7 @@
             // labelLocalProjeto
             // 
             this.labelLocalProjeto.AutoSize = true;
-            this.labelLocalProjeto.Location = new System.Drawing.Point(39, 9);
+            this.labelLocalProjeto.Location = new System.Drawing.Point(75, 25);
             this.labelLocalProjeto.Name = "labelLocalProjeto";
             this.labelLocalProjeto.Size = new System.Drawing.Size(84, 13);
             this.labelLocalProjeto.TabIndex = 22;
@@ -287,7 +294,7 @@
             // 
             // buttonProcurarLocalProjeto
             // 
-            this.buttonProcurarLocalProjeto.Location = new System.Drawing.Point(533, 4);
+            this.buttonProcurarLocalProjeto.Location = new System.Drawing.Point(569, 20);
             this.buttonProcurarLocalProjeto.Name = "buttonProcurarLocalProjeto";
             this.buttonProcurarLocalProjeto.Size = new System.Drawing.Size(75, 23);
             this.buttonProcurarLocalProjeto.TabIndex = 19;
@@ -297,14 +304,14 @@
             // 
             // textBoxPaPadrao
             // 
-            this.textBoxPaPadrao.Location = new System.Drawing.Point(129, 84);
+            this.textBoxPaPadrao.Location = new System.Drawing.Point(165, 174);
             this.textBoxPaPadrao.Name = "textBoxPaPadrao";
             this.textBoxPaPadrao.Size = new System.Drawing.Size(398, 20);
             this.textBoxPaPadrao.TabIndex = 16;
             // 
             // buttonProcurarPersistenciaPadrao
             // 
-            this.buttonProcurarPersistenciaPadrao.Location = new System.Drawing.Point(533, 84);
+            this.buttonProcurarPersistenciaPadrao.Location = new System.Drawing.Point(569, 174);
             this.buttonProcurarPersistenciaPadrao.Name = "buttonProcurarPersistenciaPadrao";
             this.buttonProcurarPersistenciaPadrao.Size = new System.Drawing.Size(75, 22);
             this.buttonProcurarPersistenciaPadrao.TabIndex = 18;
@@ -315,7 +322,7 @@
             // labelPAPadrao
             // 
             this.labelPAPadrao.AutoSize = true;
-            this.labelPAPadrao.Location = new System.Drawing.Point(22, 87);
+            this.labelPAPadrao.Location = new System.Drawing.Point(58, 177);
             this.labelPAPadrao.Name = "labelPAPadrao";
             this.labelPAPadrao.Size = new System.Drawing.Size(101, 13);
             this.labelPAPadrao.TabIndex = 21;
@@ -332,7 +339,7 @@
             "| | - Pipes",
             "_ _ - Underlines",
             "; ; - Ponto-e-vírgula"});
-            this.comboBoxTag.Location = new System.Drawing.Point(129, 138);
+            this.comboBoxTag.Location = new System.Drawing.Point(165, 228);
             this.comboBoxTag.Name = "comboBoxTag";
             this.comboBoxTag.Size = new System.Drawing.Size(121, 21);
             this.comboBoxTag.TabIndex = 20;
@@ -544,6 +551,37 @@
             this.folderBrowserDialogLocalObjetoGerado.Description = "Selecionar o diretório da geração do objeto";
             this.folderBrowserDialogLocalObjetoGerado.SelectedPath = "C:\\Users\\Vinicius\\projetos\\Objetos\\csharp\\Objetos\\Modelos";
             // 
+            // buttonProcurarLocalEnum
+            // 
+            this.buttonProcurarLocalEnum.Location = new System.Drawing.Point(569, 98);
+            this.buttonProcurarLocalEnum.Name = "buttonProcurarLocalEnum";
+            this.buttonProcurarLocalEnum.Size = new System.Drawing.Size(75, 23);
+            this.buttonProcurarLocalEnum.TabIndex = 33;
+            this.buttonProcurarLocalEnum.Text = "Procurar";
+            this.buttonProcurarLocalEnum.UseVisualStyleBackColor = true;
+            this.buttonProcurarLocalEnum.Click += new System.EventHandler(this.buttonProcurarLocalEnum_Click);
+            // 
+            // labelLocalEnum
+            // 
+            this.labelLocalEnum.AutoSize = true;
+            this.labelLocalEnum.Location = new System.Drawing.Point(36, 103);
+            this.labelLocalEnum.Name = "labelLocalEnum";
+            this.labelLocalEnum.Size = new System.Drawing.Size(124, 13);
+            this.labelLocalEnum.TabIndex = 34;
+            this.labelLocalEnum.Text = "Local dos Enumeradores";
+            // 
+            // textBoxLocalEnum
+            // 
+            this.textBoxLocalEnum.Location = new System.Drawing.Point(166, 100);
+            this.textBoxLocalEnum.Name = "textBoxLocalEnum";
+            this.textBoxLocalEnum.Size = new System.Drawing.Size(397, 20);
+            this.textBoxLocalEnum.TabIndex = 35;
+            // 
+            // folderBrowserDialogLocalEnum
+            // 
+            this.folderBrowserDialogLocalEnum.Description = "Selecionar o diretório dos Enumeradores";
+            this.folderBrowserDialogLocalEnum.SelectedPath = "C:\\Users\\Vinicius\\projetos\\Objetos\\csharp\\Objetos\\Constantes";
+            // 
             // FormGeradorDeObjetos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -620,6 +658,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NomeDoAtributo;
         private System.Windows.Forms.DataGridViewComboBoxColumn TipoDoAtributo;
         private System.Windows.Forms.DataGridViewComboBoxColumn ObjetoDoAtributo;
+        private System.Windows.Forms.TextBox textBoxLocalEnum;
+        private System.Windows.Forms.Label labelLocalEnum;
+        private System.Windows.Forms.Button buttonProcurarLocalEnum;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogLocalEnum;
     }
 }
 

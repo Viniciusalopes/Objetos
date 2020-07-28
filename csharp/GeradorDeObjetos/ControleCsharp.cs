@@ -18,10 +18,13 @@ namespace GeradorDeObjetos
         public string LocalDoProjeto { get; set; }
         public string LocalDaPersistencia { get; set; }
         public string LocalDosObjetos { get; set; }
+        public string LocalDosEnumeradores { get; set; }
         public List<string> ObjetosDoProjeto { get; set; }
         public string LocalPAPadrao { get; set; }
         public string LocalDoObjetoPadrao { get; set; }
         public string LocalDoObjetoGerado { get; set; }
+
+
 
         public string NomeDoObjeto { get; set; }
         public List<List<string>> DePara { get; set; }
@@ -51,6 +54,7 @@ namespace GeradorDeObjetos
             string localDoProjeto,
             string localDaPersistencia,
             string localDosObjetos,
+            string localDosEnumeradores,
             string localPAPadrao,
             string localObjetoPadrao,
             string localObjetoGerado,
@@ -60,6 +64,7 @@ namespace GeradorDeObjetos
             LocalDoProjeto = localDoProjeto;
             LocalDaPersistencia = localDaPersistencia;
             LocalDosObjetos = localDosObjetos;
+            LocalDosEnumeradores = localDosEnumeradores;
             LocalPAPadrao = localPAPadrao;
             LocalDoObjetoPadrao = localObjetoPadrao;
             LocalDoObjetoGerado = localObjetoGerado;
@@ -409,9 +414,7 @@ namespace GeradorDeObjetos
                     {
                         retorno = new List<string>();
                         foreach (Atributo atributo in Atributos)
-                        {
                             retorno.Add("public " + nomeTipoAtributo(atributo) + " " + atributo.NomeAtributo + " { get; set; }");
-                        }
                     }
                     break;
 
@@ -421,9 +424,8 @@ namespace GeradorDeObjetos
                         retorno = new List<string>();
                         retorno.Add(""); // TagComposta mas na mesma linha
                         foreach (Atributo atributo in Atributos)
-                        {
                             retorno[0] += ", " + nomeTipoAtributo(atributo) + " " + char.ToLower(atributo.NomeAtributo[0]) + atributo.NomeAtributo.Substring(1);
-                        }
+
                         retorno[0] = retorno[0].Substring(2); // Para tirar a vírgula e o espaço do início
                     }
                     break;
@@ -439,13 +441,18 @@ namespace GeradorDeObjetos
                             string tipo = atributo.TipoAtributo;
                             string[] parseaveis = { "int", "long", "float", "double", "char", "DateTime" };
 
-                            if (parseaveis.Contains(tipo))
+                            if (parseaveis.Contains(tipo) || tipo.Substring(0, 4).Equals("Enum"))
+                            {
+                                if (tipo.Substring(0, 4).Equals("Enum"))
+                                    tipo = "(" + nomeTipoAtributo(atributo) + ")int";
+                             
                                 retorno.Add(modeloSingular + "." + atributo.NomeAtributo + " = " + tipo + ".Parse(partes[" + i + "]);");
+                            }
                             else if (tipo.Equals("string"))
                                 retorno.Add(modeloSingular + "." + atributo.NomeAtributo + " = partes[" + i + "]);");
                             else
                                 retorno.Add(modeloSingular + ".Id" + atributo.NomeAtributo + " = long.Parse(partes[" + i + "]));");
-                            
+
                             i++;
                         }
                     }
@@ -458,15 +465,22 @@ namespace GeradorDeObjetos
                         foreach (Atributo atributo in Atributos)
                         {
                             string complemento = "";
+                            string cast = "";
 
                             foreach (TipoAtributo tipo in Enum.GetValues(typeof(TipoAtributo)))
                                 if (!atributo.TipoAtributo.Equals("string") && atributo.TipoAtributo.Equals(tipo.ToString().Substring(5)))
+                                {
                                     complemento = ".ToString()";
+                                    break;
+                                }
 
                             if (!atributo.TipoAtributo.Equals("string") && complemento.Equals(""))
-                                complemento = ".Id" + atributo.TipoAtributo + complemento;
+                                if (atributo.TipoAtributo.Substring(0, 4).Equals("Enum"))
+                                    cast = "(int)";
+                                else
+                                    complemento = ".Id" + atributo.TipoAtributo + complemento;
 
-                            retorno.Add("+ sep + " + atributo.NomeAtributo + complemento);
+                            retorno.Add("+ sep + " + cast + atributo.NomeAtributo + complemento);
                         }
                         retorno[0] = retorno[0].Substring(8); // Para tirar o '+ sep + ' do início
                     }
@@ -482,13 +496,12 @@ namespace GeradorDeObjetos
                             {
                                 string modeloSingular = SubstituirTag("modeloSingular")[0];
                                 string modeloPlural = SubstituirTag("modeloPlural")[0];
-                                string tipo = atributo.TipoAtributo;
-                                string parametro = "p" + atributo.NomeAtributo;
+                                string tipo = nomeTipoAtributo(atributo);
+                                string cast = "(" + tipo + ")parametro";
                                 string comparador = (tipo.Equals("int") || tipo.Equals("long") || tipo.Equals("float") || tipo.Equals("double"))
-                                                    ? " == " + parametro + ")" : ".Equals(" + parametro + "))";
+                                                    ? " == " + cast + ")" : ".Equals(" + cast + "))";
 
                                 retorno.Add("    case \"" + atributo.NomeAtributo + "\":");
-                                retorno.Add("        " + tipo + " " + parametro + " = (" + tipo + ")parametro;");
                                 retorno.Add("        foreach (" + NomeDoObjeto + " " + modeloSingular + " in " + modeloPlural + ")");
                                 retorno.Add("            if (" + modeloSingular + "." + atributo.NomeAtributo + comparador);
                                 retorno.Add("                " + modeloPlural + "Retorno.Add(" + modeloSingular + ");");
@@ -585,9 +598,11 @@ namespace GeradorDeObjetos
             ObjetosDoProjeto = new List<string>();
 
             foreach (FileInfo file in arquivosDoDiretorio(new DirectoryInfo(@"" + LocalDosObjetos + ""), null))
-            {
                 ObjetosDoProjeto.Add(file.Name.Replace(".cs", "").Replace(".java", "").Replace(".php", ""));
-            }
+
+            foreach (FileInfo file in arquivosDoDiretorio(new DirectoryInfo(@"" + LocalDosEnumeradores + ""), null))
+                if (file.Name.Substring(0, 4).Equals("Enum"))
+                    ObjetosDoProjeto.Add(file.Name.Replace(".cs", "").Replace(".java", "").Replace(".php", ""));
         }
 
         private string nomeTipoAtributo(Atributo atributo)
@@ -596,10 +611,22 @@ namespace GeradorDeObjetos
 
             if (atributo.TipoAtributo.Equals("List"))
                 nome = atributo.TipoAtributo + "<" + ((atributo.ObjetoAtributo.Trim().Length == 0) ? "object" : atributo.ObjetoAtributo) + ">";
+            else if (atributo.TipoAtributo.Substring(0, 4).Equals("Enum"))
+                nome = nomeAtributoEnum(atributo);
 
             return nome;
         }
 
+        private string nomeAtributoEnum(Atributo atributo)
+        {
+            string retorno = "";
+            Arquivo arquivoEnum = new Arquivo(LocalDosEnumeradores + "\\", atributo.TipoAtributo + ".cs");
+            foreach (string linha in arquivoEnum.LerLinhas())
+                if (linha.Contains("public enum "))
+                    retorno = linha.Substring(linha.IndexOf("public enum ") + 12).Trim();
+
+            return retorno;
+        }
         #endregion MÉTODOS
     }
 }

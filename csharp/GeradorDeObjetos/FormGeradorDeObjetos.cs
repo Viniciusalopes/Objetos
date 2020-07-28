@@ -30,6 +30,7 @@ namespace GeradorDeObjetos
             textBoxLocalProjeto.Text = folderBrowserDialogLocalProjeto.SelectedPath;
             textBoxLocalPersistencia.Text = folderBrowserDialogLocalPersistencia.SelectedPath;
             textBoxLocalObjetos.Text = folderBrowserDialogLocalObjetos.SelectedPath;
+            textBoxLocalEnum.Text = folderBrowserDialogLocalEnum.SelectedPath;
             textBoxPaPadrao.Text = openFileDialogLocalPAPadrao.FileName;
             textBoxObjetoPadrao.Text = openFileDialogLocalObjetoPadrao.FileName;
             textBoxLocalObjetoGerado.Text = folderBrowserDialogLocalObjetoGerado.SelectedPath;
@@ -44,6 +45,7 @@ namespace GeradorDeObjetos
                 textBoxLocalProjeto.Text,
                 textBoxLocalPersistencia.Text,
                 textBoxLocalObjetos.Text,
+                textBoxLocalEnum.Text,
                 textBoxPaPadrao.Text,
                 textBoxObjetoPadrao.Text,
                 textBoxLocalObjetoGerado.Text,
@@ -239,6 +241,16 @@ namespace GeradorDeObjetos
 
         }
 
+        private void buttonProcurarLocalEnum_Click(object sender, EventArgs e)
+        {
+            DialogResult fbd = folderBrowserDialogLocalEnum.ShowDialog();
+            if(fbd == DialogResult.OK)
+            {
+                controleCsharp.LocalDosEnumeradores = folderBrowserDialogLocalEnum.SelectedPath;
+                textBoxLocalEnum.Text = controleCsharp.LocalDosEnumeradores;
+            }
+        }
+
         #endregion Botões Procurar
 
         #endregion TabConfiguracao
@@ -365,6 +377,7 @@ namespace GeradorDeObjetos
         #endregion TabObjeto
 
         #endregion TabPages
+
 
     }
 }

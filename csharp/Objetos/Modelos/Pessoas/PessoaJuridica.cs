@@ -157,7 +157,7 @@ namespace Objetos.Modelos.Pessoas
                 + sep + (int)SituacaoPessoa
                 + sep + (int)Vinculo + sep
                 + sep + Cnpj
-                + sep + TipoEstabelecimento
+                + sep + (int)TipoEstabelecimento
                 + sep + DataAbertura
                 + sep + NomeEmpresarial
                 + sep + NomeFantasia
