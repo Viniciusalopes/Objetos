@@ -37,6 +37,9 @@
             this.labelGridAtributos = new System.Windows.Forms.Label();
             this.tabControlPrincipal = new System.Windows.Forms.TabControl();
             this.tabPageConfiguracao = new System.Windows.Forms.TabPage();
+            this.textBoxLocalEnum = new System.Windows.Forms.TextBox();
+            this.labelLocalEnum = new System.Windows.Forms.Label();
+            this.buttonProcurarLocalEnum = new System.Windows.Forms.Button();
             this.buttonProcurarLocalObjetos = new System.Windows.Forms.Button();
             this.labelLocalObjetos = new System.Windows.Forms.Label();
             this.textBoxLocalObjetos = new System.Windows.Forms.TextBox();
@@ -76,10 +79,12 @@
             this.openFileDialogLocalObjetoPadrao = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialogLocalObjetos = new System.Windows.Forms.FolderBrowserDialog();
             this.folderBrowserDialogLocalObjetoGerado = new System.Windows.Forms.FolderBrowserDialog();
-            this.buttonProcurarLocalEnum = new System.Windows.Forms.Button();
-            this.labelLocalEnum = new System.Windows.Forms.Label();
-            this.textBoxLocalEnum = new System.Windows.Forms.TextBox();
             this.folderBrowserDialogLocalEnum = new System.Windows.Forms.FolderBrowserDialog();
+            this.labelGerarPersistencia = new System.Windows.Forms.Label();
+            this.buttonGerarPersistencia = new System.Windows.Forms.Button();
+            this.buttonAlterarLocalPersistenciaGerada = new System.Windows.Forms.Button();
+            this.textBoxLocalPersistenciaGerada = new System.Windows.Forms.TextBox();
+            this.folderBrowserDialogLocalPersistenciaGerada = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAtributos)).BeginInit();
             this.tabControlPrincipal.SuspendLayout();
             this.tabPageConfiguracao.SuspendLayout();
@@ -156,7 +161,7 @@
             this.tabControlPrincipal.Location = new System.Drawing.Point(12, 12);
             this.tabControlPrincipal.Name = "tabControlPrincipal";
             this.tabControlPrincipal.SelectedIndex = 0;
-            this.tabControlPrincipal.Size = new System.Drawing.Size(1135, 555);
+            this.tabControlPrincipal.Size = new System.Drawing.Size(1244, 555);
             this.tabControlPrincipal.TabIndex = 5;
             // 
             // tabPageConfiguracao
@@ -184,10 +189,36 @@
             this.tabPageConfiguracao.Location = new System.Drawing.Point(4, 22);
             this.tabPageConfiguracao.Name = "tabPageConfiguracao";
             this.tabPageConfiguracao.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageConfiguracao.Size = new System.Drawing.Size(1127, 529);
+            this.tabPageConfiguracao.Size = new System.Drawing.Size(1236, 529);
             this.tabPageConfiguracao.TabIndex = 0;
             this.tabPageConfiguracao.Text = "Configuração";
             this.tabPageConfiguracao.UseVisualStyleBackColor = true;
+            // 
+            // textBoxLocalEnum
+            // 
+            this.textBoxLocalEnum.Location = new System.Drawing.Point(166, 100);
+            this.textBoxLocalEnum.Name = "textBoxLocalEnum";
+            this.textBoxLocalEnum.Size = new System.Drawing.Size(397, 20);
+            this.textBoxLocalEnum.TabIndex = 35;
+            // 
+            // labelLocalEnum
+            // 
+            this.labelLocalEnum.AutoSize = true;
+            this.labelLocalEnum.Location = new System.Drawing.Point(36, 103);
+            this.labelLocalEnum.Name = "labelLocalEnum";
+            this.labelLocalEnum.Size = new System.Drawing.Size(124, 13);
+            this.labelLocalEnum.TabIndex = 34;
+            this.labelLocalEnum.Text = "Local dos Enumeradores";
+            // 
+            // buttonProcurarLocalEnum
+            // 
+            this.buttonProcurarLocalEnum.Location = new System.Drawing.Point(569, 98);
+            this.buttonProcurarLocalEnum.Name = "buttonProcurarLocalEnum";
+            this.buttonProcurarLocalEnum.Size = new System.Drawing.Size(75, 23);
+            this.buttonProcurarLocalEnum.TabIndex = 33;
+            this.buttonProcurarLocalEnum.Text = "Procurar";
+            this.buttonProcurarLocalEnum.UseVisualStyleBackColor = true;
+            this.buttonProcurarLocalEnum.Click += new System.EventHandler(this.buttonProcurarLocalEnum_Click);
             // 
             // buttonProcurarLocalObjetos
             // 
@@ -354,7 +385,7 @@
             this.tabPageObjeto.Location = new System.Drawing.Point(4, 22);
             this.tabPageObjeto.Name = "tabPageObjeto";
             this.tabPageObjeto.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageObjeto.Size = new System.Drawing.Size(1127, 529);
+            this.tabPageObjeto.Size = new System.Drawing.Size(1236, 529);
             this.tabPageObjeto.TabIndex = 1;
             this.tabPageObjeto.Text = "Objeto";
             this.tabPageObjeto.UseVisualStyleBackColor = true;
@@ -368,7 +399,7 @@
             this.tabControlPreview.Location = new System.Drawing.Point(373, 14);
             this.tabControlPreview.Name = "tabControlPreview";
             this.tabControlPreview.SelectedIndex = 0;
-            this.tabControlPreview.Size = new System.Drawing.Size(748, 509);
+            this.tabControlPreview.Size = new System.Drawing.Size(857, 509);
             this.tabControlPreview.TabIndex = 5;
             // 
             // tabPageTags
@@ -378,7 +409,7 @@
             this.tabPageTags.Location = new System.Drawing.Point(4, 22);
             this.tabPageTags.Name = "tabPageTags";
             this.tabPageTags.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTags.Size = new System.Drawing.Size(740, 483);
+            this.tabPageTags.Size = new System.Drawing.Size(849, 483);
             this.tabPageTags.TabIndex = 0;
             this.tabPageTags.Text = "Tags";
             this.tabPageTags.UseVisualStyleBackColor = true;
@@ -386,7 +417,7 @@
             // checkBoxTodos
             // 
             this.checkBoxTodos.AutoSize = true;
-            this.checkBoxTodos.Location = new System.Drawing.Point(64, 9);
+            this.checkBoxTodos.Location = new System.Drawing.Point(64, 16);
             this.checkBoxTodos.Name = "checkBoxTodos";
             this.checkBoxTodos.Size = new System.Drawing.Size(56, 17);
             this.checkBoxTodos.TabIndex = 17;
@@ -402,9 +433,9 @@
             this.Substituir,
             this.De,
             this.Para});
-            this.dataGridViewDePara.Location = new System.Drawing.Point(3, 29);
+            this.dataGridViewDePara.Location = new System.Drawing.Point(3, 39);
             this.dataGridViewDePara.Name = "dataGridViewDePara";
-            this.dataGridViewDePara.Size = new System.Drawing.Size(731, 448);
+            this.dataGridViewDePara.Size = new System.Drawing.Size(840, 438);
             this.dataGridViewDePara.TabIndex = 16;
             // 
             // Substituir
@@ -437,7 +468,7 @@
             this.tabPagePreviewObjeto.Location = new System.Drawing.Point(4, 22);
             this.tabPagePreviewObjeto.Name = "tabPagePreviewObjeto";
             this.tabPagePreviewObjeto.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePreviewObjeto.Size = new System.Drawing.Size(740, 483);
+            this.tabPagePreviewObjeto.Size = new System.Drawing.Size(849, 483);
             this.tabPagePreviewObjeto.TabIndex = 1;
             this.tabPagePreviewObjeto.Text = "Objeto.cs";
             this.tabPagePreviewObjeto.UseVisualStyleBackColor = true;
@@ -446,7 +477,7 @@
             // labelLocalObjetoGerado
             // 
             this.labelLocalObjetoGerado.AutoSize = true;
-            this.labelLocalObjetoGerado.Location = new System.Drawing.Point(6, 18);
+            this.labelLocalObjetoGerado.Location = new System.Drawing.Point(6, 15);
             this.labelLocalObjetoGerado.Name = "labelLocalObjetoGerado";
             this.labelLocalObjetoGerado.Size = new System.Drawing.Size(82, 13);
             this.labelLocalObjetoGerado.TabIndex = 4;
@@ -454,7 +485,7 @@
             // 
             // buttonGerarObjeto
             // 
-            this.buttonGerarObjeto.Location = new System.Drawing.Point(659, 13);
+            this.buttonGerarObjeto.Location = new System.Drawing.Point(768, 10);
             this.buttonGerarObjeto.Name = "buttonGerarObjeto";
             this.buttonGerarObjeto.Size = new System.Drawing.Size(75, 23);
             this.buttonGerarObjeto.TabIndex = 3;
@@ -464,7 +495,7 @@
             // 
             // buttonAlterarLocalObjetoGerado
             // 
-            this.buttonAlterarLocalObjetoGerado.Location = new System.Drawing.Point(578, 13);
+            this.buttonAlterarLocalObjetoGerado.Location = new System.Drawing.Point(606, 10);
             this.buttonAlterarLocalObjetoGerado.Name = "buttonAlterarLocalObjetoGerado";
             this.buttonAlterarLocalObjetoGerado.Size = new System.Drawing.Size(75, 23);
             this.buttonAlterarLocalObjetoGerado.TabIndex = 2;
@@ -474,9 +505,9 @@
             // 
             // textBoxLocalObjetoGerado
             // 
-            this.textBoxLocalObjetoGerado.Location = new System.Drawing.Point(94, 15);
+            this.textBoxLocalObjetoGerado.Location = new System.Drawing.Point(94, 12);
             this.textBoxLocalObjetoGerado.Name = "textBoxLocalObjetoGerado";
-            this.textBoxLocalObjetoGerado.Size = new System.Drawing.Size(478, 20);
+            this.textBoxLocalObjetoGerado.Size = new System.Drawing.Size(506, 20);
             this.textBoxLocalObjetoGerado.TabIndex = 1;
             // 
             // listBoxObjeto
@@ -488,16 +519,20 @@
             this.listBoxObjeto.Location = new System.Drawing.Point(3, 39);
             this.listBoxObjeto.Name = "listBoxObjeto";
             this.listBoxObjeto.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxObjeto.Size = new System.Drawing.Size(734, 438);
+            this.listBoxObjeto.Size = new System.Drawing.Size(840, 438);
             this.listBoxObjeto.TabIndex = 0;
             // 
             // tabPagePreviewPersistencia
             // 
+            this.tabPagePreviewPersistencia.Controls.Add(this.labelGerarPersistencia);
+            this.tabPagePreviewPersistencia.Controls.Add(this.buttonGerarPersistencia);
+            this.tabPagePreviewPersistencia.Controls.Add(this.buttonAlterarLocalPersistenciaGerada);
+            this.tabPagePreviewPersistencia.Controls.Add(this.textBoxLocalPersistenciaGerada);
             this.tabPagePreviewPersistencia.Controls.Add(this.listBoxPersistencia);
             this.tabPagePreviewPersistencia.Location = new System.Drawing.Point(4, 22);
             this.tabPagePreviewPersistencia.Name = "tabPagePreviewPersistencia";
             this.tabPagePreviewPersistencia.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePreviewPersistencia.Size = new System.Drawing.Size(740, 483);
+            this.tabPagePreviewPersistencia.Size = new System.Drawing.Size(849, 483);
             this.tabPagePreviewPersistencia.TabIndex = 2;
             this.tabPagePreviewPersistencia.Text = "PAObjeto.cs";
             this.tabPagePreviewPersistencia.UseVisualStyleBackColor = true;
@@ -505,14 +540,13 @@
             // 
             // listBoxPersistencia
             // 
-            this.listBoxPersistencia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxPersistencia.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxPersistencia.FormattingEnabled = true;
             this.listBoxPersistencia.HorizontalScrollbar = true;
             this.listBoxPersistencia.ItemHeight = 14;
-            this.listBoxPersistencia.Location = new System.Drawing.Point(3, 3);
+            this.listBoxPersistencia.Location = new System.Drawing.Point(3, 39);
             this.listBoxPersistencia.Name = "listBoxPersistencia";
-            this.listBoxPersistencia.Size = new System.Drawing.Size(734, 477);
+            this.listBoxPersistencia.Size = new System.Drawing.Size(840, 438);
             this.listBoxPersistencia.TabIndex = 0;
             // 
             // folderBrowserDialogLocalProjeto
@@ -551,42 +585,57 @@
             this.folderBrowserDialogLocalObjetoGerado.Description = "Selecionar o diretório da geração do objeto";
             this.folderBrowserDialogLocalObjetoGerado.SelectedPath = "C:\\Users\\Vinicius\\projetos\\Objetos\\csharp\\Objetos\\Modelos";
             // 
-            // buttonProcurarLocalEnum
-            // 
-            this.buttonProcurarLocalEnum.Location = new System.Drawing.Point(569, 98);
-            this.buttonProcurarLocalEnum.Name = "buttonProcurarLocalEnum";
-            this.buttonProcurarLocalEnum.Size = new System.Drawing.Size(75, 23);
-            this.buttonProcurarLocalEnum.TabIndex = 33;
-            this.buttonProcurarLocalEnum.Text = "Procurar";
-            this.buttonProcurarLocalEnum.UseVisualStyleBackColor = true;
-            this.buttonProcurarLocalEnum.Click += new System.EventHandler(this.buttonProcurarLocalEnum_Click);
-            // 
-            // labelLocalEnum
-            // 
-            this.labelLocalEnum.AutoSize = true;
-            this.labelLocalEnum.Location = new System.Drawing.Point(36, 103);
-            this.labelLocalEnum.Name = "labelLocalEnum";
-            this.labelLocalEnum.Size = new System.Drawing.Size(124, 13);
-            this.labelLocalEnum.TabIndex = 34;
-            this.labelLocalEnum.Text = "Local dos Enumeradores";
-            // 
-            // textBoxLocalEnum
-            // 
-            this.textBoxLocalEnum.Location = new System.Drawing.Point(166, 100);
-            this.textBoxLocalEnum.Name = "textBoxLocalEnum";
-            this.textBoxLocalEnum.Size = new System.Drawing.Size(397, 20);
-            this.textBoxLocalEnum.TabIndex = 35;
-            // 
             // folderBrowserDialogLocalEnum
             // 
             this.folderBrowserDialogLocalEnum.Description = "Selecionar o diretório dos Enumeradores";
             this.folderBrowserDialogLocalEnum.SelectedPath = "C:\\Users\\Vinicius\\projetos\\Objetos\\csharp\\Objetos\\Constantes";
             // 
+            // labelGerarPersistencia
+            // 
+            this.labelGerarPersistencia.AutoSize = true;
+            this.labelGerarPersistencia.Location = new System.Drawing.Point(6, 15);
+            this.labelGerarPersistencia.Name = "labelGerarPersistencia";
+            this.labelGerarPersistencia.Size = new System.Drawing.Size(110, 13);
+            this.labelGerarPersistencia.TabIndex = 8;
+            this.labelGerarPersistencia.Text = "Gerar Persistencia em";
+            // 
+            // buttonGerarPersistencia
+            // 
+            this.buttonGerarPersistencia.Location = new System.Drawing.Point(768, 10);
+            this.buttonGerarPersistencia.Name = "buttonGerarPersistencia";
+            this.buttonGerarPersistencia.Size = new System.Drawing.Size(75, 23);
+            this.buttonGerarPersistencia.TabIndex = 7;
+            this.buttonGerarPersistencia.Text = "Gerar PA";
+            this.buttonGerarPersistencia.UseVisualStyleBackColor = true;
+            this.buttonGerarPersistencia.Click += new System.EventHandler(this.buttonGerarPersistencia_Click);
+            // 
+            // buttonAlterarLocalPersistenciaGerada
+            // 
+            this.buttonAlterarLocalPersistenciaGerada.Location = new System.Drawing.Point(606, 10);
+            this.buttonAlterarLocalPersistenciaGerada.Name = "buttonAlterarLocalPersistenciaGerada";
+            this.buttonAlterarLocalPersistenciaGerada.Size = new System.Drawing.Size(75, 23);
+            this.buttonAlterarLocalPersistenciaGerada.TabIndex = 6;
+            this.buttonAlterarLocalPersistenciaGerada.Text = "Alterar Local";
+            this.buttonAlterarLocalPersistenciaGerada.UseVisualStyleBackColor = true;
+            this.buttonAlterarLocalPersistenciaGerada.Click += new System.EventHandler(this.buttonAlterarLocalPersistenciaGerada_Click);
+            // 
+            // textBoxLocalPersistenciaGerada
+            // 
+            this.textBoxLocalPersistenciaGerada.Location = new System.Drawing.Point(122, 12);
+            this.textBoxLocalPersistenciaGerada.Name = "textBoxLocalPersistenciaGerada";
+            this.textBoxLocalPersistenciaGerada.Size = new System.Drawing.Size(478, 20);
+            this.textBoxLocalPersistenciaGerada.TabIndex = 5;
+            // 
+            // folderBrowserDialogLocalPersistenciaGerada
+            // 
+            this.folderBrowserDialogLocalPersistenciaGerada.Description = "Selecionar o diretório da geração da persistência";
+            this.folderBrowserDialogLocalPersistenciaGerada.SelectedPath = "C:\\Users\\Vinicius\\projetos\\Objetos\\csharp\\Objetos\\Persistencia\\Arquivos";
+            // 
             // FormGeradorDeObjetos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1226, 579);
+            this.ClientSize = new System.Drawing.Size(1268, 579);
             this.Controls.Add(this.tabControlPrincipal);
             this.Name = "FormGeradorDeObjetos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -604,6 +653,7 @@
             this.tabPagePreviewObjeto.ResumeLayout(false);
             this.tabPagePreviewObjeto.PerformLayout();
             this.tabPagePreviewPersistencia.ResumeLayout(false);
+            this.tabPagePreviewPersistencia.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -662,6 +712,11 @@
         private System.Windows.Forms.Label labelLocalEnum;
         private System.Windows.Forms.Button buttonProcurarLocalEnum;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogLocalEnum;
+        private System.Windows.Forms.Label labelGerarPersistencia;
+        private System.Windows.Forms.Button buttonGerarPersistencia;
+        private System.Windows.Forms.Button buttonAlterarLocalPersistenciaGerada;
+        private System.Windows.Forms.TextBox textBoxLocalPersistenciaGerada;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogLocalPersistenciaGerada;
     }
 }
 

@@ -23,6 +23,7 @@ namespace GeradorDeObjetos
         public string LocalPAPadrao { get; set; }
         public string LocalDoObjetoPadrao { get; set; }
         public string LocalDoObjetoGerado { get; set; }
+        public string LocalDaPersistenciaGerada { get; set; }
 
 
 
@@ -58,6 +59,7 @@ namespace GeradorDeObjetos
             string localPAPadrao,
             string localObjetoPadrao,
             string localObjetoGerado,
+            string localDaPersistenciaGerada,
             string tag,
             List<Atributo> atributos)
         {
@@ -68,6 +70,7 @@ namespace GeradorDeObjetos
             LocalPAPadrao = localPAPadrao;
             LocalDoObjetoPadrao = localObjetoPadrao;
             LocalDoObjetoGerado = localObjetoGerado;
+            LocalDaPersistenciaGerada = localDaPersistenciaGerada;
 
             string[] partes = tag.Split();
             TagInicio = char.Parse(partes[0]);
@@ -372,7 +375,7 @@ namespace GeradorDeObjetos
                     break;
 
                 case TagSimplesCsharp.NamespacePersistencia:
-                    retorno = LocalDaPersistencia.Replace(LocalDoProjeto, "").Replace("\\", ".").Substring(1);
+                    retorno = LocalDaPersistenciaGerada.Replace(LocalDoProjeto, "").Replace("\\", ".").Substring(1);
                     break;
 
                 case TagSimplesCsharp.oModeloSingular:

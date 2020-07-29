@@ -33,6 +33,7 @@ using static Objetos.Utilitarios.ArquivoUtils;
 using Objetos.Constantes;
 using System.Collections.Generic;
 using System.Linq;
+using static Objetos.Constantes.EnumEntidade;
 
 namespace Objetos.Persistencia.Arquivos
 {
@@ -52,12 +53,13 @@ namespace Objetos.Persistencia.Arquivos
 
         }
 
-        public Arquivo(string caminhoCompleto)
+        public Arquivo(string caminhoCompleto, bool criarNovo)
         {
             try
             {
-                garantirArquivo(caminhoCompleto);
-                this.caminhoArquivo = caminhoCompleto;
+                if (criarNovo) garantirArquivo(caminhoCompleto); 
+                
+                caminhoArquivo = caminhoCompleto;
             }
             catch (Exception ex)
             {
@@ -66,12 +68,15 @@ namespace Objetos.Persistencia.Arquivos
             }
         }
 
-        public Arquivo(string diretorioArquivo, string nomeArquivo)
+        public Arquivo(string diretorioArquivo, string nomeArquivo, bool criarNovo)
         {
             try
             {
-                garantirDiretorio(diretorioArquivo);
-                garantirArquivo(diretorioArquivo + nomeArquivo);
+                if (criarNovo)
+                {
+                    garantirDiretorio(diretorioArquivo);
+                    garantirArquivo(diretorioArquivo + nomeArquivo);
+                }
                 caminhoArquivo = diretorioArquivo + nomeArquivo;
             }
             catch (Exception ex)
@@ -82,14 +87,17 @@ namespace Objetos.Persistencia.Arquivos
             }
         }
 
-        public Arquivo(string entidade, string extensao, string dirRoot = "")
+        public Arquivo(Entidade entidade, string extensao, string dirRoot , bool criarNovo)
         {
             try
             {
                 cfg = new ConfiguracaoPA(entidade, extensao, dirRoot);
-                garantirDiretorio(cfg.Diretorios.DirDados);
-                caminhoArquivo = cfg.Diretorios.DirDados + cfg.Arquivos.ArquivoDeDados;
-                garantirArquivo(caminhoArquivo);
+                if (criarNovo)
+                {
+                    garantirDiretorio(cfg.Diretorios.DirDados);
+                    caminhoArquivo = cfg.Diretorios.DirDados + cfg.Arquivos.ArquivoDeDados;
+                    garantirArquivo(caminhoArquivo);
+                }
             }
             catch (Exception ex)
             {
@@ -97,9 +105,9 @@ namespace Objetos.Persistencia.Arquivos
                     + "#nomeArquivo: " + cfg.Arquivos.ArquivoDeDados
                     + "#" + MensagemCompleta(ex.Message));
             }
-
-
         }
+
+
         #endregion CONSTRUTORES
 
         #region GET / SET

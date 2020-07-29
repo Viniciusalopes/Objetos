@@ -30,6 +30,7 @@ using System;
 using static Objetos.Constantes.EnumEntidade;
 using static Objetos.Controles.ControleMensagem;
 using static Objetos.Constantes.ConstantesGerais;
+using System.IO;
 
 namespace Objetos.Utilitarios
 {
@@ -59,8 +60,8 @@ namespace Objetos.Utilitarios
                     ReindexarTabelas(); // ReindexarTabelas() já atribui valor ao id.
                 else
                     id = long.Parse(linhas[0].Split(SeparadorSplit)[0]);
-                
-                controleArquivo = new Arquivo("ID", ExtensaoArquivoBd, "");
+
+                controleArquivo = new Arquivo("ID", ExtensaoArquivoBd, "", false);
                 controleArquivo.EscreverLinhas(new string[] { id + 1 + "" });
 
                 return id + 1;  // Retorna o próximo ID único não utilizado, ou o id do arquivo.
@@ -74,26 +75,29 @@ namespace Objetos.Utilitarios
 
         private static long ReindexarTabelas()
         {
-            foreach (string objeto in Enum.GetNames(typeof(Entidade)))                                     // Para cada arqivo de dados
+            foreach (string objeto in Enum.GetNames(typeof(Entidade)))                          // Para cada arqivo de dados
             {
-                if (!objeto.Equals("Todas"))
+                entidade = objeto;
+                 
+                if (!entidade.Equals("Todas"))
                 {
-                    entidade = objeto;
-                    controleArquivo = new Arquivo(objeto, ExtensaoArquivoBd, "");                                       // Controle de arquivo
-                    foreach (string linha in controleArquivo.LerLinhas())                                   // Para cada linha do arquivo
-                        if (linha.Trim().Length > 1 && linha.Contains(SeparadorSplit + ""))  // Verifica se o tem pelo menos uma coluna
-                        {
-                            string texto = linha.Split(SeparadorSplit)[0];                 // Armazena o texto com o ID do registro
+                    controleArquivo = new Arquivo(entidade, ExtensaoArquivoBd, "", false);      // Controle de arquivo
 
-                            if (texto.Trim().Length > 0)                                                    // Verifica se o texto não está vazio
+                    if (File.Exists(controleArquivo.CaminhoArquivo))
+                        foreach (string linha in controleArquivo.LerLinhas())                   // Para cada linha do arquivo
+                            if (linha.Trim().Length > 1 && linha.Contains(SeparadorSplit + "")) // Verifica se o tem pelo menos uma coluna
                             {
-                                bool numeral = long.TryParse(texto, out maior);                             // Converte o texto para inteiro
-                                if (numeral)                                                                // Se o texto só tem números
+                                string texto = linha.Split(SeparadorSplit)[0];                  // Armazena o texto com o ID do registro
+
+                                if (texto.Trim().Length > 0)                                    // Verifica se o texto não está vazio
                                 {
-                                    id = (maior > id) ? maior : id;                                         // Maior id encontrado
+                                    bool numeral = long.TryParse(texto, out maior);             // Converte o texto para inteiro
+                                    if (numeral)                                                // Se o texto só tem números
+                                    {
+                                        id = (maior > id) ? maior : id;                         // Maior id encontrado
+                                    }
                                 }
                             }
-                        }
                 }
             }
             return id;

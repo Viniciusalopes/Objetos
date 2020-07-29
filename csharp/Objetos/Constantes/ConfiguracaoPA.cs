@@ -25,6 +25,7 @@
 /// </summary>
 
 using System;
+using static Objetos.Constantes.EnumEntidade;
 
 namespace Objetos.Constantes
 {
@@ -32,17 +33,15 @@ namespace Objetos.Constantes
     {
         public NomesDiretorios Diretorios { get; set; }
         public NomesArquivos Arquivos { get; set; }
-
-        public ConfiguracaoPA(string objeto, string extensao, string dirRoot = "")
+        public ConfiguracaoPA()
         {
             Diretorios = new NomesDiretorios();
-            Diretorios.DirRoot = (string.IsNullOrEmpty(dirRoot)) ? Environment.GetFolderPath(Environment.SpecialFolder.Personal) : dirRoot;
+            Diretorios.DirRoot = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             Diretorios.DirHome = "\\Objetos\\";
             Diretorios.DirDados = Diretorios.DirFull + "Dados\\";
             Diretorios.DirRelatorios = Diretorios.DirFull + "Relatorios\\";
-
+         
             Arquivos = new NomesArquivos();
-            Arquivos.ArquivoDeDados = char.ToUpper(objeto[0]) + objeto.Substring(1) + "." + extensao;
         }
     }
 }

@@ -34,6 +34,7 @@ namespace GeradorDeObjetos
             textBoxPaPadrao.Text = openFileDialogLocalPAPadrao.FileName;
             textBoxObjetoPadrao.Text = openFileDialogLocalObjetoPadrao.FileName;
             textBoxLocalObjetoGerado.Text = folderBrowserDialogLocalObjetoGerado.SelectedPath;
+            textBoxLocalPersistenciaGerada.Text = folderBrowserDialogLocalPersistenciaGerada.SelectedPath;
             comboBoxTag.SelectedIndex = 1;
 
             #endregion TabConfiguracao
@@ -49,6 +50,7 @@ namespace GeradorDeObjetos
                 textBoxPaPadrao.Text,
                 textBoxObjetoPadrao.Text,
                 textBoxLocalObjetoGerado.Text,
+                textBoxLocalPersistenciaGerada.Text,
                 comboBoxTag.SelectedItem.ToString(),
                 atributos);
 
@@ -116,6 +118,8 @@ namespace GeradorDeObjetos
             #endregion TabObjeto - TabObjeto.cs
 
             #region TabObjeto - PAObjeto.cs
+
+            textBoxLocalPersistenciaGerada.Text = controleCsharp.LocalDaPersistenciaGerada;
 
             controleCsharp.preencherLinhasPAObjetoPadrao();
             listBoxPersistencia.Items.Clear();
@@ -244,7 +248,7 @@ namespace GeradorDeObjetos
         private void buttonProcurarLocalEnum_Click(object sender, EventArgs e)
         {
             DialogResult fbd = folderBrowserDialogLocalEnum.ShowDialog();
-            if(fbd == DialogResult.OK)
+            if (fbd == DialogResult.OK)
             {
                 controleCsharp.LocalDosEnumeradores = folderBrowserDialogLocalEnum.SelectedPath;
                 textBoxLocalEnum.Text = controleCsharp.LocalDosEnumeradores;
@@ -269,7 +273,7 @@ namespace GeradorDeObjetos
             {
                 atualizarAtributos();
                 atualizarTabPagePreviews();
-               
+
             }
         }
 
@@ -328,6 +332,7 @@ namespace GeradorDeObjetos
                 }
             }
         }
+
         #region TabObjeto - TabPreviewObjeto
 
         private void tabPagePreviewObjeto_Enter(object sender, EventArgs e)
@@ -365,12 +370,37 @@ namespace GeradorDeObjetos
         #endregion TabObjeto - TabPreviewObjeto
 
         #region TabObjeto - TabPreviewPersistencia
-        
+
         private void tabPagePreviewPersistencia_Enter(object sender, EventArgs e)
         {
             atualizarListBoxPersistencia();
         }
 
+        private void buttonAlterarLocalPersistenciaGerada_Click(object sender, EventArgs e)
+        {
+            DialogResult fbd = folderBrowserDialogLocalPersistenciaGerada.ShowDialog();
+            if (fbd == DialogResult.OK)
+            {
+                controleCsharp.LocalDaPersistenciaGerada = folderBrowserDialogLocalPersistenciaGerada.SelectedPath;
+                textBoxLocalPersistenciaGerada.Text = controleCsharp.LocalDaPersistenciaGerada;
+                atualizarListBoxObjeto();
+            }
+        }
+
+        private void buttonGerarPersistencia_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Arquivo arquivo = new Arquivo(controleCsharp.LocalDaPersistenciaGerada + "\\", "PA" + controleCsharp.NomeDoObjeto + ".cs");
+                arquivo.EscreverLinhas(listBoxPersistencia.Items.OfType<string>().ToArray());
+                MessageBox.Show("Persistência [" + controleCsharp.NomeDoObjeto + "] criada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Não foi possível criar a persistência [" + controleCsharp.NomeDoObjeto + "] !" + Environment.NewLine
+                    + ex.Message, "Eita...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
         #endregion TabObjeto - TabPreviewPersistencia
 

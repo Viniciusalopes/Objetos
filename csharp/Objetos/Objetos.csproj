@@ -131,6 +131,7 @@
     <Compile Include="Persistencia\Arquivos\PAPessoaFisica.cs" />
     <Compile Include="Persistencia\Arquivos\PAPessoaJuridica.cs" />
     <Compile Include="Persistencia\Arquivos\PASetor.cs" />
+    <Compile Include="Persistencia\Arquivos\PersistenciaArquivo.cs" />
     <Compile Include="Persistencia\Memoria\PMUF.cs" />
     <Compile Include="Persistencia\Memoria\TabelaCbo.cs" />
     <Compile Include="Persistencia\Memoria\TabelaMensagem.cs" />
